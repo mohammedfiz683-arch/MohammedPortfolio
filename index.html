@@ -1,0 +1,1000 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOHAMMED.HAFIZ - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .lab-hero {
+        position: relative;
+        min-height: calc(100vh - 70px);
+        min-height: calc(100svh - 70px);
+        padding: 0;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #hero-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        cursor: crosshair;
+        touch-action: pan-y;
+      }
+
+      .lab-hint {
+        position: absolute;
+        left: 50%;
+        bottom: 28px;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        opacity: 0.55;
+        pointer-events: none;
+        white-space: nowrap;
+      }
+
+      .lab-hint span:last-child {
+        border-left: var(--border);
+        padding-left: 20px;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .noscript-tagline {
+        font-family: var(--font-heading);
+        font-size: clamp(28px, 5vw, 64px);
+        line-height: 1.15;
+        max-width: 900px;
+        padding: 0 24px;
+        text-align: center;
+      }
+
+      /* Selected Work — the tall wrapper is the scroll runway; the stage sticks
+ inside it and the track slides sideways across that distance. */
+      .pin-wrap {
+        position: relative;
+      }
+
+      .pin-stage {
+        position: sticky;
+        top: 70px;
+        height: calc(100vh - 70px);
+        height: calc(100svh - 70px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 28px;
+        overflow: hidden;
+      }
+
+      /* Shared by all three sections so they read as one system. Stacked and
+ centred rather than title-left/count-right, which collided on one line. */
+      .section-head {
+        text-align: center;
+        border-bottom: var(--border);
+        padding-bottom: 14px;
+        margin-bottom: 40px;
+        flex-shrink: 0;
+      }
+
+      .section-head .eyebrow {
+        display: block;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--primary-red);
+        margin-bottom: 8px;
+      }
+
+      .section-head h2 {
+        margin: 0;
+      }
+      .section-head.flush {
+        margin-bottom: 0;
+      }
+
+      .pin-viewport {
+        overflow: hidden;
+      }
+
+      .pin-track {
+        --card-w: min(68vw, 860px, calc((100svh - 300px) * 1.55));
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        padding-inline: 24px;
+        will-change: transform;
+      }
+
+      /* --t is 1 at the centre of the viewport, 0 a card-width away. Deriving
+ scale and dim from it in CSS means one style write per card per frame
+ instead of three. */
+      .pin-track .bento-card {
+        flex: 0 0 var(--card-w);
+        width: var(--card-w);
+        transform: scale(calc(0.88 + 0.12 * var(--t, 0)));
+        filter: brightness(calc(0.5 + 0.5 * var(--t, 0)));
+      }
+
+      /* .bento-card:hover translates by -4px, which would fight the focus scale */
+      .pin-track .bento-card:hover {
+        transform: scale(calc(0.88 + 0.12 * var(--t, 0)));
+      }
+
+      /* Pinning is a poor fit for touch and for reduced-motion, so both fall back
+ to an ordinary snap strip and the script leaves the transform alone. */
+      @media (max-width: 768px), (prefers-reduced-motion: reduce) {
+        .pin-wrap {
+          height: auto !important;
+        }
+        .pin-stage {
+          position: static;
+          height: auto;
+          padding: 40px 0;
+        }
+        .pin-viewport {
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+        }
+        .pin-track {
+          transform: none !important;
+          --card-w: min(86vw, 520px);
+        }
+        .pin-track .bento-card {
+          scroll-snap-align: center;
+        }
+        /* No pinning here, so there's no loop to stitch — drop the copies rather
+ than making people swipe through the same five projects three times. */
+        .pin-track .bento-card[aria-hidden="true"] {
+          display: none;
+        }
+      }
+
+      /* .skill-board / .skill-cell live in style.css as the shared hairline-grid
+         component — only the logo chip styling is specific to this page. */
+      .skill-logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        border: 2px solid var(--neutral-black);
+        background-color: var(--brand);
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      /* White glyph on a brand-coloured chip — the official flat hexes (After Effects is #9999FF) wash out
+         on a white card. SVGs are inlined rather than pulled in with mask-image: Chrome gives every
+         file:// document its own opaque origin, so an external SVG mask silently renders nothing. */
+      .skill-logo svg {
+        width: 58%;
+        height: 58%;
+        display: block;
+      }
+
+      /* The * is load-bearing: a fill="#000" presentation attribute on an inner <g> beats an inherited
+         fill, which would leave that logo black-on-brand. */
+      .skill-logo svg,
+      .skill-logo svg * {
+        fill: #ffffff;
+      }
+
+      .skill-logo.mono {
+        font-family: var(--font-heading);
+        font-size: 17px;
+        font-weight: 700;
+        color: #ffffff;
+      }
+
+      .skill-name {
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        text-align: center;
+        line-height: 1.3;
+        transition: color 0.2s;
+      }
+
+      @media (max-width: 640px) {
+        .lab-hint {
+          gap: 12px;
+          letter-spacing: 0.08em;
+        }
+        .lab-hint span:last-child {
+          padding-left: 12px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="container">
+        <a href="index.html" class="logo">MOHAMMED.HAFIZ</a>
+        <nav class="nav-links">
+          <a href="index.html" class="active">HOME</a>
+          <a href="work.html">WORK</a>
+          <a href="about.html">ABOUT</a>
+          <a href="contact.html">CONTACT</a>
+        </nav>
+        <a href="contact.html" class="btn-hire">HIRE ME</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Full-bleed interactive tagline -->
+      <section class="lab-hero">
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
+        <h1 class="sr-only">I design games, systems, and interactive experiences that explore logic, behavior, and play.</h1>
+        <noscript>
+          <p class="noscript-tagline">I design games, systems, and interactive experiences that explore logic, behavior, and play.</p>
+        </noscript>
+        <div class="lab-hint">
+          <span>Hover or drag across the text</span>
+          <span>Scroll <span class="chevron down" aria-hidden="true"></span></span>
+        </div>
+      </section>
+
+      <!-- Selected Work — pinned horizontal scroll -->
+      <section class="pin-wrap" id="work-pin">
+        <div class="pin-stage">
+          <div class="container section-head flush">
+            <span class="eyebrow">05 Projects</span>
+            <h2>SELECTED WORK</h2>
+          </div>
+
+          <div class="pin-viewport">
+            <div class="pin-track">
+              <!-- MazeBot -->
+              <a href="project.html" class="bento-card cat-game">
+                <div class="bento-visual">
+                  <video loop muted playsinline preload="metadata">
+                    <source src="mazebot-gameplay.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <div class="bento-footer">
+                  <div class="bento-footer-top">
+                    <span class="bento-pill">GAME DESIGN</span>
+                    <span class="bento-index">01</span>
+                  </div>
+                  <div class="bento-title-group">
+                    <h3>MazeBot</h3>
+                    <span class="bento-desc">— Computational thinking</span>
+                  </div>
+                  <span class="bento-arrow"><span class="chevron" aria-hidden="true"></span></span>
+                </div>
+              </a>
+
+              <!-- Shatter -->
+              <a href="shatter.html" class="bento-card dark cat-game">
+                <div class="bento-visual">
+                  <video loop muted playsinline preload="metadata">
+                    <source src="shatter-gameplay.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <div class="bento-footer">
+                  <div class="bento-footer-top">
+                    <span class="bento-pill">GAME DESIGN</span>
+                    <span class="bento-index">02</span>
+                  </div>
+                  <div class="bento-title-group">
+                    <h3>Shatter</h3>
+                    <span class="bento-desc">— Narrative RPG</span>
+                  </div>
+                  <span class="bento-arrow"><span class="chevron" aria-hidden="true"></span></span>
+                </div>
+              </a>
+
+              <!-- LaundryEase -->
+              <a href="laundryease.html" class="bento-card cat-ux">
+                <div class="bento-visual">
+                  <img src="laundry-hero.png" alt="LaundryEase" />
+                </div>
+                <div class="bento-footer">
+                  <div class="bento-footer-top">
+                    <span class="bento-pill blue">UX</span>
+                    <span class="bento-index">03</span>
+                  </div>
+                  <div class="bento-title-group">
+                    <h3>LaundryEase</h3>
+                  </div>
+                  <span class="bento-arrow"><span class="chevron" aria-hidden="true"></span></span>
+                </div>
+              </a>
+
+              <!-- Viral Siyappa -->
+              <a href="viralsiyappa.html" class="bento-card dark cat-game" style="background-color: var(--tertiary-blue)">
+                <div class="bento-visual" style="background-color: var(--tertiary-blue)">
+                  <img src="viral_hero.png" alt="Viral Siyappa" />
+                </div>
+                <div class="bento-footer">
+                  <div class="bento-footer-top">
+                    <span class="bento-pill">GAME DESIGN</span>
+                    <span class="bento-index" style="color: black">04</span>
+                  </div>
+                  <div class="bento-title-group">
+                    <h3 style="color: var(--neutral-black)">Viral Siyappa</h3>
+                    <span class="bento-desc" style="color: black">— Misinformation</span>
+                  </div>
+                  <span class="bento-arrow" style="color: black"><span class="chevron" aria-hidden="true"></span></span>
+                </div>
+              </a>
+
+              <!-- VR Mohenjo Daro -->
+              <a href="vr-mohenjodaro.html" class="bento-card dark cat-vr">
+                <div class="bento-visual" style="background-color: #1a0f0a">
+                  <img src="VrMohenjoHero.jpg" alt="VR Mohenjo Daro" />
+                </div>
+                <div class="bento-footer">
+                  <div class="bento-footer-top">
+                    <span class="bento-pill green">VR EXP</span>
+                    <span class="bento-index">05</span>
+                  </div>
+                  <div class="bento-title-group">
+                    <h3>VR Mohenjo Daro</h3>
+                    <span class="bento-desc">— Complicity-driven colonial heritage</span>
+                  </div>
+                  <span class="bento-arrow"><span class="chevron" aria-hidden="true"></span></span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section class="skills">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">10 Tools</span>
+            <h2>MY SKILLS</h2>
+          </div>
+
+          <div class="skill-board">
+            <div class="skill-cell">
+              <span class="skill-logo" style="--brand: #e87d0d"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12.51 13.214c.046-.8.438-1.506 1.03-2.006a3.424 3.424 0 0 1 2.212-.79c.85 0 1.631.3 2.211.79.592.5.983 1.206 1.028 2.005.045.823-.285 1.586-.865 2.153a3.389 3.389 0 0 1-2.374.938 3.393 3.393 0 0 1-2.376-.938c-.58-.567-.91-1.33-.865-2.152M7.35 14.831c.006.314.106.922.256 1.398a7.372 7.372 0 0 0 1.593 2.757 8.227 8.227 0 0 0 2.787 2.001 8.947 8.947 0 0 0 3.66.76 8.964 8.964 0 0 0 3.657-.772 8.285 8.285 0 0 0 2.785-2.01 7.428 7.428 0 0 0 1.592-2.762 6.964 6.964 0 0 0 .25-3.074 7.123 7.123 0 0 0-1.016-2.779 7.764 7.764 0 0 0-1.852-2.043h.002L13.566 2.55l-.02-.015c-.492-.378-1.319-.376-1.86.002-.547.382-.609 1.015-.123 1.415l-.001.001 3.126 2.543-9.53.01h-.013c-.788.001-1.545.518-1.695 1.172-.154.665.38 1.217 1.2 1.22V8.9l4.83-.01-8.62 6.617-.034.025c-.813.622-1.075 1.658-.563 2.313.52.667 1.625.668 2.447.004L7.414 14s-.069.52-.063.831zm12.09 1.741c-.97.988-2.326 1.548-3.795 1.55-1.47.004-2.827-.552-3.797-1.538a4.51 4.51 0 0 1-1.036-1.622 4.282 4.282 0 0 1 .282-3.519 4.702 4.702 0 0 1 1.153-1.371c.942-.768 2.141-1.183 3.396-1.185 1.256-.002 2.455.41 3.398 1.175.48.391.87.854 1.152 1.367a4.28 4.28 0 0 1 .522 1.706 4.236 4.236 0 0 1-.239 1.811 4.54 4.54 0 0 1-1.035 1.626"
+                  /></svg
+              ></span>
+              <span class="skill-name">Blender</span>
+            </div>
+            <div class="skill-cell">
+              <span class="skill-logo" style="--brand: #111111"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="m12.9288 4.2939 3.7997 2.1929c.1366.077.1415.2905 0 .3675l-4.515 2.6076a.4192.4192 0 0 1-.4246 0L7.274 6.8543c-.139-.0745-.1415-.293 0-.3675l3.7972-2.193V0L1.3758 5.5977V16.793l3.7177-2.1456v-4.3858c-.0025-.1565.1813-.2682.318-.1838l4.5148 2.6076a.4252.4252 0 0 1 .2136.3676v5.2127c.0025.1565-.1813.2682-.3179.1838l-3.7996-2.1929-3.7178 2.1457L12 24l9.6954-5.5977-3.7178-2.1457-3.7996 2.1929c-.1341.082-.3229-.0248-.3179-.1838V13.053c0-.1565.087-.2956.2136-.3676l4.5149-2.6076c.134-.082.3228.0224.3179.1838v4.3858l3.7177 2.1456V5.5977L12.9288 0Z"
+                  /></svg
+              ></span>
+              <span class="skill-name">Unity</span>
+            </div>
+            <div class="skill-cell">
+              <span class="skill-logo mono" style="--brand: #1a1a1a">TD</span>
+              <span class="skill-name">Touch Designer</span>
+            </div>
+            <div class="skill-cell">
+              <span class="skill-logo" style="--brand: #f24e1e"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"
+                  /></svg
+              ></span>
+              <span class="skill-name">Figma</span>
+            </div>
+            <div class="skill-cell">
+              <span class="skill-logo" style="--brand: #31a8ff"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M9.85 8.42c-.37-.15-.77-.21-1.18-.2-.26 0-.49 0-.68.01-.2-.01-.34 0-.41.01v3.36c.14.01.27.02.39.02h.53c.39 0 .78-.06 1.15-.18.32-.09.6-.28.82-.53.21-.25.31-.59.31-1.03.01-.31-.07-.62-.23-.89-.17-.26-.41-.46-.7-.57zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.899c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zm-7.391 11.65c-.399.56-.959.98-1.609 1.22-.68.25-1.43.34-2.25.34-.24 0-.4 0-.5-.01s-.24-.01-.43-.01v3.209c.01.07-.04.131-.11.141H5.52c-.08 0-.12-.041-.12-.131V6.42c0-.07.03-.11.1-.11.17 0 .33 0 .56-.01.24-.01.49-.01.76-.02s.56-.01.87-.02c.31-.01.61-.01.91-.01.82 0 1.5.1 2.06.31.5.17.96.45 1.34.82.32.32.57.71.73 1.14.149.42.229.85.229 1.3.001.86-.199 1.57-.6 2.13zm7.091 3.89c-.28.4-.671.709-1.12.891-.49.209-1.09.318-1.811.318-.459 0-.91-.039-1.359-.129-.35-.061-.7-.17-1.02-.32-.07-.039-.121-.109-.111-.189v-1.74c0-.029.011-.07.041-.09.029-.02.06-.01.09.01.39.23.8.391 1.24.49.379.1.779.15 1.18.15.38 0 .65-.051.83-.141.16-.07.27-.24.27-.42 0-.141-.08-.27-.24-.4-.16-.129-.489-.279-.979-.471-.51-.18-.979-.42-1.42-.719-.31-.221-.569-.51-.761-.85-.159-.32-.239-.67-.229-1.021 0-.43.12-.84.341-1.21.25-.4.619-.72 1.049-.92.469-.239 1.059-.349 1.769-.349.41 0 .83.03 1.24.09.3.04.59.12.86.23.039.01.08.05.1.09.01.04.02.08.02.12v1.63c0 .04-.02.08-.05.1-.09.02-.14.02-.18 0-.3-.16-.62-.27-.96-.34-.37-.08-.74-.13-1.12-.13-.2-.01-.41.02-.601.07-.129.03-.24.1-.31.2-.05.08-.08.18-.08.27s.04.18.101.26c.09.11.209.2.34.27.229.12.47.23.709.33.541.18 1.061.43 1.541.73.33.209.6.49.789.83.16.318.24.67.23 1.029.011.471-.129.94-.389 1.331z"
+                  /></svg
+              ></span>
+              <span class="skill-name">Photoshop</span>
+            </div>
+            <div class="skill-cell">
+              <span class="skill-logo" style="--brand: #00005b"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M8.54 10.73c-.1-.31-.19-.61-.29-.92s-.19-.6-.27-.89c-.08-.28-.15-.54-.22-.78h-.02c-.09.43-.2.86-.34 1.29-.15.48-.3.98-.46 1.48-.13.51-.29.98-.44 1.4h2.54c-.06-.21-.14-.46-.23-.72-.09-.27-.18-.56-.27-.86zm8.58-.29c-.55-.03-1.07.26-1.33.76-.12.23-.19.47-.22.72h2.109c.26 0 .45 0 .57-.01.08-.01.16-.03.23-.08v-.1c0-.13-.021-.25-.061-.37-.178-.56-.708-.94-1.298-.92zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.9c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zm-7.04 16.511h-2.09c-.07.01-.14-.041-.16-.11l-.82-2.4H5.92l-.76 2.36c-.02.09-.1.15-.19.14H3.09c-.11 0-.14-.06-.11-.18L6.2 7.39c.03-.1.06-.19.1-.31.04-.21.06-.43.06-.65-.01-.05.03-.1.08-.11h2.59c.07 0 .12.03.13.08l3.65 10.25c.03.11.001.161-.1.161zm7.851-3.991c-.021.189-.031.33-.041.42-.01.07-.069.13-.14.13-.06 0-.17.01-.33.021-.159.02-.35.029-.579.029-.23 0-.471-.04-.73-.04h-3.17c.039.31.14.62.31.89.181.271.431.48.729.601.4.17.841.26 1.281.25.35-.011.699-.04 1.039-.11.311-.039.61-.119.891-.23.05-.039.08-.02.08.08v1.531c0 .039-.01.08-.021.119-.021.03-.04.051-.069.07-.32.14-.65.24-1 .3-.471.09-.94.13-1.42.12-.761 0-1.4-.12-1.92-.35-.49-.211-.921-.541-1.261-.95-.319-.39-.55-.83-.69-1.31-.14-.471-.209-.961-.209-1.461 0-.539.08-1.07.25-1.59.16-.5.41-.96.75-1.37.33-.4.739-.72 1.209-.95.471-.23 1.03-.31 1.67-.31.531-.01 1.06.09 1.55.31.41.18.77.45 1.05.8.26.34.47.72.601 1.14.129.4.189.81.189 1.22 0 .24-.01.45-.019.64z"
+                  /></svg
+              ></span>
+              <span class="skill-name">After Effects</span>
+            </div>
+            <div class="skill-cell">
+              <span class="skill-logo" style="--brand: #2a0634"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M10.15 8.42a2.93 2.93 0 00-1.18-.2 13.9 13.9 0 00-1.09.02v3.36l.39.02h.53c.39 0 .78-.06 1.15-.18.32-.09.6-.28.82-.53.21-.25.31-.59.31-1.03a1.45 1.45 0 00-.93-1.46zM19.75.3H4.25A4.25 4.25 0 000 4.55v14.9c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zm-7.09 11.65c-.4.56-.96.98-1.61 1.22-.68.25-1.43.34-2.25.34l-.5-.01-.43-.01v3.21a.12.12 0 01-.11.14H5.82c-.08 0-.12-.04-.12-.13V6.42c0-.07.03-.11.1-.11l.56-.01.76-.02.87-.02.91-.01c.82 0 1.5.1 2.06.31.5.17.96.45 1.34.82.32.32.57.71.73 1.14.15.42.23.85.23 1.3 0 .86-.2 1.57-.6 2.13zm6.82-3.15v1.95c0 .08-.05.11-.16.11a4.35 4.35 0 00-1.92.37c-.19.09-.37.21-.51.37v5.1c0 .1-.04.14-.13.14h-1.97a.14.14 0 01-.16-.12v-5.58l-.01-.75-.02-.78c0-.23-.02-.45-.04-.68a.1.1 0 01.07-.11h1.78c.1 0 .18.07.2.16a3.03 3.03 0 01.13.92c.3-.35.67-.64 1.08-.86a3.1 3.1 0 011.52-.39c.07-.01.13.04.14.11v.04z"
+                  /></svg
+              ></span>
+              <span class="skill-name">Premiere Pro</span>
+            </div>
+            <div class="skill-cell">
+              <span class="skill-logo" style="--brand: #49021f"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M4.25.3C1.9.3 0 2.2 0 4.55v14.9c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zm11.31 5.13h2.03c.05-.01.09.03.1.07v9.54c0 .18.01.38.02.6.02.21.03.41.04.58 0 .07-.03.13-.1.16-.52.22-1.07.38-1.63.48-.5.09-1.02.14-1.54.14-.74.01-1.48-.14-2.15-.45-.63-.29-1.15-.77-1.51-1.36-.37-.61-.55-1.37-.55-2.28-.01-.74.18-1.47.55-2.11.38-.65.93-1.19 1.59-1.55.7-.39 1.54-.58 2.53-.58.05 0 .12 0 .21.01s.19.01.31.02V5.54c0-.07.03-.11.1-.11zm-8.93.86h1.95c.06-.01.12.03.13.1.01.01.01.02.01.03v10.26c0 .11-.05.16-.14.16H6.62c-.09 0-.13-.05-.13-.16V6.42c0-.09.05-.13.14-.13zm8.23 4.24c-.39 0-.78.08-1.13.26-.34.17-.63.42-.85.74-.22.32-.33.75-.33 1.27-.01.35.05.7.17 1.03.1.27.25.51.45.71.19.18.42.32.68.4.27.09.55.13.83.13.15 0 .29-.01.42-.02.13.01.25-.01.36-.05v-4.4c-.09-.02-.18-.04-.27-.05-.11-.01-.22-.02-.33-.02z"
+                  /></svg
+              ></span>
+              <span class="skill-name">InDesign</span>
+            </div>
+            <div class="skill-cell">
+              <span class="skill-logo" style="--brand: #478cbf"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M9.5598.683c-1.096.244-2.1812.5831-3.1983 1.0951.023.8981.081 1.7582.199 2.6323-.395.253-.81.47-1.178.766-.375.288-.7581.564-1.0971.9011-.6781-.448-1.3962-.869-2.1352-1.2411C1.3532 5.6934.608 6.6186 0 7.6546c.458.7411.936 1.4352 1.4521 2.0942h.014v6.3565c.012 0 .023 0 .035.003l3.8963.376c.204.02.364.184.378.3891l.12 1.7201 3.3994.242.234-1.587c.03-.206.207-.358.415-.358h4.1114c.208 0 .385.152.415.358l.234 1.587 3.3993-.242.12-1.72a.4196.4196 0 01.378-.3891l3.8954-.376c.012 0 .023-.003.035-.003v-.5071h.002V9.7498h.014c.516-.659.994-1.3531 1.4521-2.0942-.608-1.036-1.3541-1.9611-2.1512-2.8192-.739.372-1.4571.793-2.1352 1.2411-.339-.337-.721-.613-1.096-.901-.369-.296-.7841-.5131-1.1781-.7661.117-.8741.175-1.7342.199-2.6323-1.0171-.512-2.1012-.851-3.1983-1.095-.438.736-.838 1.533-1.1871 2.3121-.414-.069-.829-.094-1.2461-.099h-.016c-.417.005-.832.03-1.2461.099-.349-.779-.749-1.576-1.1881-2.3121l.001-.001zM6.4765 9.9889c1.2971 0 2.3492 1.0511 2.3492 2.3482s-1.052 2.3482-2.3492 2.3482c-1.296 0-2.3482-1.051-2.3482-2.3482 0-1.297 1.0511-2.3482 2.3482-2.3482zm11.049 0c1.296 0 2.3482 1.0511 2.3482 2.3482s-1.0511 2.3482-2.3482 2.3482-2.3492-1.051-2.3492-2.3482c0-1.297 1.051-2.3482 2.3492-2.3482zm-10.824.9301c-.861 0-1.559.698-1.559 1.5591s.698 1.5582 1.559 1.5582c.8611 0 1.5592-.698 1.5592-1.5582 0-.86-.697-1.559-1.5591-1.559zm10.598 0c-.8611 0-1.5582.698-1.5582 1.5591s.697 1.5582 1.5581 1.5582c.8611 0 1.5592-.698 1.5592-1.5582 0-.86-.697-1.559-1.5592-1.559zm-5.2985.453c.417 0 .757.308.757.6871v2.1622c0 .379-.339.687-.757.687s-.756-.308-.756-.687V12.059c0-.379.339-.687.756-.687zM1.4601 16.9464c.002.377.006.789.006.871 0 3.7014 4.6944 5.4795 10.5269 5.5005h.014c5.8325-.02 10.5259-1.7991 10.5259-5.5004 0-.084.005-.495.007-.871l-3.5023.338-.121 1.729a.421.421 0 01-.389.3901l-4.1814.296a.4203.4203 0 01-.415-.358l-.238-1.6141h-3.3863l-.238 1.6141a.4192.4192 0 01-.4451.357l-4.1513-.296c-.208-.015-.375-.181-.389-.389l-.12-1.7292-3.5044-.337z"
+                  /></svg
+              ></span>
+              <span class="skill-name">Godot</span>
+            </div>
+            <div class="skill-cell">
+              <span class="skill-logo" style="--brand: #4f28cd"
+                ><svg viewBox="0 0 260.000000 260.000000" aria-hidden="true">
+                  <g transform="translate(0.000000,260.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                    <path
+                      d="M187 2586 c-85 -31 -155 -104 -177 -187 -7 -24 -9 -418 -8 -1121 l3 -1083 22 -41 c28 -53 74 -99 127 -127 l41 -22 1105 0 1105 0 41 22 c53 28 99 74 127 127 l22 41 0 1105 0 1105 -22 41 c-28 53 -74 99 -127 127 l-41 22 -1090 2 c-897 2 -1097 0 -1128 -11z m1936 -703 l33 -108 -460 -5 -461 -5 -60 -30 c-96 -48 -125 -107 -125 -259 0 -137 41 -202 150 -241 55 -20 192 -35 251 -28 l47 5 27 89 c15 48 24 93 20 99 -4 6 -53 10 -125 10 -111 0 -121 2 -146 24 -38 32 -37 87 0 125 l26 26 238 3 c253 2 284 -2 290 -45 2 -12 -34 -134 -78 -271 -70 -212 -85 -251 -104 -256 -146 -35 -403 -32 -507 6 -142 53 -214 110 -264 211 -45 93 -59 168 -52 293 16 284 156 426 447 454 41 4 242 8 447 9 l372 1 34 -107z m-1460 -435 c10 -224 42 -312 157 -429 71 -72 179 -132 296 -163 191 -51 549 -30 639 38 16 12 53 15 173 16 l153 0 -33 -46 c-43 -60 -123 -125 -201 -163 -239 -117 -692 -113 -960 8 -177 80 -322 228 -393 402 -37 91 -53 194 -54 347 l0 132 108 0 109 0 6 -142z"
+                    />
+                  </g></svg
+              ></span>
+              <span class="skill-name">GDevelop</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section class="experience">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">04 Roles</span>
+            <h2>EXPERIENCE</h2>
+          </div>
+
+          <div class="exp-ledger">
+            <div class="exp-row">
+              <span class="exp-date">
+                <span class="exp-date-pill">Jun 2026 — Present <span class="exp-live" aria-hidden="true"></span></span>
+                <span class="exp-date-dur">4 mos</span>
+              </span>
+              <div class="exp-role">
+                <span class="exp-badge" style="--badge: var(--primary-red)">GD</span>
+                <div>
+                  <h3>Game Developer Association of India (GDAI)</h3>
+                  <span class="exp-title">Campus Ambassador · Part-time · Hybrid</span>
+                </div>
+              </div>
+              <p class="exp-detail">Nurturing a game development and interactive design culture on campus, and connecting students to India's wider game industry.</p>
+            </div>
+
+            <div class="exp-row">
+              <span class="exp-date">
+                <span class="exp-date-pill">Mar 2026 — Jul 2026</span>
+                <span class="exp-date-dur">5 mos</span>
+              </span>
+              <div class="exp-role">
+                <span class="exp-badge" style="--badge: var(--dark-green)">SO</span>
+                <div>
+                  <h3>Studio Oleomingus</h3>
+                  <span class="exp-title">Game Designer · Internship · Remote</span>
+                </div>
+              </div>
+              <p class="exp-detail">Prototyped narrative and spatial mechanics for <em>It Takes a Long Time to Grow a Mountain</em>, researching land-rights and environmental movements in the Sahyadris.</p>
+            </div>
+
+            <div class="exp-row">
+              <span class="exp-date">
+                <span class="exp-date-pill">Jul 2025 — Jun 2026</span>
+                <span class="exp-date-dur">1 yr</span>
+              </span>
+              <div class="exp-role">
+                <span class="exp-badge" style="--badge: var(--tertiary-blue-dark)">OP</span>
+                <div>
+                  <h3>Orbit Pumps &amp; Systems Pvt. Ltd.</h3>
+                  <span class="exp-title">Design &amp; Marketing · Freelance · Remote</span>
+                </div>
+              </div>
+              <p class="exp-detail">Built pitch decks and LinkedIn content, and supported system design documentation bridging engineering and business teams.</p>
+            </div>
+
+            <div class="exp-row">
+              <span class="exp-date">
+                <span class="exp-date-pill">Jan 2025 — Feb 2025</span>
+                <span class="exp-date-dur">2 mos</span>
+              </span>
+              <div class="exp-role">
+                <span class="exp-badge">ZC</span>
+                <div>
+                  <h3>ZICT - ZiCloudTech</h3>
+                  <span class="exp-title">Graphic/Web Design · Internship · Remote</span>
+                </div>
+              </div>
+              <p class="exp-detail">Designed cloud platform interfaces and iterated with developers through ongoing design reviews.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quote -->
+      <section class="quote-section">
+        <div class="container">
+          <div class="card bg-red" style="padding: 60px; text-align: center; color: white">
+            <h2 style="color: white; font-size: 36px; line-height: 1.2">"I BUILD SYSTEMS THAT PEOPLE CAN EXPLORE, QUESTION, AND PLAY WITH."</h2>
+            <a
+              href="about.html"
+              style="
+                color: var(--neutral-black);
+                font-weight: 700;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-size: 12px;
+                display: inline-block;
+                margin-top: 24px;
+              "
+              >READ THE FULL STORY <span class="chevron" aria-hidden="true"></span
+            ></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="logo-footer" style="font-family: var(--font-heading); font-size: 16px">MOHAMMED.HAFIZ</div>
+        <div>© 2024 MOHAMMED HAFIZ. STAY BRUTAL.</div>
+        <div class="footer-social">
+          <a href="#">TWITTER</a>
+          <a href="#">LINKEDIN</a>
+          <a href="#">GITHUB</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (() => {
+        const TEXT = "I design games, systems, and interactive experiences that explore logic, behavior, and play.";
+
+        const CELL = 7;
+        const LETTER_INSET = 0; // 0 = letter cells butt together into solid strokes
+        const FREE_INSET = 1; // freed cells keep a gap so debris reads as particles
+        const INK_THRESHOLD = 60; // alpha a cell needs to count as part of a glyph
+        const LIFE_MS = 110; // one Conway generation
+        const REGROW_MS = 2000; // how long an eroded letter cell stays gone
+        const FADE_MS = 320; // letter fade-back-in tail
+        const MAX_AGE = 70; // ticks a freed cell survives before ageing out
+        const FADE_TICKS = 14; // fade-out tail on a dying freed cell
+        const BRUSH = 3; // erosion radius, in cells
+
+        const canvas = document.getElementById("hero-canvas");
+        const ctx = canvas.getContext("2d");
+        const off = document.createElement("canvas");
+        const octx = off.getContext("2d", { willReadFrequently: true });
+
+        const css = getComputedStyle(document.documentElement);
+        const BLACK = css.getPropertyValue("--neutral-black").trim() || "#111111";
+        const RED = css.getPropertyValue("--primary-red").trim() || "#ff5f5f";
+        const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        let W = 0,
+          H = 0,
+          cols = 0,
+          rows = 0,
+          ox = 0,
+          oy = 0;
+        let mask, damage, life, lifeNext, age, ageNext;
+        let prevCell = null;
+
+        /* ── Render the tagline, then sample its glyphs into the grid ── */
+        function wrap(text, maxWidth) {
+          const words = text.split(" ");
+          const lines = [];
+          let line = "";
+          for (const w of words) {
+            const test = line ? line + " " + w : w;
+            if (line && octx.measureText(test).width > maxWidth) {
+              lines.push(line);
+              line = w;
+            } else line = test;
+          }
+          if (line) lines.push(line);
+          return lines;
+        }
+
+        function buildMask() {
+          off.width = Math.max(1, Math.round(W));
+          off.height = Math.max(1, Math.round(H));
+
+          const maxWidth = W * 0.88;
+          let size = Math.max(26, Math.min(104, Math.round(W / 12)));
+          let lines, lineHeight;
+
+          // Shrink until the block fits the band — short/wide viewports overflow otherwise.
+          for (;;) {
+            octx.font = `700 ${size}px 'Space Grotesk', sans-serif`;
+            lines = wrap(TEXT, maxWidth);
+            lineHeight = size * 1.12;
+            if (lines.length * lineHeight <= H * 0.78 || size <= 22) break;
+            size -= 4;
+          }
+
+          octx.clearRect(0, 0, off.width, off.height);
+          octx.fillStyle = "#000";
+          octx.textAlign = "center";
+          octx.textBaseline = "middle";
+          const startY = H / 2 - ((lines.length - 1) * lineHeight) / 2;
+          lines.forEach((ln, i) => octx.fillText(ln, W / 2, startY + i * lineHeight));
+
+          const data = octx.getImageData(0, 0, off.width, off.height).data;
+          mask = new Uint8Array(cols * rows);
+          for (let y = 0; y < rows; y++) {
+            for (let x = 0; x < cols; x++) {
+              let sum = 0,
+                count = 0;
+              const x0 = Math.floor(ox + x * CELL),
+                y0 = Math.floor(oy + y * CELL);
+              for (let py = y0 + 1; py < y0 + CELL - 1; py += 2) {
+                if (py < 0 || py >= off.height) continue;
+                for (let px = x0 + 1; px < x0 + CELL - 1; px += 2) {
+                  if (px < 0 || px >= off.width) continue;
+                  sum += data[(py * off.width + px) * 4 + 3];
+                  count++;
+                }
+              }
+              mask[y * cols + x] = count && sum / count > INK_THRESHOLD ? 1 : 0;
+            }
+          }
+        }
+
+        /* ── Conway, over the freed cells only ── */
+        function lifeStep(src, dst, srcAge, dstAge, c, r) {
+          for (let y = 0; y < r; y++) {
+            for (let x = 0; x < c; x++) {
+              let n = 0;
+              for (let dy = -1; dy <= 1; dy++) {
+                for (let dx = -1; dx <= 1; dx++) {
+                  if (!dx && !dy) continue;
+                  n += src[((y + dy + r) % r) * c + ((x + dx + c) % c)];
+                }
+              }
+              const i = y * c + x;
+              const alive = src[i];
+              let v = (alive ? n === 2 || n === 3 : n === 3) ? 1 : 0;
+              const a = v ? (alive ? srcAge[i] + 1 : 0) : 0;
+              // ponytail: hard age cap. Dense letter chunks settle into still-lifes that
+              // would otherwise pile up forever and bury the text. Swap for a decay
+              // probability if the die-off ever looks too uniform.
+              if (v && a > MAX_AGE) v = 0;
+              dst[i] = v;
+              dstAge[i] = v ? a : 0;
+            }
+          }
+        }
+
+        function tick() {
+          if (calm) {
+            for (let i = 0; i < life.length; i++) {
+              if (life[i] && ++age[i] > MAX_AGE) {
+                life[i] = 0;
+                age[i] = 0;
+              }
+            }
+            return;
+          }
+          lifeStep(life, lifeNext, age, ageNext, cols, rows);
+          let t = life;
+          life = lifeNext;
+          lifeNext = t;
+          t = age;
+          age = ageNext;
+          ageNext = t;
+        }
+
+        /* ── Erosion ── */
+        function erodeAt(cx, cy, now) {
+          for (let dy = -BRUSH; dy <= BRUSH; dy++) {
+            for (let dx = -BRUSH; dx <= BRUSH; dx++) {
+              if (dx * dx + dy * dy > BRUSH * BRUSH + 1) continue;
+              const x = cx + dx,
+                y = cy + dy;
+              if (x < 0 || y < 0 || x >= cols || y >= rows) continue;
+              const i = y * cols + x;
+              if (!mask[i] || damage[i]) continue;
+              damage[i] = now; // letter cell knocked out, heals in REGROW_MS
+              life[i] = 1; // and escapes into the simulation
+              age[i] = 0;
+            }
+          }
+        }
+
+        function erodePath(x, y, now) {
+          if (prevCell) {
+            const steps = Math.max(Math.abs(x - prevCell.x), Math.abs(y - prevCell.y));
+            for (let s = 1; s <= steps; s++) {
+              erodeAt(Math.round(prevCell.x + ((x - prevCell.x) * s) / steps), Math.round(prevCell.y + ((y - prevCell.y) * s) / steps), now);
+            }
+            if (!steps) erodeAt(x, y, now);
+          } else {
+            erodeAt(x, y, now);
+          }
+          prevCell = { x, y };
+        }
+
+        /* ── Draw ── */
+        function draw(now) {
+          ctx.clearRect(0, 0, W, H);
+          const letterSize = CELL - LETTER_INSET * 2;
+          const freeSize = CELL - FREE_INSET * 2;
+
+          for (let i = 0; i < mask.length; i++) {
+            if (!mask[i]) continue;
+            let alpha = 1;
+            const d = damage[i];
+            if (d) {
+              const elapsed = now - d;
+              if (elapsed >= REGROW_MS) damage[i] = 0;
+              else if (elapsed < REGROW_MS - FADE_MS) continue;
+              else alpha = (elapsed - (REGROW_MS - FADE_MS)) / FADE_MS;
+            }
+            ctx.globalAlpha = alpha;
+            ctx.fillStyle = BLACK;
+            ctx.fillRect(ox + (i % cols) * CELL + LETTER_INSET, oy + ((i / cols) | 0) * CELL + LETTER_INSET, letterSize, letterSize);
+          }
+
+          ctx.fillStyle = RED;
+          for (let i = 0; i < life.length; i++) {
+            if (!life[i]) continue;
+            const remaining = MAX_AGE - age[i];
+            ctx.globalAlpha = remaining < FADE_TICKS ? Math.max(remaining, 0) / FADE_TICKS : 1;
+            ctx.fillRect(ox + (i % cols) * CELL + FREE_INSET, oy + ((i / cols) | 0) * CELL + FREE_INSET, freeSize, freeSize);
+          }
+          ctx.globalAlpha = 1;
+        }
+
+        /* ── Setup ── */
+        function resize() {
+          const rect = canvas.getBoundingClientRect();
+          const dpr = window.devicePixelRatio || 1;
+          canvas.width = Math.round(rect.width * dpr);
+          canvas.height = Math.round(rect.height * dpr);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          W = rect.width;
+          H = rect.height;
+          cols = Math.max(4, Math.floor(W / CELL));
+          rows = Math.max(4, Math.floor(H / CELL));
+          // Integer offsets — fractional ones antialias seams between touching letter cells.
+          ox = Math.floor((W - cols * CELL) / 2);
+          oy = Math.floor((H - rows * CELL) / 2);
+
+          damage = new Float64Array(cols * rows);
+          life = new Uint8Array(cols * rows);
+          lifeNext = new Uint8Array(cols * rows);
+          age = new Uint16Array(cols * rows);
+          ageNext = new Uint16Array(cols * rows);
+          prevCell = null;
+          buildMask();
+        }
+
+        let acc = 0,
+          last = 0;
+        function frame(now) {
+          if (!last) last = now;
+          acc += Math.min(now - last, 250);
+          last = now;
+          if (acc >= LIFE_MS) {
+            acc = 0;
+            tick();
+          }
+          draw(now);
+          requestAnimationFrame(frame);
+        }
+
+        canvas.addEventListener("pointermove", (e) => {
+          const rect = canvas.getBoundingClientRect();
+          const x = Math.floor((e.clientX - rect.left - ox) / CELL);
+          const y = Math.floor((e.clientY - rect.top - oy) / CELL);
+          if (x < 0 || y < 0 || x >= cols || y >= rows) {
+            prevCell = null;
+            return;
+          }
+          erodePath(x, y, performance.now());
+        });
+        canvas.addEventListener("pointerleave", () => {
+          prevCell = null;
+        });
+
+        let resizeTimer;
+        addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(resize, 150);
+        });
+
+        // Glyph sampling is font-dependent — wait for Space Grotesk or the mask is built
+        // from the fallback face and the letterforms come out wrong.
+        const start = () => {
+          resize();
+          requestAnimationFrame(frame);
+        };
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
+        else addEventListener("load", start);
+
+        // Self-check: a vertical blinker must flip horizontal in one generation.
+        const a = new Uint8Array(25),
+          b = new Uint8Array(25);
+        const aAge = new Uint16Array(25),
+          bAge = new Uint16Array(25);
+        a[7] = a[12] = a[17] = 1;
+        lifeStep(a, b, aAge, bAge, 5, 5);
+        console.assert(b.reduce((s, v) => s + v, 0) === 3 && b[11] === 1 && b[12] === 1 && b[13] === 1, "lifeStep is broken — blinker did not oscillate");
+      })();
+
+      /* Selected Work — pinned horizontal scroll */
+      (() => {
+        const wrap = document.getElementById("work-pin");
+        if (!wrap) return;
+        const stage = wrap.querySelector(".pin-stage");
+        const viewport = wrap.querySelector(".pin-viewport");
+        const track = wrap.querySelector(".pin-track");
+        const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        // A set of copies on each side, and the track starts one set in. The lead
+        // set is what puts VR Mohenjo Daro immediately left of MazeBot, so the strip
+        // is stitched into a ring instead of starting against empty space. Travel is
+        // exactly one set width, so the last frame is pixel-identical to the first.
+        // Copies are decoration — hidden from assistive tech and from tab order.
+        const originals = [...track.children];
+        const setCount = originals.length;
+        const copySet = () =>
+          originals.map((el) => {
+            const copy = el.cloneNode(true);
+            copy.setAttribute("aria-hidden", "true");
+            copy.setAttribute("tabindex", "-1");
+            return copy;
+          });
+        track.append(...copySet());
+        track.prepend(...copySet());
+        const cards = [...track.children];
+
+        // Vertical scroll spent per pixel of horizontal travel.
+        const SCROLL_RATIO = 0.5;
+
+        let pinned = false,
+          distance = 0,
+          travel = 0,
+          stickyTop = 70,
+          startOffset = 0;
+        let step = 0,
+          cardW = 0,
+          viewCentre = 0,
+          active = null,
+          bases = [];
+        const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+
+        function measure() {
+          pinned = matchMedia("(min-width: 769px)").matches && !calm;
+          // originals[0], not cards[0]: cards[0] is a lead copy, and copies are
+          // display:none in the fallback layout, so its width would read as zero.
+          cardW = originals[0].offsetWidth;
+
+          if (pinned) {
+            // Centre the first card rather than butting it to the edge.
+            track.style.paddingInline = Math.max(24, (viewport.clientWidth - cardW) / 2) + "px";
+          } else {
+            wrap.style.height = "";
+            track.style.paddingInline = "";
+          }
+
+          // Cache each card's untransformed centre once. Doing this per frame in
+          // update() would force a layout right after the transform write dirtied it.
+          track.style.transform = "none";
+          const viewBox = viewport.getBoundingClientRect();
+          bases = cards.map((card) => {
+            const rect = card.getBoundingClientRect();
+            return rect.width ? rect.left - viewBox.left + rect.width / 2 : null;
+          });
+
+          step = cardW + (parseFloat(getComputedStyle(track).columnGap) || 0);
+          viewCentre = viewport.clientWidth / 2;
+
+          if (!pinned) return;
+          stickyTop = parseFloat(getComputedStyle(stage).top) || 0;
+          distance = setCount * step; // exactly one set — that's what makes it wrap
+          startOffset = setCount * step; // begin on the middle set, copies either side
+          travel = distance * SCROLL_RATIO;
+          wrap.style.height = stage.offsetHeight + travel + "px";
+        }
+
+        function update() {
+          let offset;
+          if (pinned && travel > 0) {
+            const p = clamp((stickyTop - wrap.getBoundingClientRect().top) / travel, 0, 1);
+            offset = -(startOffset + p * distance);
+            track.style.transform = `translate3d(${offset.toFixed(2)}px,0,0)`;
+          } else {
+            offset = -viewport.scrollLeft;
+          }
+
+          let best = null,
+            bestDist = Infinity;
+          for (let i = 0; i < cards.length; i++) {
+            if (bases[i] === null) continue; // not laid out (copy, fallback mode)
+            const dist = Math.abs(bases[i] + offset - viewCentre);
+            cards[i].style.setProperty("--t", clamp(1 - dist / cardW, 0, 1).toFixed(3));
+            if (dist < bestDist) {
+              bestDist = dist;
+              best = cards[i];
+            }
+          }
+
+          if (best !== active) {
+            active = best;
+            for (const card of cards) {
+              const video = card.querySelector("video");
+              if (!video) continue;
+              if (card === best) video.play().catch(() => {});
+              else video.pause();
+            }
+          }
+        }
+
+        let ticking = false;
+        function onScroll() {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(() => {
+            update();
+            ticking = false;
+          });
+        }
+
+        addEventListener("scroll", onScroll, { passive: true });
+        viewport.addEventListener("scroll", onScroll, { passive: true });
+
+        let resizeTimer;
+        addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            measure();
+            update();
+          }, 150);
+        });
+
+        const start = () => {
+          measure();
+          update();
+        };
+        start();
+        // Heading metrics shift once Space Grotesk lands, which moves the stage height.
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
+      })();
+    </script>
+  </body>
+</html>

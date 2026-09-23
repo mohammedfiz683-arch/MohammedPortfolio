@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VR Mohenjo Daro Case Study - MOHAMMED.HAFIZ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Custom styles for VR Mohenjo Daro Case Study */
+
+      /* Pill Tags section 1 */
+      .pill-tag {
+        border: 2px solid var(--neutral-black);
+        background-color: transparent;
+        padding: 8px 16px;
+        border-radius: 9999px;
+        font-family: var(--font-heading);
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        display: inline-block;
+        transition: all 0.1s;
+      }
+
+      .pill-tag:hover {
+        transform: translate(-1px, -1px);
+      }
+
+      /* Hook Section 3 */
+      .hook-container {
+        border-left: 6px solid var(--primary-red);
+        padding-left: 24px;
+        margin: 48px 0;
+      }
+
+      .hook-text {
+        font-family: var(--font-heading);
+        font-size: 28px;
+        line-height: 1.4;
+        font-weight: 700;
+        font-style: italic;
+        color: var(--neutral-black);
+        margin: 0;
+      }
+
+      /* Design Approach Grid Section 7 */
+      .approach-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin-bottom: 60px;
+      }
+
+      .approach-card {
+        border: 1px solid var(--line);
+        background-color: var(--surface-well);
+        border-radius: 10px;
+        padding: 24px;
+        transition: transform 0.2s;
+      }
+
+      .approach-card:hover {
+        transform: translateY(-4px);
+      }
+
+      /* Matches .decision-card h4 below — both are numbered/feature card
+         headings and should read at the same size. */
+      .approach-card h4 {
+        font-size: 18px;
+      }
+
+      .approach-num {
+        font-family: var(--font-heading);
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--primary-red);
+        display: block;
+        margin-bottom: 8px;
+        border-bottom: 2px solid var(--neutral-gray);
+        padding-bottom: 4px;
+      }
+
+      /* Timeline Section 8 */
+      .timeline-container {
+        position: relative;
+        padding-left: 48px;
+        margin: 40px 0 60px 12px;
+      }
+
+      .timeline-line {
+        position: absolute;
+        left: 7px;
+        top: 10px;
+        bottom: 10px;
+        width: 4px;
+        background-color: var(--neutral-black);
+        z-index: 1;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 48px;
+      }
+
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: -48px;
+        top: 6px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 3px solid var(--neutral-black);
+        z-index: 2;
+      }
+
+      .timeline-dot.colonial {
+        background-color: var(--primary-red);
+      }
+
+      .timeline-dot.transition {
+        background: linear-gradient(135deg, var(--primary-red) 50%, var(--dark-green) 50%);
+      }
+
+      .timeline-dot.modern {
+        background-color: var(--dark-green);
+      }
+
+      .timeline-content-card {
+        border: 1px solid var(--line);
+        background-color: var(--surface-well);
+        border-radius: 10px;
+        padding: 24px;
+      }
+
+      .timeline-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        border-bottom: 2px solid var(--neutral-gray);
+        padding-bottom: 10px;
+        margin-bottom: 14px;
+      }
+
+      .timeline-title {
+        font-family: var(--font-heading);
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .era-badge {
+        font-size: 9px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 3px 8px;
+        border: 2px solid var(--neutral-black);
+        border-radius: 2px;
+      }
+
+      .era-badge.colonial-badge {
+        background-color: var(--primary-red);
+        color: white;
+      }
+
+      .era-badge.transition-badge {
+        background-color: var(--tertiary-blue);
+        color: var(--neutral-black);
+      }
+
+      .era-badge.modern-badge {
+        background-color: var(--dark-green);
+        color: white;
+      }
+
+      /* Decisions Box Section 9 */
+      .decisions-container {
+        background-color: var(--neutral-gray);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 32px;
+        margin-bottom: 60px;
+      }
+
+      .decisions-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .decision-card {
+        border: 1px solid var(--line);
+        background-color: var(--bg-white);
+        border-radius: 10px;
+        padding: 24px;
+      }
+
+      .decision-card h4 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        font-family: var(--font-heading);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* Learnings Section 10 */
+      .learning-item {
+        border-left: 4px solid var(--dark-green);
+        padding-left: 16px;
+        margin-bottom: 24px;
+      }
+
+      .learning-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .learning-text {
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 0;
+        font-weight: 500;
+      }
+
+      /* Outcome Card Section 11 */
+      /* No border: the dark background already separates this banner from the
+         page, matching the sitewide rule that a coloured card doesn't need one. */
+      .outcome-banner {
+        background-color: var(--dark-green);
+        border-radius: 10px;
+        padding: 48px;
+        margin-top: 60px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .outcome-label {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--primary-red);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        display: block;
+        margin-bottom: 16px;
+      }
+
+      .outcome-statement {
+        font-family: var(--font-heading);
+        font-size: 28px;
+        line-height: 1.35;
+        font-weight: 700;
+        color: white;
+        margin: 0;
+      }
+
+      /* Responsive timeline */
+      @media (max-width: 768px) {
+        .decisions-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .timeline-container {
+          padding-left: 32px;
+        }
+
+        .timeline-line {
+          left: 5px;
+        }
+
+        .timeline-dot {
+          left: -32px;
+          width: 14px;
+          height: 14px;
+          top: 8px;
+        }
+
+        .outcome-banner {
+          padding: 32px 20px;
+        }
+
+        .outcome-statement {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation Navbar -->
+    <header class="navbar">
+      <div class="container">
+        <a href="index.html" class="logo">MOHAMMED.HAFIZ</a>
+        <nav class="nav-links">
+          <a href="index.html">HOME</a>
+          <a href="work.html" class="active">WORK</a>
+          <a href="about.html">ABOUT</a>
+          <a href="contact.html">CONTACT</a>
+        </nav>
+        <a href="contact.html" class="btn-hire">HIRE ME</a>
+      </div>
+    </header>
+
+    <main class="case-study">
+      <section style="padding-top: 40px">
+        <div class="container">
+          <!-- Navigation back link -->
+          <div class="project-header">
+            <a href="work.html" class="back-link"><span class="chevron left" aria-hidden="true"></span> BACK TO WORK</a>
+            <h1 style="font-size: 48px; margin-bottom: 16px">VR Mohenjo Daro</h1>
+          </div>
+
+          <!-- SECTION 1 — TOP TAGS -->
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px">
+            <span class="pill-tag">VR Experience</span>
+            <span class="pill-tag">Interaction Design</span>
+            <span class="pill-tag">Heritage &amp; Preservation</span>
+            <span class="pill-tag">Narrative Design</span>
+            <span class="pill-tag" style="background-color: var(--tertiary-blue); border-color: var(--neutral-black)">3 Weeks</span>
+          </div>
+
+          <!-- SECTION 2 — HERO VISUAL -->
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 40px; width: 100%">
+            <img
+              src="vr-mohenjodaro-hero.png"
+              alt="VR Mohenjo Daro Ruins"
+              class="project-hero-img"
+              style="width: 100%; border: var(--border-thick) solid var(--neutral-black); margin-bottom: 32px; display: block"
+            />
+          </div>
+
+          <div style="text-align: center; margin-bottom: 32px">
+            <p style="font-size: 14px; color: #555; font-style: italic; margin-bottom: 24px">"Reconstructed 3D environment of Mohenjo-daro in Unity"</p>
+            <a href="#prototype-walkthrough" class="btn primary"><span class="chevron" aria-hidden="true"></span> View Prototype Walkthrough</a>
+          </div>
+
+          <!-- PROJECT DETAILS CARD -->
+          <div class="card bg-red" style="color: white; margin-bottom: 48px">
+            <h3 class="card-header" style="color: white">
+              <span class="card-icon" style="background-color: white; color: var(--primary-red)">?</span>
+              PROJECT DETAILS
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
+              <p style="margin: 0; font-size: 15px"><strong>Project Type:</strong> VR Narrative Experience</p>
+              <p style="margin: 0; font-size: 15px"><strong>Role:</strong> Interaction Designer, Narrative Designer, VR Prototyper</p>
+              <p style="margin: 0; font-size: 15px"><strong>Duration:</strong> 3 Weeks</p>
+              <p style="margin: 0; font-size: 15px"><strong>Platform:</strong> VR / Meta Quest</p>
+              <p style="margin: 0; font-size: 15px"><strong>Tools:</strong> Unity, Blender, Meta XR SDK</p>
+              <p style="margin: 0; font-size: 15px"><strong>Mode:</strong> Single Player</p>
+            </div>
+          </div>
+
+          <!-- SECTION 3 — HOOK STATEMENT -->
+          <div class="hook-container">
+            <blockquote class="hook-text">
+              "A VR experience that makes colonial-era heritage destruction feel personally consequential by putting you in the hands of the person who caused
+              it."
+            </blockquote>
+          </div>
+
+          <!-- SECTION 4 — PROBLEM / GOAL (Two equal cards side by side) -->
+          <div class="grid-2" style="margin-bottom: 60px">
+            <div class="card">
+              <h3
+                style="display: flex; align-items: center; gap: 8px; border-bottom: 2px solid var(--neutral-black); padding-bottom: 12px; margin-bottom: 16px"
+              >
+                <span style="color: var(--primary-red); font-size: 14px">●</span> Problem
+              </h3>
+              <p style="font-size: 15px; line-height: 1.6; margin: 0">
+                Heritage loss from Mohenjo-daro feels distant and abstract. Most people don't know that ancient ruins were physically dismantled brick-by-brick
+                to build British railway lines in the 1850s and that irreplaceable artifacts were discarded as rubble in the process.
+              </p>
+            </div>
+
+            <div class="card">
+              <h3
+                style="display: flex; align-items: center; gap: 8px; border-bottom: 2px solid var(--neutral-black); padding-bottom: 12px; margin-bottom: 16px"
+              >
+                <span style="color: var(--tertiary-blue-dark); font-size: 14px">●</span> Goal
+              </h3>
+              <p style="font-size: 15px; line-height: 1.6; margin: 0">
+                Design a first-person VR experience where the user unknowingly participates in that destruction then confronts the consequence. Make
+                preservation feel urgent and personal, not just historical.
+              </p>
+            </div>
+          </div>
+
+          <!-- SECTION 5 — PROCESS (4 steps in a horizontal row, numbered) -->
+          <h2 style="font-size: 32px; border-bottom: var(--border); padding-bottom: 16px; margin-bottom: 32px">The Design Process</h2>
+          <div class="process-steps" style="margin-bottom: 60px">
+            <div class="process-step">
+              <span class="num" style="color: var(--primary-red)">01</span>
+              <span class="label">Historical research & archival study</span>
+            </div>
+            <div class="process-step">
+              <span class="num" style="color: var(--primary-red)">02</span>
+              <span class="label">Narrative structure & storyboarding</span>
+            </div>
+            <div class="process-step">
+              <span class="num" style="color: var(--primary-red)">03</span>
+              <span class="label">Interaction & flow mapping</span>
+            </div>
+            <div class="process-step">
+              <span class="num" style="color: var(--primary-red)">04</span>
+              <span class="label">Scene building & prototype</span>
+            </div>
+          </div>
+
+          <!-- SECTION 6 — CORE SYSTEM IDEA -->
+          <div class="card" style="background-color: var(--bg-white); margin-bottom: 60px">
+            <h3 class="card-header">CORE SYSTEM IDEA</h3>
+
+            <div style="background-color: var(--neutral-gray); border: var(--border); padding: 24px; margin-bottom: 24px">
+              <p style="font-size: 16px; line-height: 1.6; font-weight: 600; margin: 0; font-family: var(--font-body)">
+                "The experience works because the player is complicit before they understand what they've done. Guilt is designed not narrated."
+              </p>
+            </div>
+
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px">
+              <span class="pill-tag" style="background-color: var(--tertiary-blue); border-color: var(--neutral-black)">Obedience creates guilt</span>
+              <span class="pill-tag" style="background-color: var(--secondary-green); border-color: var(--neutral-black)">Objects carry meaning</span>
+              <span class="pill-tag" style="background-color: var(--primary-red); color: white; border-color: var(--neutral-black)"
+                >Time-shift reveals consequence</span
+              >
+            </div>
+
+            <!-- Video Container -->
+            <div
+              id="prototype-walkthrough"
+              style="
+                border: var(--border-thick) solid var(--neutral-black);
+                margin-top: 24px;
+                overflow: hidden;
+                background-color: var(--neutral-black);
+                line-height: 0;
+              "
+            >
+              <video autoplay loop muted playsinline controls style="width: 100%; height: auto; max-height: 550px; object-fit: contain; display: block">
+                <source src="vr-mohenjodaro-loop.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+
+          <!-- SECTION 7 — DESIGN APPROACH (numbered list, 01 to 05) -->
+          <h2 style="font-size: 32px; border-bottom: var(--border); padding-bottom: 16px; margin-bottom: 32px">Design Approach</h2>
+          <div class="approach-grid">
+            <!-- 01 -->
+            <div class="approach-card">
+              <span class="approach-num">01</span>
+              <h4 style="margin-bottom: 12px; font-family: var(--font-heading)">Role before context</h4>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.85">
+                The player acts as a colonial worker before they know the historical weight of the site. Innocence at entry is what makes the guilt land later.
+              </p>
+            </div>
+            <!-- 02 -->
+            <div class="approach-card">
+              <span class="approach-num">02</span>
+              <h4 style="margin-bottom: 12px; font-family: var(--font-heading)">Objects as narrative</h4>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.85">
+                Each artifact discovered — a shard, a bead, a skeletal fragment quietly reframes the space. The environment tells the story the Saheb refuses
+                to.
+              </p>
+            </div>
+            <!-- 03 -->
+            <div class="approach-card">
+              <span class="approach-num">03</span>
+              <h4 style="margin-bottom: 12px; font-family: var(--font-heading)">Resistance as the only real choice</h4>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.85">
+                The player cannot fight, escape, or explain. The only form of agency is defiance: keeping the artifacts the overseer calls trash. Agency through
+                small rebellion, not heroics.
+              </p>
+            </div>
+            <!-- 04 -->
+            <div class="approach-card">
+              <span class="approach-num">04</span>
+              <h4 style="margin-bottom: 12px; font-family: var(--font-heading)">Same hands, two centuries</h4>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.85">
+                The transformation is triggered by the player's own gesture dusting an artifact. Worker's hands become archaeologist's hands mid-motion.
+                Continuity of action creates emotional continuity.
+              </p>
+            </div>
+            <!-- 05 -->
+            <div class="approach-card" style="grid-column: span 1">
+              <span class="approach-num">05</span>
+              <h4 style="margin-bottom: 12px; font-family: var(--font-heading)">Silence over explanation</h4>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.85">
+                The modern site has no voiceover, no overlay text. Fences, preservation boards, and quiet replace the chaos. The contrast is the message.
+              </p>
+            </div>
+          </div>
+
+          <!-- SECTION 8 — EXPERIENCE FLOW (vertical timeline with two eras) -->
+          <h2 style="font-size: 32px; border-bottom: var(--border); padding-bottom: 16px; margin-bottom: 32px">Experience Flow</h2>
+          <div class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <!-- Scene 1 -->
+            <div class="timeline-item">
+              <div class="timeline-dot colonial"></div>
+              <div class="timeline-content-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-title">Scene 1 — The Worksite</h3>
+                  <span class="era-badge colonial-badge">Colonial</span>
+                </div>
+                <p style="font-size: 15px; line-height: 1.6; margin-bottom: 16px">
+                  As you open your eyes, you see a newspaper from that era lying on the bricks, and the Saheb's orders ring out in your ears. Nothing else.
+                </p>
+                <!-- Media Box -->
+                <div style="margin-top: 20px; display: flex; justify-content: center">
+                  <img
+                    src="vr-mohenjodaro-scene1.jpg"
+                    alt="Historical newspaper Bengal Hurkaru lying on bricks"
+                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Scene 2 -->
+            <div class="timeline-item">
+              <div class="timeline-dot colonial"></div>
+              <div class="timeline-content-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-title">Scene 2 — First Discoveries</h3>
+                  <span class="era-badge colonial-badge">Colonial</span>
+                </div>
+                <p style="font-size: 15px; line-height: 1.6; margin-bottom: 16px">
+                  Picking up bricks, the player unearths pottery shards, tools, fragments of bone. Each time, the Saheb scolds louder. The artifacts feel wrong
+                  to discard.
+                </p>
+                <!-- Media Box -->
+                <div style="margin-top: 20px; display: flex; justify-content: center">
+                  <img
+                    src="vr-mohenjodaro-scene2.jpg"
+                    alt="Player discovering artifacts in dirt"
+                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Scene 3 -->
+            <div class="timeline-item">
+              <div class="timeline-dot colonial"></div>
+              <div class="timeline-content-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-title">Scene 3 — The Table</h3>
+                  <span class="era-badge colonial-badge">Colonial</span>
+                </div>
+                <p style="font-size: 15px; line-height: 1.6; margin-bottom: 16px">
+                  The player quietly collects everything onto a workbench. The Saheb's voice fades. The objects sit together for the first time a city in
+                  fragments.
+                </p>
+                <!-- Media Box -->
+                <div style="margin-top: 20px; display: flex; justify-content: center">
+                  <img
+                    src="vr-mohenjodaro-scene3.jpg"
+                    alt="Artifact collection laid out on table"
+                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Scene 4 -->
+            <div class="timeline-item">
+              <div class="timeline-dot transition"></div>
+              <div class="timeline-content-card" style="border-color: var(--primary-red)">
+                <div class="timeline-header">
+                  <h3 class="timeline-title" style="color: var(--primary-red)">Scene 4 — The Transformation</h3>
+                  <span class="era-badge transition-badge">Transition</span>
+                </div>
+                <p style="font-size: 15px; line-height: 1.6; margin-bottom: 16px">
+                  Player picks up a brush, dusts one object. Mid-gesture, hands change. Railway noise dissolves to silence. The world rebuilds around the same
+                  hands.
+                </p>
+                <!-- Media Box -->
+                <div style="margin-top: 20px; display: flex; justify-content: center">
+                  <img
+                    src="vr-mohenjodaro-scene4.jpg"
+                    alt="Hand transition during artifact dusting"
+                    style="width: 100%; max-width: 600px; height: auto; border: var(--border-thick) solid var(--primary-red); display: block"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Scene 5 -->
+            <div class="timeline-item">
+              <div class="timeline-dot modern"></div>
+              <div class="timeline-content-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-title">Scene 5 — Modern Mohenjo-daro</h3>
+                  <span class="era-badge modern-badge">Modern</span>
+                </div>
+                <p style="font-size: 15px; line-height: 1.6; margin-bottom: 16px">
+                  The same site, fenced and quiet. Archaeological markers where bricks were removed. The absence of the Saheb is its own statement.
+                </p>
+                <!-- Media Box -->
+                <div style="margin-top: 20px; display: flex; justify-content: center">
+                  <img
+                    src="vr-mohenjodaro-scene5.jpg"
+                    alt="Modern Mohenjo-daro ruins environment"
+                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 9 — KEY DECISIONS (2x2 grid of cards, light grey background) -->
+          <h2 style="font-size: 32px; border-bottom: var(--border); padding-bottom: 16px; margin-bottom: 32px">Key Decisions</h2>
+          <div class="decisions-container">
+            <div class="decisions-grid">
+              <!-- Card 1 -->
+              <div class="decision-card">
+                <h4>First-person perspective throughout</h4>
+                <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.85">
+                  Maximizes complicity. The player never watches themselves cause harm they are the cause. Third-person would create emotional distance that
+                  defeats the project's purpose.
+                </p>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="decision-card">
+                <h4>No combat, no escape mechanic</h4>
+                <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.85">
+                  Removing action verbs forces emotional attention. The only meaningful interaction is collection and defiance small, quiet, human.
+                </p>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="decision-card">
+                <h4>Sound as the primary era marker</h4>
+                <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.85">
+                  Colonial-era: railway noise, shouting, metal on stone. Modern era: wind, birds, silence. The transition is heard before it's seen.
+                </p>
+              </div>
+
+              <!-- Card 4 -->
+              <div class="decision-card">
+                <h4>Gesture-triggered time shift</h4>
+                <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.85">
+                  The player's own action dusting causes the shift. Passive cutscenes would remove agency. The player transforms the timeline by choosing to
+                  care.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 10 — LEARNINGS (4 items, each with a left green border) -->
+          <h2 style="font-size: 32px; border-bottom: var(--border); padding-bottom: 16px; margin-bottom: 32px">Key Learnings</h2>
+          <div style="background-color: var(--bg-white); border: var(--border); padding: 32px; margin-bottom: 60px">
+            <!-- Learning 1 -->
+            <div class="learning-item">
+              <p class="learning-text">
+                <strong>01. Presence creates moral weight</strong> that passive media film, museum exhibits cannot. The body's sense of doing is what makes
+                guilt possible in VR.
+              </p>
+            </div>
+            <!-- Learning 2 -->
+            <div class="learning-item">
+              <p class="learning-text">
+                <strong>02. Limiting interaction sharpens emotional focus.</strong> When you remove the ability to fight or escape, small gestures like picking
+                up a shard become heavy with meaning.
+              </p>
+            </div>
+            <!-- Learning 3 -->
+            <div class="learning-item">
+              <p class="learning-text">
+                <strong>03. Contrast communicates time better than visual effects.</strong> Noise vs. silence. Chaos vs. stillness. The shift is experienced,
+                not explained.
+              </p>
+            </div>
+            <!-- Learning 4 -->
+            <div class="learning-item">
+              <p class="learning-text">
+                <strong>04. Heritage design is also interaction design.</strong> Deciding what a player can and cannot do with an ancient object is itself an
+                act of preservation ethics.
+              </p>
+            </div>
+          </div>
+
+          <!-- SECTION 11 — OUTCOME (full width dark-green card, matches other case studies' outcome sections) -->
+          <div class="outcome-banner">
+            <span class="outcome-label">Outcome</span>
+            <h2 class="outcome-statement">
+              "A narrative VR prototype demonstrating that cultural empathy can be designed not just narrated through embodied, first-person interaction with
+              history."
+            </h2>
+          </div>
+
+          <!-- Next / back -->
+          <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 40px">
+            <a href="work.html" class="btn"><span class="chevron left" aria-hidden="true"></span> BACK TO ALL WORK</a>
+            <a href="rani-no-hajiro.html" class="btn primary">NEXT PROJECT <span class="chevron" aria-hidden="true"></span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="logo-footer" style="font-family: var(--font-heading); font-size: 16px">MOHAMMED.HAFIZ</div>
+        <div>© 2024 MOHAMMED HAFIZ. STAY BRUTAL.</div>
+        <div class="footer-social">
+          <a href="#">TWITTER</a>
+          <a href="#">LINKEDIN</a>
+          <a href="#">GITHUB</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

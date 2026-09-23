@@ -1,0 +1,1101 @@
+:root {
+    --bg-main: #fcf6d5; /* Pale yellow cream */
+    --bg-white: #ffffff;
+    --bg-dark: #1e1e1e;
+    
+    --primary-red: #ff5f5f;
+    --primary-red-dark: #cc4c4c;
+    
+    --secondary-green: #99f6b8;
+    --dark-green: #006d3d;
+    
+    --tertiary-blue: #d2e4ff;
+    --tertiary-blue-dark: #a0caff;
+    
+    --neutral-black: #111111;
+    --neutral-gray: #e5e5e5;
+
+    /* Recessed-well surface: a shade deeper than --bg-main, for cards that sit
+       IN the page rather than floating above it now that shadows are gone. */
+    --surface-well: #f2ecc9;
+    --line: rgba(17, 17, 17, 0.14);
+    --line-on-dark: rgba(255, 255, 255, 0.18);
+
+    /* Category taxonomy, reused by every project card's edge accent */
+    --cat-game: var(--primary-red);
+    --cat-ux: var(--tertiary-blue-dark);
+    --cat-vr: var(--dark-green);
+
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+
+    --border-width: 2px;
+    --border-thick: 3px;
+    --border: var(--border-width) solid var(--neutral-black);
+
+    /* Shadows removed sitewide. Vars kept at 'none' rather than deleted, since
+       a few inline styles still reference var(--shadow-*) — this keeps those
+       harmless without having to hunt down every last one. */
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--neutral-black);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--neutral-black);
+    letter-spacing: -0.03em;
+}
+
+h1 { font-size: 48px; line-height: 1.1; margin-bottom: 24px; }
+h2 { font-size: 32px; line-height: 1.2; margin-bottom: 16px; }
+h3 { font-size: 24px; line-height: 1.3; margin-bottom: 12px; }
+p { margin-bottom: 16px; }
+
+/* ── Case Study — Shared Type Scale ───────────────────────────────────────
+   Apply class="case-study" to <main> on every project page.
+   All heading and body sizes are defined here; never override inline.
+   ─────────────────────────────────────────────────────────────────────── */
+.case-study h1 { font-size: 48px; line-height: 1.1; margin-bottom: 16px; font-family: var(--font-heading); }
+.case-study h2 { font-size: 28px; line-height: 1.2; margin-bottom: 16px; font-family: var(--font-heading); border-bottom: var(--border); padding-bottom: 14px; }
+.case-study h3 { font-size: 20px; line-height: 1.3; margin-bottom: 12px; font-family: var(--font-heading); }
+.case-study h4 { font-size: 16px; line-height: 1.4; margin-bottom: 8px;  font-family: var(--font-heading); font-weight: 700; }
+.case-study p  { font-size: 15px; line-height: 1.7; margin-bottom: 16px; font-family: var(--font-body); }
+.case-study li { font-size: 15px; line-height: 1.7; font-family: var(--font-body); }
+
+/* Section label — small all-caps eyebrow above a section heading */
+.case-study .cs-label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--primary-red);
+    display: block;
+    margin-bottom: 6px;
+}
+
+/* Shared card body text inside case studies */
+.case-study .card p,
+.case-study .section-card p { font-size: 15px; line-height: 1.7; }
+
+/* Circular icon badge (?, !, a number…) used in callout-card headers — was
+   ~10 lines of identical inline style copy-pasted at every occurrence.
+   Background/text colour still set per-instance inline, since that
+   intentionally varies (e.g. white-on-red vs black-on-white). */
+.case-study .card-icon {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Callout-card header row: icon badge + h3, with the border that marks it
+   as a card header rather than a plain section heading. */
+.case-study .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 3px solid currentColor;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.case-study .card-header h3 {
+    margin: 0;
+}
+
+/* Plain in-card section title — a thin rule under text, no icon. For a
+   sub-heading inside a content card, as opposed to .card-header (which
+   pairs with an icon badge for a callout-style intro). */
+.case-study .card-title {
+    border-bottom: var(--border);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+/* Persona card — name/demographics, bio, needs/frustrations, a pull-quote and
+   trait pills. First used by Instagram Fatigue's four personas; shared so any
+   future case study with structured personas reuses it instead of forking. */
+.case-study .persona-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.case-study .persona-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Initials avatar, not a photo — no real photo exists for a fictional
+   persona, and a stock photo would misrepresent someone who doesn't exist. */
+.case-study .persona-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    background-color: var(--neutral-black);
+}
+
+.case-study .persona-header h3 {
+    margin: 0 0 2px;
+    font-size: 17px;
+}
+
+.case-study .persona-meta {
+    font-size: 12px;
+    opacity: 0.65;
+    line-height: 1.4;
+}
+
+.case-study .persona-quote {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.5;
+    padding: 12px 14px;
+    border-left: 3px solid var(--primary-red);
+    background-color: var(--bg-main);
+    margin: 0;
+}
+
+.case-study .persona-section h4 {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.55;
+    margin-bottom: 6px;
+}
+
+.case-study .persona-section ul {
+    padding-left: 18px;
+    margin: 0;
+}
+
+.case-study .persona-section li {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.case-study .persona-traits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.case-study .persona-traits span {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    background-color: var(--bg-white);
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+section {
+    padding: 60px 0;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+/* Premium Neo-Brutalist Bento Grid — 2-per-row, no media cropping */
+.bento-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+/* Last card (if odd count) spans both columns */
+.bento-card.bento-full {
+    grid-column: 1 / -1;
+}
+
+.bento-card {
+    position: relative;
+    border: 1px solid var(--line);
+    background-color: var(--surface-well);
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.bento-card.dark {
+    background-color: var(--neutral-black);
+    border-color: var(--line-on-dark);
+}
+
+/* Category edge — a 6px accent bar identifying the project's discipline,
+   replacing the pill-only signal now that cards no longer have a heavy frame. */
+.bento-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--cat, var(--neutral-black));
+    z-index: 1;
+}
+
+.bento-card.cat-game { --cat: var(--cat-game); }
+.bento-card.cat-ux   { --cat: var(--cat-ux); }
+.bento-card.cat-vr   { --cat: var(--cat-vr); }
+
+.bento-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Visual area — fixed aspect ratio so every card is the same height */
+.bento-visual {
+    width: 100%;
+    aspect-ratio: 16 / 9;       /* consistent height across the row */
+    position: relative;
+    background-color: var(--neutral-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Media fills the box WITHOUT cropping — shows full frame */
+.bento-visual img,
+.bento-visual video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;        /* no crop — full image/video visible */
+    transition: transform 0.5s ease;
+}
+
+/* Subtle scale on hover — works great with contain too */
+.bento-card:hover .bento-visual img,
+.bento-card:hover .bento-visual video {
+    transform: scale(1.04);
+}
+
+/* Light-background cards get a neutral visual bg so contain looks clean */
+.bento-card:not(.dark) .bento-visual {
+    background-color: var(--neutral-gray);
+}
+
+/* Stacked footer — a single nowrap line was truncating longer descriptions
+   (e.g. VR Mohenjo Daro's), so category/index sit on their own row above the
+   title and description, both of which can now wrap in full. */
+.bento-footer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px 20px 20px;
+    background: var(--bg-white);
+    border-top: 1px solid var(--line);
+}
+
+.bento-card.dark .bento-footer {
+    background: var(--neutral-black);
+    color: white;
+    border-top-color: var(--line-on-dark);
+}
+
+.bento-footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* This strip is a sequence (5 projects in a fixed order), so a numeral
+   earns its place here rather than decorating a non-sequential list. */
+.bento-index {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    opacity: 0.4;
+}
+
+.bento-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.bento-title-group h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.bento-desc {
+    font-size: 14px;
+    margin: 0;
+    opacity: 0.7;
+    font-weight: 500;
+}
+
+.bento-arrow {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+.bento-pill {
+    padding: 4px 10px;
+    border: 2px solid var(--neutral-black);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 20px;
+    white-space: nowrap;
+    background: var(--primary-red);
+    color: white;
+}
+.bento-pill.blue  { background: var(--tertiary-blue); color: var(--neutral-black); }
+.bento-pill.green { background: var(--secondary-green); color: var(--neutral-black); }
+
+.bento-arrow {
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: all 0.3s ease;
+}
+
+.bento-card:hover .bento-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* CSS-drawn chevron — replaces every arrow glyph sitewide (Unicode arrows
+   render inconsistently across platforms/fonts; this is exact and themeable
+   via currentColor). Points right by default. */
+.chevron {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-style: solid;
+    border-color: currentColor;
+    border-width: 0 2px 2px 0;
+    transform: rotate(-45deg);
+    vertical-align: middle;
+    margin: 0 1px 2px;
+}
+
+.chevron.left { transform: rotate(135deg); }
+.chevron.down { transform: rotate(45deg); }
+.chevron.up   { transform: rotate(-135deg); }
+.chevron.external { transform: rotate(-90deg); }
+
+/* Remove old span-based grid modifiers — no longer needed */
+.bento-feature,
+.bento-side,
+.bento-half-left,
+.bento-half-right { /* all default to 1 column now */ }
+
+@media (max-width: 768px) {
+    .bento-wrapper {
+        grid-template-columns: 1fr;
+    }
+    .bento-card.bento-full {
+        grid-column: 1;
+    }
+}
+
+/* Navbar */
+.navbar {
+    border-bottom: var(--border);
+    background-color: var(--bg-main);
+    padding: 16px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: var(--border);
+    padding: 4px 12px;
+    background-color: var(--bg-white);
+    text-decoration: none;
+    color: var(--neutral-black);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--neutral-black);
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 8px;
+    transition: background-color 0.2s;
+}
+
+.nav-links a.active, .nav-links a:hover {
+    background-color: var(--primary-red);
+    color: var(--bg-white);
+    border-radius: 2px;
+}
+
+.btn-hire {
+    border: var(--border);
+    background-color: var(--bg-white);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--primary-red);
+    transition: transform 0.1s, background-color 0.1s;
+}
+
+.btn-hire:active {
+    transform: scale(0.96);
+}
+
+/* Footer */
+footer {
+    border-top: var(--border);
+    padding: 40px 0;
+    margin-top: 60px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-social {
+    display: flex;
+    gap: 16px;
+}
+
+.footer-social a {
+    color: var(--neutral-black);
+    text-decoration: none;
+}
+
+/* Components */
+.card {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background-color: var(--surface-well);
+    padding: 32px;
+}
+
+/* An explicit background-color set inline (bg-red, bg-dark, var(--tertiary-blue)…)
+   already separates the card from the page — the hairline would just look like
+   a stray outline on top of a solid colour, so drop it there. */
+.card[style*="background-color"] {
+    border-color: transparent;
+}
+
+.tag {
+    display: inline-block;
+    border: var(--border);
+    padding: 4px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    background-color: var(--secondary-green);
+}
+
+.tag.red { background-color: var(--primary-red); color: var(--bg-white); }
+.tag.blue { background-color: var(--tertiary-blue); }
+.tag.green { background-color: var(--secondary-green); }
+.tag.white { background-color: var(--bg-white); }
+.tag.dark { background-color: var(--bg-dark); color: var(--bg-white); }
+
+.btn {
+    display: inline-block;
+    border: var(--border);
+    padding: 12px 24px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--neutral-black);
+    transition: transform 0.1s, background-color 0.1s;
+    background-color: var(--bg-white);
+}
+
+.btn.primary {
+    background-color: var(--primary-red);
+    color: var(--bg-white);
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    border: var(--border);
+    padding: 16px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    background-color: var(--bg-white);
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--primary-red);
+}
+
+/* Utilities */
+.bg-red { background-color: var(--primary-red); }
+.bg-green { background-color: var(--secondary-green); }
+.bg-blue { background-color: var(--tertiary-blue); }
+.bg-dark { background-color: var(--bg-dark); color: var(--bg-white); }
+.bg-white { background-color: var(--bg-white); }
+
+/* Any of the above on a .card already separates it from the page by colour —
+   the hairline on top would just be a stray outline, not a boundary. */
+.card.bg-red, .card.bg-green, .card.bg-blue, .card.bg-dark {
+    border-color: transparent;
+}
+
+/* specific section: Selected Work List (Home) */
+.work-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.work-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    border: 1px solid var(--line);
+    background-color: var(--surface-well);
+    transition: transform 0.2s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.work-item:hover {
+    transform: translateY(-4px);
+}
+
+.work-item-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.work-item-img {
+    border-left: var(--border);
+    background-color: var(--neutral-gray);
+    min-height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.vr-card {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    border: 1px solid var(--line-on-dark);
+    background-color: var(--neutral-black);
+    color: white;
+    transition: transform 0.2s;
+    text-decoration: none;
+    margin-top: 24px;
+}
+
+.vr-card:hover {
+    transform: translateY(-4px);
+}
+
+.vr-card-content {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.vr-card-visual {
+    border-left: var(--border);
+    background-color: #1A0F0A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 220px;
+}
+
+@media (max-width: 768px) {
+    .vr-card {
+        grid-template-columns: 1fr;
+    }
+    .vr-card-visual {
+        border-left: none;
+        border-bottom: var(--border);
+        order: -1;
+        min-height: 180px;
+    }
+}
+
+/* specific section: Experience */
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Experience — a ruled ledger rather than four separate cards, since a
+   chronology is one list, not four competing objects. A monogram anchors
+   each row visually; colour on the monogram and the live dot both carry
+   real information (still active vs. wrapped up), not decoration. */
+.exp-ledger {
+    border-top: 1px solid var(--line);
+}
+
+.exp-row {
+    display: grid;
+    grid-template-columns: 184px 1.1fr 1.3fr;
+    gap: 24px;
+    align-items: center;
+    padding: 22px 16px;
+    border-bottom: 1px solid var(--line);
+    border-left: 3px solid transparent;
+    transition: background-color 0.2s, border-left-color 0.2s;
+}
+
+.exp-row:hover {
+    background-color: var(--surface-well);
+    border-left-color: var(--primary-red);
+}
+
+/* Date range and duration are two different facts (when vs. how long), so
+   they read as a pill plus a caption underneath rather than one run-on
+   string — that string is what was wrapping mid-word inside a fixed column. */
+.exp-date {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    width: fit-content;
+}
+
+.exp-date-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background-color: var(--bg-white);
+}
+
+.exp-date-dur {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0.45;
+    padding-left: 2px;
+}
+
+/* A live cue for roles still in progress — real signal, not flourish. */
+.exp-live {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--primary-red);
+    animation: exp-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes exp-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .exp-live { animation: none; }
+}
+
+.exp-role {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.exp-badge {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    background-color: var(--badge, var(--neutral-black));
+}
+
+.exp-role h3 {
+    margin: 0 0 2px;
+    font-size: 17px;
+}
+
+.exp-role .exp-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0.55;
+    letter-spacing: 0.04em;
+}
+
+.exp-detail {
+    font-size: 14px;
+    margin: 0;
+    opacity: 0.8;
+}
+
+@media (max-width: 720px) {
+    .exp-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        align-items: flex-start;
+    }
+}
+
+/* Skills — one bordered spec sheet, not ten equally loud boxes. The 1px gap
+   between grid cells IS the hairline: cell backgrounds cover the tinted
+   container everywhere except that gap, so dividers stay correct at any
+   column count instead of hand-maintaining border-right/border-bottom rules
+   per breakpoint. */
+.skill-board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    border: 1px solid var(--line);
+    background-color: var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.skill-cell {
+    background-color: var(--bg-white);
+    padding: 28px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    transition: background-color 0.2s;
+}
+
+.skill-cell:hover {
+    background-color: var(--surface-well);
+}
+
+.skill-cell:hover .skill-logo {
+    transform: scale(1.12) rotate(-6deg);
+}
+
+.skill-cell:hover .skill-name {
+    color: var(--primary-red);
+}
+
+@media (max-width: 900px) {
+    .skill-board { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 560px) {
+    .skill-board { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Filter Bar (Works page) */
+.filter-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    border: 1px solid var(--line);
+    background-color: var(--bg-white);
+    padding: 6px 12px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-red);
+    color: white;
+}
+
+/* Grid Work Layout (Works page) */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+}
+
+.grid-card {
+    border: 1px solid var(--line);
+    background-color: var(--surface-well);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s;
+    break-inside: avoid;
+    box-sizing: border-box;
+}
+
+.grid-card:hover {
+    transform: translateY(-4px);
+}
+
+.grid-card.dark {
+    background-color: var(--bg-dark);
+    color: white;
+}
+
+.grid-card-img {
+    width: 100%;
+    border-bottom: var(--border);
+    display: block;
+}
+
+.grid-card-content {
+    padding: 20px;
+}
+
+.grid-card-content h3 {
+    margin-bottom: 4px;
+    font-size: 20px;
+}
+
+.grid-card-content p {
+    font-size: 14px;
+    margin-bottom: 0;
+    opacity: 0.8;
+}
+
+/* Project Detail Page */
+.project-header {
+    margin-bottom: 40px;
+}
+
+.back-link {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--neutral-black);
+    display: inline-block;
+    margin-bottom: 24px;
+}
+
+.project-hero-img {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.section-card {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background-color: var(--surface-well);
+    padding: 32px;
+    margin-bottom: 32px;
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.process-step {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    background-color: var(--bg-white);
+}
+
+.process-step .num {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-red);
+}
+
+.process-step .label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Contact Page */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.contact-info-card {
+    margin-bottom: 24px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .grid-2, .grid-3, .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .work-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .work-item {
+        grid-template-columns: 1fr;
+    }
+    
+    .work-item-img {
+        border-left: none;
+        border-bottom: var(--border);
+        order: -1;
+    }
+
+    .process-steps {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Image Zoom Effect */
+.zoom-img {
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+    cursor: zoom-in;
+    position: relative;
+    z-index: 1;
+}
+
+.zoom-img:hover {
+    transform: scale(1.6);
+    z-index: 100;
+}

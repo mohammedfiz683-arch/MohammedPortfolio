@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOHAMMED.HAFIZ - Portfolio (LAB 2)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .lab-hero {
+            position: relative;
+            min-height: calc(100vh - 70px);
+            min-height: calc(100svh - 70px);
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #hero-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            cursor: crosshair;
+            touch-action: pan-y;
+        }
+
+        .lab-hint {
+            position: absolute;
+            left: 50%;
+            bottom: 28px;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            opacity: 0.55;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .lab-hint span:last-child {
+            border-left: var(--border);
+            padding-left: 20px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .noscript-tagline {
+            font-family: var(--font-heading);
+            font-size: clamp(28px, 5vw, 64px);
+            line-height: 1.15;
+            max-width: 900px;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        @media (max-width: 640px) {
+            .lab-hint { gap: 12px; letter-spacing: 0.08em; }
+            .lab-hint span:last-child { padding-left: 12px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">MOHAMMED.HAFIZ</a>
+            <nav class="nav-links">
+                <a href="index.html" class="active">HOME</a>
+                <a href="work.html">WORK</a>
+                <a href="about.html">ABOUT</a>
+                <a href="contact.html">CONTACT</a>
+            </nav>
+            <a href="contact.html" class="btn-hire">HIRE ME</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Full-bleed interactive tagline -->
+        <section class="lab-hero">
+            <canvas id="hero-canvas" aria-hidden="true"></canvas>
+            <h1 class="sr-only">I design games, systems, and interactive experiences that explore logic, behavior, and
+                play.</h1>
+            <noscript>
+                <p class="noscript-tagline">I design games, systems, and interactive experiences that explore logic,
+                    behavior, and play.</p>
+            </noscript>
+            <div class="lab-hint">
+                <span>Hover or drag across the text</span>
+                <span>Scroll ↓</span>
+            </div>
+        </section>
+
+        <!-- Selected Work -->
+        <section class="selected-work">
+            <div class="container">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: var(--border); padding-bottom: 8px; margin-bottom: 32px;">
+                    <h2 style="margin: 0;">SELECTED WORK</h2>
+                    <span style="font-size: 10px; font-weight: 700;">(06 PROJECTS)</span>
+                </div>
+
+                <div class="bento-wrapper">
+                    <!-- MazeBot -->
+                    <a href="project.html" class="bento-card bento-feature">
+                        <div class="bento-visual">
+                            <video autoplay loop muted playsinline>
+                                <source src="mazebot-gameplay.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-title-group">
+                                <span class="bento-pill">GAME DESIGN</span>
+                                <h3>MazeBot</h3>
+                                <span class="bento-desc">— Computational thinking</span>
+                            </div>
+                            <span class="bento-arrow">➔</span>
+                        </div>
+                    </a>
+
+                    <!-- Nothing OS -->
+                    <a href="nothing-redesign.html" class="bento-card dark bento-side">
+                        <div class="bento-visual" style="background: linear-gradient(135deg, #300a0a 0%, #111111 100%);">
+                            <div style="font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: #ff5f5f; opacity: 0.15; position: absolute; transform: rotate(-15deg);">NOTHING OS</div>
+                            <div style="display: flex; gap: 8px; z-index: 1;">
+                                <div style="width: 24px; height: 24px; border-radius: 50%; background-color: #ff5f5f; border: 2px solid white; box-shadow: 2px 2px 0 var(--neutral-black);"></div>
+                                <div style="width: 24px; height: 24px; border-radius: 6px; background-color: white; border: 2px solid var(--neutral-black); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; color: black; font-family: var(--font-heading);">3a</div>
+                            </div>
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-title-group">
+                                <span class="bento-pill blue">UI/UX</span>
+                                <h3>Nothing 3a</h3>
+                            </div>
+                            <span class="bento-arrow">➔</span>
+                        </div>
+                    </a>
+
+                    <!-- Shatter -->
+                    <a href="shatter.html" class="bento-card dark bento-side">
+                        <div class="bento-visual">
+                            <video autoplay loop muted playsinline>
+                                <source src="shatter-gameplay.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-title-group">
+                                <span class="bento-pill">GAME DESIGN</span>
+                                <h3>Shatter</h3>
+                                <span class="bento-desc">— Narrative RPG</span>
+                            </div>
+                            <span class="bento-arrow">➔</span>
+                        </div>
+                    </a>
+
+                    <!-- LaundryEase -->
+                    <a href="laundryease.html" class="bento-card bento-half-left">
+                        <div class="bento-visual">
+                            <img src="laundry-hero.png" alt="LaundryEase">
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-title-group">
+                                <span class="bento-pill blue">UX</span>
+                                <h3>LaundryEase</h3>
+                            </div>
+                            <span class="bento-arrow">➔</span>
+                        </div>
+                    </a>
+
+                    <!-- Viral Siyappa -->
+                    <a href="viralsiyappa.html" class="bento-card dark bento-half-right" style="background-color: var(--tertiary-blue);">
+                        <div class="bento-visual" style="background-color: var(--tertiary-blue);">
+                            <img src="viral_hero.png" alt="Viral Siyappa">
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-title-group">
+                                <span class="bento-pill green">GAME DESIGN</span>
+                                <h3 style="color: var(--neutral-black);">Viral Siyappa</h3>
+                                <span class="bento-desc" style="color: black;">— Misinformation</span>
+                            </div>
+                            <span class="bento-arrow" style="color: black;">➔</span>
+                        </div>
+                    </a>
+
+                    <!-- VR Mohenjo Daro -->
+                    <a href="vr-mohenjodaro.html" class="bento-card dark">
+                        <div class="bento-visual" style="background-color: #1A0F0A;">
+                            <img src="VrMohenjoHero.jpg" alt="VR Mohenjo Daro">
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-title-group">
+                                <span class="bento-pill">VR EXP</span>
+                                <h3>VR Mohenjo Daro</h3>
+                                <span class="bento-desc">— Complicity-driven colonial heritage</span>
+                            </div>
+                            <span class="bento-arrow">➔</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="experience">
+            <div class="container">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: var(--border); padding-bottom: 8px; margin-bottom: 32px;">
+                    <h2 style="margin: 0;">EXPERIENCE</h2>
+                    <span style="font-size: 10px; font-weight: 700;">(03 ROLES)</span>
+                </div>
+
+                <div class="grid-3">
+                    <div class="exp-item green">
+                        <div class="exp-header">
+                            <span class="tag white" style="margin: 0;">Aug 2024 - Present</span>
+                        </div>
+                        <h3 style="margin-top: 16px;">Studio Gleamingus</h3>
+                        <p style="font-size: 12px; font-weight: 700; margin-bottom: 12px; color: var(--primary-red);">
+                            GAME DESIGNER (INTERNSHIP)</p>
+                        <p style="font-size: 14px;">Working on narrative driven games.</p>
+                    </div>
+
+                    <div class="exp-item white">
+                        <div class="exp-header">
+                            <span class="tag blue" style="margin: 0;">Jul 2023 - Present</span>
+                        </div>
+                        <h3 style="margin-top: 16px;">Orbit Pumps</h3>
+                        <p style="font-size: 12px; font-weight: 700; margin-bottom: 12px; color: var(--primary-red);">
+                            DESIGN & MARKETING (FREELANCE)</p>
+                        <p style="font-size: 14px;">Developing pitch decks, linkedin content, visual documentation.</p>
+                    </div>
+
+                    <div class="exp-item white">
+                        <div class="exp-header">
+                            <span class="tag red" style="margin: 0; color: white;">Jan 2023 - Feb 2023</span>
+                        </div>
+                        <h3 style="margin-top: 16px;">ZICT - ZCloudTech</h3>
+                        <p style="font-size: 12px; font-weight: 700; margin-bottom: 12px; color: var(--primary-red);">
+                            GRAPHIC/WEB DESIGN (INTERNSHIP)</p>
+                        <p style="font-size: 14px;">Designing cloud platform UI graphics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote -->
+        <section class="quote-section">
+            <div class="container">
+                <div class="card bg-red" style="padding: 60px; text-align: center; color: white; border-width: 3px;">
+                    <h2 style="color: white; font-size: 36px; line-height: 1.2;">"I BUILD SYSTEMS THAT PEOPLE CAN
+                        EXPLORE, QUESTION, AND PLAY WITH."</h2>
+                    <a href="about.html"
+                        style="color: var(--neutral-black); font-weight: 700; text-decoration: none; text-transform: uppercase; font-size: 12px; display: inline-block; margin-top: 24px;">READ
+                        THE FULL STORY →</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="logo-footer" style="font-family: var(--font-heading); font-size: 16px;">MOHAMMED.HAFIZ</div>
+            <div>© 2024 MOHAMMED HAFIZ. STAY BRUTAL.</div>
+            <div class="footer-social">
+                <a href="#">TWITTER</a>
+                <a href="#">LINKEDIN</a>
+                <a href="#">GITHUB</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (() => {
+            const TEXT = 'I design games, systems, and interactive experiences that explore logic, behavior, and play.';
+
+            const CELL = 7;
+            const LETTER_INSET = 0;     // 0 = letter cells butt together into solid strokes
+            const FREE_INSET = 1;       // freed cells keep a gap so debris reads as particles
+            const INK_THRESHOLD = 60;   // alpha a cell needs to count as part of a glyph
+            const LIFE_MS = 110;        // one Conway generation
+            const REGROW_MS = 2000;     // how long an eroded letter cell stays gone
+            const FADE_MS = 320;        // letter fade-back-in tail
+            const MAX_AGE = 70;         // ticks a freed cell survives before ageing out
+            const FADE_TICKS = 14;      // fade-out tail on a dying freed cell
+            const BRUSH = 3;            // erosion radius, in cells
+
+            const canvas = document.getElementById('hero-canvas');
+            const ctx = canvas.getContext('2d');
+            const off = document.createElement('canvas');
+            const octx = off.getContext('2d', { willReadFrequently: true });
+
+            const css = getComputedStyle(document.documentElement);
+            const BLACK = css.getPropertyValue('--neutral-black').trim() || '#111111';
+            const RED = css.getPropertyValue('--primary-red').trim() || '#ff5f5f';
+            const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            let W = 0, H = 0, cols = 0, rows = 0, ox = 0, oy = 0;
+            let mask, damage, life, lifeNext, age, ageNext;
+            let prevCell = null;
+
+            /* ── Render the tagline, then sample its glyphs into the grid ── */
+            function wrap(text, maxWidth) {
+                const words = text.split(' ');
+                const lines = [];
+                let line = '';
+                for (const w of words) {
+                    const test = line ? line + ' ' + w : w;
+                    if (line && octx.measureText(test).width > maxWidth) { lines.push(line); line = w; }
+                    else line = test;
+                }
+                if (line) lines.push(line);
+                return lines;
+            }
+
+            function buildMask() {
+                off.width = Math.max(1, Math.round(W));
+                off.height = Math.max(1, Math.round(H));
+
+                const maxWidth = W * 0.88;
+                let size = Math.max(26, Math.min(104, Math.round(W / 12)));
+                let lines, lineHeight;
+
+                // Shrink until the block fits the band — short/wide viewports overflow otherwise.
+                for (;;) {
+                    octx.font = `700 ${size}px 'Space Grotesk', sans-serif`;
+                    lines = wrap(TEXT, maxWidth);
+                    lineHeight = size * 1.12;
+                    if (lines.length * lineHeight <= H * 0.78 || size <= 22) break;
+                    size -= 4;
+                }
+
+                octx.clearRect(0, 0, off.width, off.height);
+                octx.fillStyle = '#000';
+                octx.textAlign = 'center';
+                octx.textBaseline = 'middle';
+                const startY = H / 2 - (lines.length - 1) * lineHeight / 2;
+                lines.forEach((ln, i) => octx.fillText(ln, W / 2, startY + i * lineHeight));
+
+                const data = octx.getImageData(0, 0, off.width, off.height).data;
+                mask = new Uint8Array(cols * rows);
+                for (let y = 0; y < rows; y++) {
+                    for (let x = 0; x < cols; x++) {
+                        let sum = 0, count = 0;
+                        const x0 = Math.floor(ox + x * CELL), y0 = Math.floor(oy + y * CELL);
+                        for (let py = y0 + 1; py < y0 + CELL - 1; py += 2) {
+                            if (py < 0 || py >= off.height) continue;
+                            for (let px = x0 + 1; px < x0 + CELL - 1; px += 2) {
+                                if (px < 0 || px >= off.width) continue;
+                                sum += data[(py * off.width + px) * 4 + 3];
+                                count++;
+                            }
+                        }
+                        mask[y * cols + x] = count && sum / count > INK_THRESHOLD ? 1 : 0;
+                    }
+                }
+            }
+
+            /* ── Conway, over the freed cells only ── */
+            function lifeStep(src, dst, srcAge, dstAge, c, r) {
+                for (let y = 0; y < r; y++) {
+                    for (let x = 0; x < c; x++) {
+                        let n = 0;
+                        for (let dy = -1; dy <= 1; dy++) {
+                            for (let dx = -1; dx <= 1; dx++) {
+                                if (!dx && !dy) continue;
+                                n += src[((y + dy + r) % r) * c + ((x + dx + c) % c)];
+                            }
+                        }
+                        const i = y * c + x;
+                        const alive = src[i];
+                        let v = (alive ? (n === 2 || n === 3) : n === 3) ? 1 : 0;
+                        const a = v ? (alive ? srcAge[i] + 1 : 0) : 0;
+                        // ponytail: hard age cap. Dense letter chunks settle into still-lifes that
+                        // would otherwise pile up forever and bury the text. Swap for a decay
+                        // probability if the die-off ever looks too uniform.
+                        if (v && a > MAX_AGE) v = 0;
+                        dst[i] = v;
+                        dstAge[i] = v ? a : 0;
+                    }
+                }
+            }
+
+            function tick() {
+                if (calm) {
+                    for (let i = 0; i < life.length; i++) {
+                        if (life[i] && ++age[i] > MAX_AGE) { life[i] = 0; age[i] = 0; }
+                    }
+                    return;
+                }
+                lifeStep(life, lifeNext, age, ageNext, cols, rows);
+                let t = life; life = lifeNext; lifeNext = t;
+                t = age; age = ageNext; ageNext = t;
+            }
+
+            /* ── Erosion ── */
+            function erodeAt(cx, cy, now) {
+                for (let dy = -BRUSH; dy <= BRUSH; dy++) {
+                    for (let dx = -BRUSH; dx <= BRUSH; dx++) {
+                        if (dx * dx + dy * dy > BRUSH * BRUSH + 1) continue;
+                        const x = cx + dx, y = cy + dy;
+                        if (x < 0 || y < 0 || x >= cols || y >= rows) continue;
+                        const i = y * cols + x;
+                        if (!mask[i] || damage[i]) continue;
+                        damage[i] = now;      // letter cell knocked out, heals in REGROW_MS
+                        life[i] = 1;          // and escapes into the simulation
+                        age[i] = 0;
+                    }
+                }
+            }
+
+            function erodePath(x, y, now) {
+                if (prevCell) {
+                    const steps = Math.max(Math.abs(x - prevCell.x), Math.abs(y - prevCell.y));
+                    for (let s = 1; s <= steps; s++) {
+                        erodeAt(
+                            Math.round(prevCell.x + (x - prevCell.x) * s / steps),
+                            Math.round(prevCell.y + (y - prevCell.y) * s / steps),
+                            now
+                        );
+                    }
+                    if (!steps) erodeAt(x, y, now);
+                } else {
+                    erodeAt(x, y, now);
+                }
+                prevCell = { x, y };
+            }
+
+            /* ── Draw ── */
+            function draw(now) {
+                ctx.clearRect(0, 0, W, H);
+                const letterSize = CELL - LETTER_INSET * 2;
+                const freeSize = CELL - FREE_INSET * 2;
+
+                for (let i = 0; i < mask.length; i++) {
+                    if (!mask[i]) continue;
+                    let alpha = 1;
+                    const d = damage[i];
+                    if (d) {
+                        const elapsed = now - d;
+                        if (elapsed >= REGROW_MS) damage[i] = 0;
+                        else if (elapsed < REGROW_MS - FADE_MS) continue;
+                        else alpha = (elapsed - (REGROW_MS - FADE_MS)) / FADE_MS;
+                    }
+                    ctx.globalAlpha = alpha;
+                    ctx.fillStyle = BLACK;
+                    ctx.fillRect(ox + (i % cols) * CELL + LETTER_INSET, oy + ((i / cols) | 0) * CELL + LETTER_INSET, letterSize, letterSize);
+                }
+
+                ctx.fillStyle = RED;
+                for (let i = 0; i < life.length; i++) {
+                    if (!life[i]) continue;
+                    const remaining = MAX_AGE - age[i];
+                    ctx.globalAlpha = remaining < FADE_TICKS ? Math.max(remaining, 0) / FADE_TICKS : 1;
+                    ctx.fillRect(ox + (i % cols) * CELL + FREE_INSET, oy + ((i / cols) | 0) * CELL + FREE_INSET, freeSize, freeSize);
+                }
+                ctx.globalAlpha = 1;
+            }
+
+            /* ── Setup ── */
+            function resize() {
+                const rect = canvas.getBoundingClientRect();
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = Math.round(rect.width * dpr);
+                canvas.height = Math.round(rect.height * dpr);
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                W = rect.width; H = rect.height;
+                cols = Math.max(4, Math.floor(W / CELL));
+                rows = Math.max(4, Math.floor(H / CELL));
+                // Integer offsets — fractional ones antialias seams between touching letter cells.
+                ox = Math.floor((W - cols * CELL) / 2);
+                oy = Math.floor((H - rows * CELL) / 2);
+
+                damage = new Float64Array(cols * rows);
+                life = new Uint8Array(cols * rows);
+                lifeNext = new Uint8Array(cols * rows);
+                age = new Uint16Array(cols * rows);
+                ageNext = new Uint16Array(cols * rows);
+                prevCell = null;
+                buildMask();
+            }
+
+            let acc = 0, last = 0;
+            function frame(now) {
+                if (!last) last = now;
+                acc += Math.min(now - last, 250);
+                last = now;
+                if (acc >= LIFE_MS) { acc = 0; tick(); }
+                draw(now);
+                requestAnimationFrame(frame);
+            }
+
+            canvas.addEventListener('pointermove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const x = Math.floor((e.clientX - rect.left - ox) / CELL);
+                const y = Math.floor((e.clientY - rect.top - oy) / CELL);
+                if (x < 0 || y < 0 || x >= cols || y >= rows) { prevCell = null; return; }
+                erodePath(x, y, performance.now());
+            });
+            canvas.addEventListener('pointerleave', () => { prevCell = null; });
+
+            let resizeTimer;
+            addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(resize, 150);
+            });
+
+            // Glyph sampling is font-dependent — wait for Space Grotesk or the mask is built
+            // from the fallback face and the letterforms come out wrong.
+            const start = () => { resize(); requestAnimationFrame(frame); };
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
+            else addEventListener('load', start);
+
+            // Self-check: a vertical blinker must flip horizontal in one generation.
+            const a = new Uint8Array(25), b = new Uint8Array(25);
+            const aAge = new Uint16Array(25), bAge = new Uint16Array(25);
+            a[7] = a[12] = a[17] = 1;
+            lifeStep(a, b, aAge, bAge, 5, 5);
+            console.assert(
+                b.reduce((s, v) => s + v, 0) === 3 && b[11] === 1 && b[12] === 1 && b[13] === 1,
+                'lifeStep is broken — blinker did not oscillate'
+            );
+        })();
+    </script>
+</body>
+
+</html>

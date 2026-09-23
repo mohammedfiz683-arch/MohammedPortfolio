@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOHAMMED.HAFIZ - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">MOHAMMED.HAFIZ</a>
+            <nav class="nav-links">
+                <a href="index.html" class="active">HOME</a>
+                <a href="work.html">WORK</a>
+                <a href="about.html">ABOUT</a>
+                <a href="contact.html">CONTACT</a>
+            </nav>
+            <a href="contact.html" class="btn-hire">HIRE ME</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container grid-2">
+                <div class="hero-content">
+                    <span class="tag green">INTERACTION DESIGNER</span>
+                    <h1>Mohammed Hafiz</h1>
+                    <p style="font-size: 20px; font-weight: 500; margin-bottom: 24px;">I design games, systems, and
+                        interactive experiences that explore logic, behavior, and play.</p>
+                    <p style="margin-bottom: 32px;">Currently exploring computational thinking, game design, and
+                        system-based interaction.</p>
+                    <div style="display: flex; gap: 16px;">
+                        <a href="work.html" class="btn primary">VIEW ALL WORK →</a>
+                        <a href="contact.html" class="btn">CONTACT</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="mohammed_image.jpg" alt="Mohammed Hafiz working on a laptop"
+                        style="border: var(--border); box-shadow: var(--shadow-lg); width: 100%; max-width: 600px; height: 500px; object-fit: cover;">
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Work -->
+        <section class="selected-work">
+            <div class="container">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: var(--border); padding-bottom: 8px; margin-bottom: 32px;">
+                    <h2 style="margin: 0;">SELECTED WORK</h2>
+                    <span style="font-size: 10px; font-weight: 700;">(06 PROJECTS)</span>
+                </div>
+
+                <div class="bento-wrapper">
+                    <!-- MazeBot -->
+                    <a href="project.html" class="bento-card bento-feature">
+                        <div class="bento-visual">
+                            <video autoplay loop muted playsinline>
+                                <source src="mazebot-gameplay.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-title-group">
+                                <span class="bento-pill">GAME DESIGN</span>
+                                <h3>MazeBot</h3>
+                                <span class="bento-desc">— Computational thinking</span>
+                            </div>
+                            <span class="bento-arrow">➔</span>
+                        </div>
+                    </a>
+                    
+                    <!-- Nothing OS -->
+                    <a href="nothing-redesign.html" class="bento-card dark bento-side">
+                        <div class="bento-visual" style="background: linear-gradient(135deg, #300a0a 0%, #111111 100%);">
+                            <div style="font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: #ff5f5f; opacity: 0.15; position: absolute; transform: rotate(-15deg);">NOTHING OS</div>
+                            <div style="display: flex; gap: 8px; z-index: 1;">
+                                <div style="width: 24px; height: 24px; border-radius: 50%; background-color: #ff5f5f; border: 2px solid white; box-shadow: 2px 2px 0 var(--neutral-black);"></div>
+                                <div style="width: 24px; height: 24px; border-radius: 6px; background-color: white; border: 2px solid var(--neutral-black); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; color: black; font-family: var(--font-heading);">3a</div>
+                            </div>
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-title-group">
+                                <span class="bento-pill blue">UI/UX</span>
+                                <h3>Nothing 3a</h3>
+                            </div>
+                            <span class="bento-arrow">➔</span>
+                        </div>
+                    </a>
+
+                    <!-- Shatter -->
+                    <a href="shatter.html" class="bento-card dark bento-side">
+                        <div class="bento-visual">
+                            <video autoplay loop muted playsinline>
+                                <source src="shatter-gameplay.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-title-group">
+                                <span class="bento-pill">GAME DESIGN</span>
+                                <h3>Shatter</h3>
+                                <span class="bento-desc">— Narrative RPG</span>
+                            </div>
+                            <span class="bento-arrow">➔</span>
+                        </div>
+                    </a>
+
+                    <!-- LaundryEase -->
+                    <a href="laundryease.html" class="bento-card bento-half-left">
+                        <div class="bento-visual">
+                            <img src="laundry-hero.png" alt="LaundryEase">
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-title-group">
+                                <span class="bento-pill blue">UX</span>
+                                <h3>LaundryEase</h3>
+                            </div>
+                            <span class="bento-arrow">➔</span>
+                        </div>
+                    </a>
+
+                    <!-- Viral Siyappa -->
+                    <a href="viralsiyappa.html" class="bento-card dark bento-half-right" style="background-color: var(--tertiary-blue);">
+                        <div class="bento-visual" style="background-color: var(--tertiary-blue);">
+                            <img src="viral_hero.png" alt="Viral Siyappa">
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-title-group">
+                                <span class="bento-pill green">GAME DESIGN</span>
+                                <h3 style="color: var(--neutral-black);">Viral Siyappa</h3>
+                                <span class="bento-desc" style="color: black;">— Misinformation</span>
+                            </div>
+                            <span class="bento-arrow" style="color: black;">➔</span>
+                        </div>
+                    </a>
+
+                    <!-- VR Mohenjo Daro -->
+                    <a href="vr-mohenjodaro.html" class="bento-card dark">
+                        <div class="bento-visual" style="background-color: #1A0F0A;">
+                            <img src="VrMohenjoHero.jpg" alt="VR Mohenjo Daro">
+                        </div>
+                        <div class="bento-footer">
+                            <div class="bento-title-group">
+                                <span class="bento-pill">VR EXP</span>
+                                <h3>VR Mohenjo Daro</h3>
+                                <span class="bento-desc">— Complicity-driven colonial heritage</span>
+                            </div>
+                            <span class="bento-arrow">➔</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="experience">
+            <div class="container">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: var(--border); padding-bottom: 8px; margin-bottom: 32px;">
+                    <h2 style="margin: 0;">EXPERIENCE</h2>
+                    <span style="font-size: 10px; font-weight: 700;">(03 ROLES)</span>
+                </div>
+
+                <div class="grid-3">
+                    <div class="exp-item green">
+                        <div class="exp-header">
+                            <span class="tag white" style="margin: 0;">Aug 2024 - Present</span>
+                        </div>
+                        <h3 style="margin-top: 16px;">Studio Gleamingus</h3>
+                        <p style="font-size: 12px; font-weight: 700; margin-bottom: 12px; color: var(--primary-red);">
+                            GAME DESIGNER (INTERNSHIP)</p>
+                        <p style="font-size: 14px;">Working on narrative driven games.</p>
+                    </div>
+
+                    <div class="exp-item white">
+                        <div class="exp-header">
+                            <span class="tag blue" style="margin: 0;">Jul 2023 - Present</span>
+                        </div>
+                        <h3 style="margin-top: 16px;">Orbit Pumps</h3>
+                        <p style="font-size: 12px; font-weight: 700; margin-bottom: 12px; color: var(--primary-red);">
+                            DESIGN & MARKETING (FREELANCE)</p>
+                        <p style="font-size: 14px;">Developing pitch decks, linkedin content, visual documentation.</p>
+                    </div>
+
+                    <div class="exp-item white">
+                        <div class="exp-header">
+                            <span class="tag red" style="margin: 0; color: white;">Jan 2023 - Feb 2023</span>
+                        </div>
+                        <h3 style="margin-top: 16px;">ZICT - ZCloudTech</h3>
+                        <p style="font-size: 12px; font-weight: 700; margin-bottom: 12px; color: var(--primary-red);">
+                            GRAPHIC/WEB DESIGN (INTERNSHIP)</p>
+                        <p style="font-size: 14px;">Designing cloud platform UI graphics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote -->
+        <section class="quote-section">
+            <div class="container">
+                <div class="card bg-red" style="padding: 60px; text-align: center; color: white; border-width: 3px;">
+                    <h2 style="color: white; font-size: 36px; line-height: 1.2;">"I BUILD SYSTEMS THAT PEOPLE CAN
+                        EXPLORE, QUESTION, AND PLAY WITH."</h2>
+                    <a href="about.html"
+                        style="color: var(--neutral-black); font-weight: 700; text-decoration: none; text-transform: uppercase; font-size: 12px; display: inline-block; margin-top: 24px;">READ
+                        THE FULL STORY →</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="logo-footer" style="font-family: var(--font-heading); font-size: 16px;">MOHAMMED.HAFIZ</div>
+            <div>© 2024 MOHAMMED HAFIZ. STAY BRUTAL.</div>
+            <div class="footer-social">
+                <a href="#">TWITTER</a>
+                <a href="#">LINKEDIN</a>
+                <a href="#">GITHUB</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

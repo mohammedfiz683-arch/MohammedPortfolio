@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nothing Phone 3a Redesign Case Study - MOHAMMED.HAFIZ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Custom Nothing Brand Styles aligned with Main Portfolio */
+        :root {
+            --nothing-red: #ff5f5f;
+            --nothing-red-dim: #cc4c4c;
+            --nothing-dark: #121212;
+            --nothing-light: #ffffff;
+            --nothing-dot-matrix: radial-gradient(rgba(17, 17, 17, 0.15) 1px, transparent 1px);
+        }
+
+        .nothing-theme {
+            background-color: var(--bg-main);
+            color: var(--neutral-black);
+            font-family: var(--font-body);
+        }
+
+        .nothing-theme h1, 
+        .nothing-theme h2, 
+        .nothing-theme h3, 
+        .nothing-theme h4 {
+            color: var(--neutral-black);
+        }
+
+        /* Dot Matrix Pattern background matching portfolio */
+        .dot-matrix-bg {
+            background-image: radial-gradient(rgba(17, 17, 17, 0.05) 1px, transparent 1px);
+            background-size: 16px 16px;
+        }
+
+        .dot-matrix-accent {
+            background-image: radial-gradient(var(--nothing-red) 1px, transparent 1px);
+            background-size: 8px 8px;
+        }
+
+        /* Sleek Neo Brutalist & Nothing hybrid elements */
+        .n-card {
+            background-color: var(--bg-white);
+            border: var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+            color: var(--neutral-black);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .n-card:hover {
+            border-color: var(--nothing-red);
+            transform: translateY(-2px);
+        }
+
+        .n-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background-color: var(--bg-white);
+            color: var(--neutral-black);
+            border: var(--border);
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .n-tag.red {
+            background-color: var(--primary-red);
+            color: white;
+            border-color: var(--neutral-black);
+        }
+
+        .n-btn {
+            font-family: var(--font-heading);
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 12px 24px;
+            border: var(--border);
+            border-radius: 30px;
+            background: var(--bg-white);
+            color: var(--neutral-black);
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.1s;
+        }
+
+        .n-btn:hover {
+            background-color: var(--neutral-black);
+            color: white;
+        }
+
+        .n-btn.red {
+            border-color: var(--neutral-black);
+            background-color: var(--primary-red);
+            color: white;
+        }
+
+        .n-btn.red:hover {
+            background-color: var(--bg-white);
+            color: var(--neutral-black);
+        }
+
+        /* Nothing Phone mock chassis */
+        .phone-container {
+            width: 320px;
+            height: 640px;
+            border-radius: 40px;
+            background-color: #000;
+            border: 12px solid #222;
+            box-shadow: var(--shadow-lg), 0 0 0 4px #151515;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+        }
+
+        .phone-bezel {
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #111;
+            z-index: 10;
+            border: 2px solid #222;
+        }
+
+        .phone-screen {
+            flex: 1;
+            border-radius: 24px;
+            background-color: #0d0d0d;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #1a1a1a;
+        }
+
+        /* Widget general styling */
+        .widget-mock {
+            background-color: #181818;
+            border-radius: 20px;
+            border: 1px solid #282828;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .widget-mock.w-2x2 {
+            width: 130px;
+            height: 130px;
+        }
+
+        .widget-mock.w-4x2 {
+            width: 276px;
+            height: 130px;
+        }
+
+        .widget-mock.w-4x4 {
+            width: 276px;
+            height: 276px;
+        }
+
+        /* Pac-Man game specific styles */
+        #pacman-board {
+            width: 100%;
+            height: 100%;
+            background-color: #0a0a0a;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+        }
+
+        .ghost-eyes {
+            display: flex;
+            gap: 4px;
+            margin-top: 4px;
+        }
+
+        .ghost-eye {
+            width: 6px;
+            height: 6px;
+            background-color: white;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .ghost-eye::after {
+            content: '';
+            width: 3px;
+            height: 3px;
+            background-color: blue;
+            border-radius: 50%;
+            position: absolute;
+            top: 1px;
+            left: 1px;
+        }
+
+        /* Interactive Brightness shade custom slider */
+        .brightness-shade {
+            background: #1e1e1e;
+            border: 1.5px solid #333;
+            border-radius: 20px;
+            padding: 16px;
+            width: 100%;
+            max-width: 280px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .custom-slider-container {
+            width: 100%;
+            height: 48px;
+            background-color: #282828;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #383838;
+            cursor: pointer;
+        }
+
+        .custom-slider-fill {
+            height: 100%;
+            background-color: #ffffff;
+            width: 50%;
+            transition: width 0.1s ease;
+        }
+
+        .custom-slider-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            mix-blend-mode: difference;
+            pointer-events: none;
+            font-size: 16px;
+        }
+
+        /* Interactive Battery Mood tracker mock */
+        .mood-face {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid white;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .mood-eye {
+            width: 6px;
+            height: 6px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 15px;
+            transition: all 0.3s;
+        }
+
+        .mood-eye.left { left: 12px; }
+        .mood-eye.right { right: 12px; }
+
+        .mood-mouth {
+            width: 20px;
+            height: 8px;
+            border-bottom: 2px solid white;
+            position: absolute;
+            bottom: 12px;
+            border-radius: 0 0 10px 10px;
+            transition: all 0.3s;
+        }
+
+        /* Battery mood states definitions */
+        .battery-tired .mood-eye {
+            width: 6px;
+            height: 2px;
+            border-radius: 0;
+            background-color: #ff5f5f;
+        }
+        .battery-tired .mood-face {
+            border-color: #ff5f5f;
+        }
+        .battery-tired .mood-mouth {
+            width: 12px;
+            height: 2px;
+            border: none;
+            border-top: 2px solid #ff5f5f;
+            border-radius: 0;
+            bottom: 15px;
+        }
+
+        .battery-charging .mood-face {
+            border-color: #99f6b8;
+            background-color: rgba(153, 246, 184, 0.05);
+            animation: pulse 1.5s infinite;
+        }
+        .battery-charging .mood-mouth {
+            border-bottom-color: #99f6b8;
+        }
+        .battery-charging .mood-eye {
+            background-color: #99f6b8;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Zero AI mockup */
+        .chat-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #ddd;
+        }
+
+        .chat-output {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-right: 4px;
+        }
+
+        .chat-bubble {
+            background-color: #242424;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 8px 12px;
+            max-width: 85%;
+        }
+
+        .chat-bubble.user {
+            align-self: flex-end;
+            background-color: #333;
+            border-color: #444;
+            color: white;
+        }
+
+        .chat-bubble.ai {
+            align-self: flex-start;
+            border-color: var(--nothing-red);
+            background-color: rgba(255, 95, 95, 0.03);
+        }
+
+        .chat-input-row {
+            display: flex;
+            gap: 6px;
+        }
+
+        .chat-input-field {
+            flex: 1;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 6px 12px;
+            color: white;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            outline: none;
+        }
+
+        .chat-send-btn {
+            background-color: var(--nothing-red);
+            border: none;
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Stacking Widget interactive overlay */
+        .stack-dots {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .stack-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #333;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .stack-dot.active {
+            background-color: var(--nothing-red);
+        }
+    </style>
+</head>
+
+<body class="nothing-theme dot-matrix-bg">
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">MOHAMMED.HAFIZ</a>
+            <nav class="nav-links">
+                <a href="index.html">HOME</a>
+                <a href="work.html" class="active">WORK</a>
+                <a href="about.html">ABOUT</a>
+                <a href="contact.html">CONTACT</a>
+            </nav>
+            <a href="contact.html" class="btn-hire">HIRE ME</a>
+        </div>
+    </header>
+
+    <main class="case-study">
+        <!-- Hero Section -->
+        <section style="padding: 60px 0 20px 0; border-bottom: 1px solid var(--nothing-border);">
+            <div class="container">
+                <a href="work.html" class="back-link" style="color: #888;">← BACK TO WORK</a>
+                
+                <div class="grid-2" style="align-items: center; margin-top: 24px;">
+                    <div>
+                        <span class="n-tag red" style="margin-bottom: 16px;">UI/UX & INTERACTION DESIGN</span>
+                        <h1 style="font-size: 56px; font-weight: 700; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 20px;">
+                            Nothing Phone 3a<br>
+                            <span style="color: var(--nothing-red);">Software Redesign</span>
+                        </h1>
+                        <p style="font-size: 18px; line-height: 1.6; color: #555; margin-bottom: 32px;">
+                            A premium case study overhauling the Nothing OS widget ecosystem and notification panel mechanics. Introducing tactile feedback, micro-interactions, on-device intelligence, and clean retro-inspired information hierarchies.
+                        </p>
+                        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                            <a href="#case-study-details" class="n-btn red">CASE STUDY SLIDES ↓</a>
+                        </div>
+                    </div>
+
+                    <!-- Hero Phone visual mock representation -->
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="nothing_phone_mockup.png" alt="Nothing Phone 3a Mockup" style="max-width: 320px; width: 100%; height: auto; display: block;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Overview Metadata -->
+        <section style="padding: 40px 0;">
+            <div class="container">
+                <div class="card" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; padding: 24px; background-color: var(--bg-white); border: var(--border); box-shadow: var(--shadow-sm); border-radius: 12px; color: var(--neutral-black);">
+                    <div>
+                        <div style="font-family: 'DM Mono', monospace; font-size: 11px; color: var(--primary-red); text-transform: uppercase; margin-bottom: 8px; font-weight: bold;">Role</div>
+                        <div style="font-size: 16px; font-weight: bold;">Lead UI/UX Designer</div>
+                    </div>
+                    <div>
+                        <div style="font-family: 'DM Mono', monospace; font-size: 11px; color: var(--primary-red); text-transform: uppercase; margin-bottom: 8px; font-weight: bold;">Timeline</div>
+                        <div style="font-size: 16px; font-weight: bold;">3 Weeks (Concept Design)</div>
+                    </div>
+                    <div>
+                        <div style="font-family: 'DM Mono', monospace; font-size: 11px; color: var(--primary-red); text-transform: uppercase; margin-bottom: 8px; font-weight: bold;">Deliverables</div>
+                        <div style="font-size: 16px; font-weight: bold;">Interactive Widgets, Flows, Mockups</div>
+                    </div>
+                    <div>
+                        <div style="font-family: 'DM Mono', monospace; font-size: 11px; color: var(--primary-red); text-transform: uppercase; margin-bottom: 8px; font-weight: bold;">Platform</div>
+                        <div style="font-size: 16px; font-weight: bold;">Nothing OS (Android 14)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide Breakdown Chapters -->
+        <section id="case-study-details" style="padding: 60px 0;">
+            <div class="container">
+                <div style="border-bottom: var(--border); padding-bottom: 16px; margin-bottom: 48px;">
+                    <h2 style="font-size: 40px; font-weight: 700; margin: 0; font-family: var(--font-heading);">CASE STUDY SLIDES BREAKDOWN</h2>
+                </div>
+
+                <!-- Slide 1: Pac Man Widget -->
+                <div class="n-card" style="margin-bottom: 48px; border-width: 3px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+                        <div>
+                            <span class="n-tag red" style="margin-bottom: 16px;">SLIDE 01 / PAC-MAN WIDGET</span>
+                            <h3 style="font-size: 32px; margin-bottom: 20px; font-family: var(--font-heading);">Pac Man Widget</h3>
+                            <p style="color: var(--neutral-black); opacity: 0.85; line-height: 1.6; margin-bottom: 20px; font-size: 16px;">
+                                A 2x2 interactive widget that brings the iconic Pac-Man game right to your home screen. Just like the Snake widget, it's a fun, tap-and-play experience that lives inside your layout—perfect for quick breaks, a bit of nostalgia, or just adding a bit of joy to your day, the Nothing way.
+                            </p>
+                            <div style="border-left: 4px solid var(--primary-red); padding-left: 16px; margin-top: 24px;">
+                                <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;">Nothing Brand Philosophy</h4>
+                                <p style="color: var(--neutral-black); opacity: 0.7; font-size: 14px; line-height: 1.5; margin: 0;">
+                                    Integrating classic retro game logic into clean, grid-aligned desktop modules, transforming idle screens into playful micro-experiences.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Pac-Man designs visual directly from Image -->
+                        <div>
+                            <div style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: bold; opacity: 0.6; text-transform: uppercase; margin-bottom: 16px; color: var(--neutral-black);">Design States (From Presentation)</div>
+                            <img src="nothing_pacman_designs.png" alt="Pac-Man Widget Designs" style="width: 100%; height: auto; display: block;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Brightness Slider Redesign -->
+                <div class="n-card" style="margin-bottom: 48px; border-width: 3px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+                        <div>
+                            <span class="n-tag red" style="margin-bottom: 16px;">SLIDE 02 / PANEL OVERHAUL</span>
+                            <h3 style="font-size: 32px; margin-bottom: 20px; font-family: var(--font-heading);">Brightness Slider Redesign</h3>
+                            <p style="color: var(--neutral-black); opacity: 0.85; line-height: 1.6; margin-bottom: 20px; font-size: 16px;">
+                                A sleek, responsive brightness control with smooth transitions and real-time feedback, crafted in Nothing's minimalist style. Previously hidden behind a second swipe, the slider now appears right on the first pull of the notification shade—exactly where users expect it. We've also overhauled the UI for a cleaner, more intuitive experience.
+                            </p>
+                            <div style="border-left: 4px solid var(--primary-red); padding-left: 16px; margin-top: 24px;">
+                                <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;">Key Panel Updates</h4>
+                                <p style="color: var(--neutral-black); opacity: 0.7; font-size: 14px; line-height: 1.5; margin: 0;">
+                                    • Relocated to first shade swipe, eliminating the double swipe friction.<br>
+                                    • Thick, visual slider bar with high-contrast, light/dark responsive indicators.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Brightness Redesign visual directly from Image -->
+                        <div>
+                            <div style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: bold; opacity: 0.6; text-transform: uppercase; margin-bottom: 16px; color: var(--neutral-black);">Notification panel overhaul (From Presentation)</div>
+                            <img src="nothing_brightness_redesign.png" alt="Brightness Slider Redesign Mockup" style="width: 100%; height: auto; display: block;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Brightness Slider Widget -->
+                <div class="n-card" style="margin-bottom: 48px; border-width: 3px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+                        <div>
+                            <span class="n-tag red" style="margin-bottom: 12px;">SLIDE 03 / BRIGHTNESS WIDGETS</span>
+                            <h3 style="font-size: 32px; margin-bottom: 20px; font-family: var(--font-heading);">Brightness Slider Widget</h3>
+                            <p style="color: var(--neutral-black); opacity: 0.85; line-height: 1.6; margin-bottom: 20px; font-size: 16px;">
+                                A compact, always-on widget that displays current brightness levels with dynamic visual cues. It adapts to time of day and ambient conditions, providing at-a-glance awareness of your screen's light output.
+                            </p>
+                            <div style="border-left: 4px solid var(--primary-red); padding-left: 16px; margin-top: 24px;">
+                                <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;">Visual Cues & Adaptability</h4>
+                                <p style="color: var(--neutral-black); opacity: 0.7; font-size: 14px; line-height: 1.5; margin: 0;">
+                                    Integrates a bespoke dot-matrix sun icon that expands or contracts representing system light values, scaling elegantly across both 4x4 square and 2x2 capsules.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- 4x4 and 2x2 mockup layouts directly from Image 1 & 2 -->
+                        <div>
+                            <div style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: bold; opacity: 0.6; text-transform: uppercase; margin-bottom: 16px; color: var(--neutral-black);">Adaptive Widget Formats (Dark vs Light)</div>
+                            <div style="display: flex; flex-direction: column; gap: 20px;">
+                                
+                                <!-- Dark Mode Widgets -->
+                                <div>
+                                    <div style="font-size: 9px; font-family: 'DM Mono', monospace; font-weight: bold; margin-bottom: 8px; color: #555;">DARK MODE FORMATS</div>
+                                    <div style="display: flex; gap: 16px; align-items: center; background: rgba(0,0,0,0.03); border: var(--border); padding: 12px; border-radius: 16px;">
+                                        <!-- 4x4 Square widget mockup -->
+                                        <div id="bright-square-widget" style="width: 80px; height: 80px; border-radius: 16px; background-color: #202020; border: 1px solid #333; display: flex; justify-content: center; align-items: center; color: white; position: relative; overflow: hidden; padding: 0;">
+                                            <div id="bright-square-fill" style="width: 100%; height: 60%; background-color: #121212; position: absolute; bottom: 0; left: 0; transition: height 0.2s;"></div>
+                                            <div id="bright-square-sun" style="z-index: 2; color: white; opacity: 0.95; transition: color 0.2s;">
+                                                <svg width="28" height="28" viewBox="0 0 48 48" fill="currentColor">
+                                                    <circle cx="16" cy="16" r="1.5" /><circle cx="20" cy="16" r="1.5" /><circle cx="24" cy="16" r="1.5" /><circle cx="28" cy="16" r="1.5" /><circle cx="32" cy="16" r="1.5" />
+                                                    <circle cx="16" cy="20" r="1.5" /><circle cx="20" cy="20" r="1.5" /><circle cx="24" cy="20" r="1.5" /><circle cx="28" cy="20" r="1.5" /><circle cx="32" cy="20" r="1.5" />
+                                                    <circle cx="16" cy="24" r="1.5" /><circle cx="20" cy="24" r="1.5" /><circle cx="24" cy="24" r="1.5" /><circle cx="28" cy="24" r="1.5" /><circle cx="32" cy="24" r="1.5" />
+                                                    <circle cx="16" cy="28" r="1.5" /><circle cx="20" cy="28" r="1.5" /><circle cx="24" cy="28" r="1.5" /><circle cx="28" cy="28" r="1.5" /><circle cx="32" cy="28" r="1.5" />
+                                                    <circle cx="16" cy="32" r="1.5" /><circle cx="20" cy="32" r="1.5" /><circle cx="24" cy="32" r="1.5" /><circle cx="28" cy="32" r="1.5" /><circle cx="32" cy="32" r="1.5" />
+                                                    <circle cx="24" cy="8" r="1.5" /><circle cx="24" cy="40" r="1.5" /><circle cx="8" cy="24" r="1.5" /><circle cx="40" cy="24" r="1.5" />
+                                                    <circle cx="12.7" cy="12.7" r="1.5" /><circle cx="35.3" cy="12.7" r="1.5" /><circle cx="12.7" cy="35.3" r="1.5" /><circle cx="35.3" cy="35.3" r="1.5" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <!-- 2x2 pill widget mockup -->
+                                        <div id="bright-pill-widget" style="width: 44px; height: 80px; border-radius: 22px; background-color: #202020; border: 1px solid #333; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 8px; position: relative; overflow: hidden;">
+                                            <div id="bright-pill-fill" style="width: 100%; height: 40%; background-color: #121212; position: absolute; bottom: 0; left: 0; transition: height 0.2s;"></div>
+                                            <div id="bright-pill-sun" style="z-index: 2; color: white; transition: color 0.2s;">
+                                                <svg width="18" height="18" viewBox="0 0 48 48" fill="currentColor">
+                                                    <circle cx="16" cy="16" r="1.5" /><circle cx="20" cy="16" r="1.5" /><circle cx="24" cy="16" r="1.5" /><circle cx="28" cy="16" r="1.5" /><circle cx="32" cy="16" r="1.5" />
+                                                    <circle cx="16" cy="20" r="1.5" /><circle cx="20" cy="20" r="1.5" /><circle cx="24" cy="20" r="1.5" /><circle cx="28" cy="20" r="1.5" /><circle cx="32" cy="20" r="1.5" />
+                                                    <circle cx="16" cy="24" r="1.5" /><circle cx="20" cy="24" r="1.5" /><circle cx="24" cy="24" r="1.5" /><circle cx="28" cy="24" r="1.5" /><circle cx="32" cy="24" r="1.5" />
+                                                    <circle cx="16" cy="28" r="1.5" /><circle cx="20" cy="28" r="1.5" /><circle cx="24" cy="28" r="1.5" /><circle cx="28" cy="28" r="1.5" /><circle cx="32" cy="28" r="1.5" />
+                                                    <circle cx="16" cy="32" r="1.5" /><circle cx="20" cy="32" r="1.5" /><circle cx="24" cy="32" r="1.5" /><circle cx="28" cy="32" r="1.5" /><circle cx="32" cy="32" r="1.5" />
+                                                    <circle cx="24" cy="8" r="1.5" /><circle cx="24" cy="40" r="1.5" /><circle cx="8" cy="24" r="1.5" /><circle cx="40" cy="24" r="1.5" />
+                                                    <circle cx="12.7" cy="12.7" r="1.5" /><circle cx="35.3" cy="12.7" r="1.5" /><circle cx="12.7" cy="35.3" r="1.5" /><circle cx="35.3" cy="35.3" r="1.5" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <span style="font-size: 11px; opacity: 0.6; font-family: 'DM Mono', monospace;">Adaptive mode carbon fill with matrix sun indicators.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4: Battery Mood Tracker -->
+                <div class="n-card" style="margin-bottom: 48px; border-width: 3px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: start;">
+                        <div>
+                            <span class="n-tag red" style="margin-bottom: 12px;">SLIDE 04 / EMOTIVE STATUS</span>
+                            <h3 style="font-size: 32px; margin-bottom: 20px; font-family: var(--font-heading);">Battery Mood Tracker</h3>
+                            <p style="color: var(--neutral-black); opacity: 0.85; line-height: 1.6; margin-bottom: 20px; font-size: 16px;">
+                                The previous widget felt very empty and lacked personality. Our design: more than a battery meter—this widget gives your device a bit of emotion. It tracks power levels and usage patterns, deploying mood-like indicators (happy, tired, charging, etc.) to make battery status more relatable and engaging.
+                            </p>
+                            <div style="border-left: 4px solid var(--primary-red); padding-left: 16px; margin-top: 24px;">
+                                <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;">Original vs Our Design</h4>
+                                <p style="color: var(--neutral-black); opacity: 0.7; font-size: 14px; line-height: 1.5; margin: 0;">
+                                    Replaces a static battery outline with reactive, highly minimal expressions directly responsive to system charging logs and percentage states.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Side by Side Layout directly from Slide 3 -->
+                        <div>
+                            <div style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: bold; opacity: 0.6; text-transform: uppercase; margin-bottom: 16px; color: var(--neutral-black);">Original vs redesigned battery layouts</div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                <!-- Original mockup capsule -->
+                                <div style="background-color: #111111; color: white; border: var(--border); border-radius: 20px; padding: 16px; height: 130px; display: flex; flex-direction: column; justify-content: space-between;">
+                                    <div style="font-family: 'DM Mono', monospace; font-size: 9px; opacity: 0.4;">Original battery widget</div>
+                                    <div style="width: 28px; height: 48px; border-radius: 12px; background: #222; border: 1.5px solid #333; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px;">
+                                        <div style="display: flex; gap: 3px;">
+                                            <div id="bat-dot-1" style="width: 4px; height: 4px; background: white; border-radius: 50%;"></div>
+                                            <div id="bat-dot-2" style="width: 4px; height: 4px; background: white; border-radius: 50%;"></div>
+                                        </div>
+                                        <div style="display: flex; gap: 3px;">
+                                            <div id="bat-dot-3" style="width: 4px; height: 4px; background: white; border-radius: 50%;"></div>
+                                            <div id="bat-dot-4" style="width: 4px; height: 4px; background: white; border-radius: 50%;"></div>
+                                        </div>
+                                    </div>
+                                    <div id="orig-battery-text" style="font-family: 'DM Mono', monospace; font-size: 16px; font-weight: bold; letter-spacing: 1px;">85%</div>
+                                </div>
+                                <!-- Our redesigned mood layout mockup -->
+                                <div id="battery-widget-card" class="widget-mock w-2x2" style="width: 100%; border: var(--border); border-radius: 20px; padding: 16px; height: 130px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; justify-content: center; gap: 12px;">
+                                    <div class="mood-face" style="width: 42px; height: 42px; border-color: white;">
+                                        <div class="mood-eye left" style="width: 5px; height: 5px; top: 12px; left: 10px; background-color: white;"></div>
+                                        <div class="mood-eye right" style="width: 5px; height: 5px; top: 12px; right: 10px; background-color: white;"></div>
+                                        <div class="mood-mouth" style="width: 16px; height: 6px; bottom: 10px; border-bottom: 2px solid white; border-radius: 0 0 8px 8px;"></div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div id="battery-value-label" style="font-family: 'DM Mono', monospace; font-size: 14px; font-weight: bold;">85%</div>
+                                        <span id="battery-state-label" style="font-size: 7px; color: #888; text-transform: uppercase;">HEALTHY CHARGE</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Simple control sliders for visual validation -->
+                            <div style="margin-top: 16px; background-color: rgba(0,0,0,0.02); padding: 12px; border-radius: 12px; border: var(--border);">
+                                <div style="display: flex; justify-content: space-between; font-size: 11px; font-family: 'DM Mono', monospace; margin-bottom: 6px;">
+                                    <span>ADJUST BATTERY CHARGE</span>
+                                    <span id="slider-pct-label" style="font-weight: bold; color: var(--primary-red);">85%</span>
+                                </div>
+                                <input type="range" id="battery-slider" min="5" max="100" value="85" style="width: 100%; cursor: pointer;" oninput="updateBatteryWidget(this.value)">
+                                <button id="charge-toggle-btn" style="margin-top: 10px; width: 100%; font-family: 'DM Mono', monospace; font-size: 10px; padding: 6px; border: var(--border); background: white; border-radius: 6px; cursor: pointer; font-weight: bold;" onclick="toggleChargingState()">⚡ SIMULATE PLUGGING IN</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 5: Zero AI Voice Assistant -->
+                <div class="n-card" style="margin-bottom: 48px; border-width: 3px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: start;">
+                        <div>
+                            <span class="n-tag red" style="margin-bottom: 12px;">SLIDE 05 / ASSISTANT DESIGN</span>
+                            <h3 style="font-size: 32px; margin-bottom: 20px; font-family: var(--font-heading);">Zero AI: Local Assistant</h3>
+                            <p style="color: var(--neutral-black); opacity: 0.85; line-height: 1.6; margin-bottom: 20px; font-size: 16px;">
+                                Nothing's lightweight, on-device AI assistant designed to be your go-to for everyday tasks. Zero AI is built for speed and privacy, helping you get things done, find answers, and personalize your experience effortlessly. With built-in voice accessibility, you can interact naturally and instantly—right from your device, with no cloud dependency.
+                            </p>
+                            <div style="border-left: 4px solid var(--primary-red); padding-left: 16px; margin-top: 24px;">
+                                <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;">Conversational Wireframe flow</h4>
+                                <p style="color: var(--neutral-black); opacity: 0.7; font-size: 14px; line-height: 1.5; margin: 0;">
+                                    Processes voice input locally. Feeds instantly into either minimal Text replies or dynamic voice soundwave synthesis.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- User Flow Wireframe Directly from Slide 4 -->
+                        <div>
+                            <div style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: bold; opacity: 0.6; text-transform: uppercase; margin-bottom: 16px; color: var(--neutral-black);">USER FLOW OF ZERO (From Wireframe Slide)</div>
+                            <div style="background-color: var(--bg-white); border: var(--border); border-radius: 16px; padding: 20px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 16px;">
+                                <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                                    <div style="background-color: #111; color: white; border-radius: 12px; padding: 10px; font-size: 11px; font-family: 'DM Mono', monospace; text-align: center; width: 80px;">
+                                        🎤<br>Query
+                                    </div>
+                                    <div style="font-size: 20px; color: var(--neutral-black);">➔</div>
+                                    <div style="display: flex; flex-direction: column; gap: 8px; flex: 1;">
+                                        <div style="background-color: #111; color: white; border-radius: 12px; padding: 8px 12px; font-size: 10px; font-family: 'DM Mono', monospace; border: 1px solid #333;">
+                                            💬 Text replies
+                                        </div>
+                                        <div style="background-color: #111; color: white; border-radius: 12px; padding: 8px 12px; font-size: 10px; font-family: 'DM Mono', monospace; border: 1px solid #333;">
+                                            🔊 Voice replies
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 9 Core features list directly from Slide 5 -->
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px;">
+                                <div style="background: rgba(0,0,0,0.03); padding: 8px 12px; border-radius: 8px; font-size: 11px;">1. On-Device LLM</div>
+                                <div style="background: rgba(0,0,0,0.03); padding: 8px 12px; border-radius: 8px; font-size: 11px;">2. Privacy-First</div>
+                                <div style="background: rgba(0,0,0,0.03); padding: 8px 12px; border-radius: 8px; font-size: 11px;">3. Ultra-Fast Speed</div>
+                                <div style="background: rgba(0,0,0,0.03); padding: 8px 12px; border-radius: 8px; font-size: 11px;">4. Voice Accessibility</div>
+                                <div style="background: rgba(0,0,0,0.03); padding: 8px 12px; border-radius: 8px; font-size: 11px;">5. Deep Device Integration</div>
+                                <div style="background: rgba(0,0,0,0.03); padding: 8px 12px; border-radius: 8px; font-size: 11px;">6. Offline Capable</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 6: AQI + Weather redesign -->
+                <div class="n-card" style="margin-bottom: 48px; border-width: 3px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+                        <div>
+                            <span class="n-tag red" style="margin-bottom: 12px;">SLIDE 06 / UNIFIED WEATHER</span>
+                            <h3 style="font-size: 32px; margin-bottom: 20px; font-family: var(--font-heading);">AQI + Weather Redesign</h3>
+                            <p style="color: var(--neutral-black); opacity: 0.85; line-height: 1.6; margin-bottom: 20px; font-size: 16px;">
+                                A refined, unified widget that combines local Air Quality Index (AQI) data with real-time weather updates. Clean visuals and color-coded indicators make it easy to stay informed about your environment at a glance. In today's world, where rising pollution and global warming are reshaping our climate, staying aware of air quality isn't just smart—it's essential.
+                            </p>
+                            <div style="border-left: 4px solid var(--primary-red); padding-left: 16px; margin-top: 24px;">
+                                <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;">Aesthetic Focus</h4>
+                                <p style="color: var(--neutral-black); opacity: 0.7; font-size: 14px; line-height: 1.5; margin: 0;">
+                                    Combines temperature forecast nodes with AQI warning rings that shift color to deliver clean, environmental signals at a glance.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Mockup comparing original and redesigned weather widgets directly from Image 4 -->
+                        <div>
+                            <div style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: bold; opacity: 0.6; text-transform: uppercase; margin-bottom: 16px; color: var(--neutral-black);">Unified Widget Mockup</div>
+                            <div style="display: flex; flex-direction: column; gap: 16px;">
+                                <!-- Original simple weather card -->
+                                <div style="background-color: var(--bg-white); border: var(--border); border-radius: 12px; padding: 12px; display: flex; align-items: center; justify-content: space-between; opacity: 0.6;">
+                                    <div>
+                                        <div style="font-size: 10px; font-weight: bold; color: var(--primary-red); font-family: 'DM Mono', monospace;">ORIGINAL WIDGET</div>
+                                        <span style="font-size: 12px;">Only weather metrics, zero smog or particulate information.</span>
+                                    </div>
+                                    <div style="font-size: 20px;">🌦️</div>
+                                </div>
+                                <!-- Our redesigned integrated weather + AQI card -->
+                                <div class="widget-mock w-4x2" style="width: 100%; border: var(--border); padding: 16px; background-color: #111111; color: white;">
+                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; height: 100%;">
+                                        <div>
+                                            <div style="font-family: var(--font-heading); font-size: 36px; font-weight: bold; line-height: 1;">30°</div>
+                                            <div style="font-size: 12px; font-weight: bold; margin-top: 4px;">AHMEDABAD</div>
+                                            <div style="font-size: 10px; opacity: 0.6;">CLOUDY</div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-family: 'DM Mono', monospace; font-size: 11px; background-color: rgba(255, 95, 95, 0.2); border: 1.5px solid var(--nothing-red); color: var(--nothing-red); padding: 2px 8px; border-radius: 12px; display: inline-block;">AQI 61</div>
+                                            <div style="font-size: 9px; opacity: 0.6; margin-top: 6px;">MODERATE SMOG</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 7: Widget Stacking -->
+                <div class="n-card" style="margin-bottom: 48px; border-width: 3px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+                        <div>
+                            <span class="n-tag red" style="margin-bottom: 12px;">SLIDE 07 / DESKTOP OPTIMIZATION</span>
+                            <h3 style="font-size: 32px; margin-bottom: 20px; font-family: var(--font-heading);">Widget Stacking</h3>
+                            <p style="color: var(--neutral-black); opacity: 0.85; line-height: 1.6; margin-bottom: 20px; font-size: 16px;">
+                                Maximize space, not clutter. This feature allows you to stack multiple widgets in a single space and swipe through them seamlessly—making your home screen more powerful, organized, and responsive to your day.
+                            </p>
+                            <div style="border-left: 4px solid var(--primary-red); padding-left: 16px; margin-top: 24px;">
+                                <h4 style="font-size: 16px; font-weight: bold; margin-bottom: 8px;">Stack Interaction</h4>
+                                <p style="color: var(--neutral-black); opacity: 0.7; font-size: 14px; line-height: 1.5; margin: 0;">
+                                    Swipe vertically up or down directly through the stacked widget card slot. Clean page dots at the right panel indicate active layers.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Stack representation directly from Image 5 -->
+                        <div>
+                            <div style="font-family: 'DM Mono', monospace; font-size: 10px; font-weight: bold; opacity: 0.6; text-transform: uppercase; margin-bottom: 16px; color: var(--neutral-black);">Widget stack layout (From wireframe)</div>
+                            <div style="background-color: var(--bg-white); border: var(--border); border-radius: 16px; padding: 24px; box-shadow: var(--shadow-sm); display: flex; justify-content: center; align-items: center;">
+                                <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 220px; position: relative;">
+                                    <!-- Overlapping stacked sheets representation using CSS shadows -->
+                                    <div style="background-color: #222; border: var(--border); border-radius: 16px; height: 110px; position: relative; z-index: 3; color: white; padding: 12px; display: flex; flex-direction: column; justify-content: space-between;">
+                                        <div style="font-family: 'DM Mono', monospace; font-size: 8px; color: var(--nothing-red);">LAYER 1 / WEATHER</div>
+                                        <div style="font-size: 18px; font-weight: bold; margin-top: 8px;">30°C • Ahmedabad</div>
+                                    </div>
+                                    <div style="background-color: #1a1a1a; border: var(--border); border-radius: 16px; height: 110px; position: absolute; top: 8px; left: 8px; width: 100%; z-index: 2; opacity: 0.75;"></div>
+                                    <div style="background-color: #111111; border: var(--border); border-radius: 16px; height: 110px; position: absolute; top: 16px; left: 16px; width: 100%; z-index: 1; opacity: 0.5;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Project Reflections -->
+        <section style="padding: 80px 0; border-top: var(--border); border-bottom: var(--border); background-color: var(--bg-white);">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h3 style="font-size: 32px; margin-bottom: 24px; font-family: var(--font-heading);">Key Case Study Reflections</h3>
+                    <p style="color: var(--neutral-black); opacity: 0.85; line-height: 1.7; font-size: 16px; margin-bottom: 32px;">
+                        Overhauling a high-concept UI style such as Nothing OS requires balancing tactile personality and minimal constraints. Replacing empty, sterile slots with responsive widgets (like Pac-Man game flows, custom adaptive brightness nodes, and battery tracker battery state expressions) adds real delight to the operating system's interface while fully adhering to their core branding.
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                        <div style="background-color: var(--bg-main); border: var(--border); padding: 24px; border-radius: 12px; box-shadow: var(--shadow-sm); color: var(--neutral-black);">
+                            <h4 style="font-size: 18px; margin-bottom: 12px; color: var(--neutral-black); font-weight: bold;">1. Minimalist Constraints</h4>
+                            <p style="color: var(--neutral-black); opacity: 0.8; font-size: 14px; line-height: 1.5; margin: 0;">
+                                Curated accent layouts and crisp, dot-matrix typefaces guarantee that mobile dashboards load clean, responsive metrics under any light conditions.
+                            </p>
+                        </div>
+                        <div style="background-color: var(--bg-main); border: var(--border); padding: 24px; border-radius: 12px; box-shadow: var(--shadow-sm); color: var(--neutral-black);">
+                            <h4 style="font-size: 18px; margin-bottom: 12px; color: var(--neutral-black); font-weight: bold;">2. Direct Presentation Reference</h4>
+                            <p style="color: var(--neutral-black); opacity: 0.8; font-size: 14px; line-height: 1.5; margin: 0;">
+                                Re-creating the actual presentation frames (Blinky ghosts, sun indices, user flow query charts) delivers a highly authentic design case study.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="logo-footer" style="font-family: var(--font-heading); font-size: 16px;">MOHAMMED.HAFIZ</div>
+            <div>© 2024 MOHAMMED HAFIZ. STAY BRUTAL.</div>
+            <div class="footer-social">
+                <a href="#">TWITTER</a>
+                <a href="#">LINKEDIN</a>
+                <a href="#">GITHUB</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+    <!-- Interactive script functionalities -->
+    <script>
+        // --- 1. Playable Pac-man widget script logic ---
+        let pacPoints = 0;
+        let pacHeroPos = 20;
+        let pacGhostPos = 20;
+
+        function changePacState(state) {
+            document.getElementById('pac-state-start').style.display = 'none';
+            document.getElementById('pac-state-game').style.display = 'none';
+            document.getElementById('pac-state-win').style.display = 'none';
+            document.getElementById('pac-state-loss').style.display = 'none';
+
+            if (state === 'start') {
+                pacPoints = 0;
+                pacHeroPos = 20;
+                pacGhostPos = 20;
+                document.getElementById('pac-points').innerText = pacPoints;
+                document.getElementById('pac-state-start').style.display = 'flex';
+            } else if (state === 'game') {
+                document.getElementById('pac-state-game').style.display = 'flex';
+                updatePacPositions();
+            } else if (state === 'win') {
+                document.getElementById('pac-state-win').style.display = 'flex';
+            } else if (state === 'loss') {
+                document.getElementById('pac-state-loss').style.display = 'flex';
+            }
+        }
+
+        function updatePacPositions() {
+            document.getElementById('pac-hero').style.right = pacHeroPos + 'px';
+            document.getElementById('pac-ghost').style.left = pacGhostPos + 'px';
+        }
+
+        function movePacLeft() {
+            pacHeroPos += 15;
+            pacGhostPos += 10;
+            pacPoints += 10;
+            document.getElementById('pac-points').innerText = pacPoints;
+            updatePacPositions();
+            checkPacCollision();
+        }
+
+        function movePacRight() {
+            pacHeroPos -= 15;
+            pacGhostPos += 8;
+            pacPoints += 10;
+            document.getElementById('pac-points').innerText = pacPoints;
+            updatePacPositions();
+            checkPacCollision();
+        }
+
+        // --- 2. Interactive Battery Mood tracker logic ---
+        let isCharging = false;
+
+        function updateBatteryWidget(val) {
+            // Update labels
+            document.getElementById('battery-value-label').innerText = val + '%';
+            document.getElementById('slider-pct-label').innerText = val + '%';
+            document.getElementById('orig-battery-text').innerText = val + '%';
+
+            let card = document.getElementById('battery-widget-card');
+            let stateLabel = document.getElementById('battery-state-label');
+
+            // Reset states
+            card.className = "widget-mock w-2x2";
+            
+            // Update Original Battery Widget capsule dots
+            let dot1 = document.getElementById('bat-dot-1');
+            let dot2 = document.getElementById('bat-dot-2');
+            let dot3 = document.getElementById('bat-dot-3');
+            let dot4 = document.getElementById('bat-dot-4');
+
+            if (val > 75) {
+                dot1.style.opacity = "1"; dot2.style.opacity = "1"; dot3.style.opacity = "1"; dot4.style.opacity = "1";
+            } else if (val > 50) {
+                dot1.style.opacity = "1"; dot2.style.opacity = "1"; dot3.style.opacity = "1"; dot4.style.opacity = "0.2";
+            } else if (val > 25) {
+                dot1.style.opacity = "1"; dot2.style.opacity = "1"; dot3.style.opacity = "0.2"; dot4.style.opacity = "0.2";
+            } else {
+                dot1.style.opacity = "1"; dot2.style.opacity = "0.2"; dot3.style.opacity = "0.2"; dot4.style.opacity = "0.2";
+            }
+
+            if (isCharging) {
+                card.classList.add('battery-charging');
+                stateLabel.innerText = "CHARGING SYSTEM";
+                stateLabel.style.color = "#99f6b8";
+                // Flash dots on charging
+                dot1.style.opacity = "1"; dot2.style.opacity = "1"; dot3.style.opacity = "1"; dot4.style.opacity = "1";
+            } else if (val > 70) {
+                stateLabel.innerText = "HEALTHY CHARGE";
+                stateLabel.style.color = "#888";
+            } else if (val >= 30) {
+                stateLabel.innerText = "MODERATE ENERGY";
+                stateLabel.style.color = "#888";
+            } else {
+                card.classList.add('battery-tired');
+                stateLabel.innerText = "BATTERY LOW";
+                stateLabel.style.color = "#ff5f5f";
+            }
+        }
+
+        function toggleChargingState() {
+            isCharging = !isCharging;
+            let btn = document.getElementById('charge-toggle-btn');
+            if (isCharging) {
+                btn.innerText = "⚡ UNPLUG DEVICE";
+                btn.style.backgroundColor = "rgba(153, 246, 184, 0.1)";
+                btn.style.borderColor = "#99f6b8";
+                btn.style.color = "#99f6b8";
+            } else {
+                btn.innerText = "⚡ SIMULATE PLUGGING IN";
+                btn.style.backgroundColor = "var(--bg-white)";
+                btn.style.borderColor = "var(--neutral-black)";
+                btn.style.color = "var(--neutral-black)";
+            }
+            let sliderVal = document.getElementById('battery-slider').value;
+            updateBatteryWidget(sliderVal);
+        }
+
+        // Initialize state
+        updateBatteryWidget(85);
+
+        // --- 3. Interactive Brightness control logic ---
+        let isWidgetLightTheme = false;
+
+        function clickBrightnessSlider(e) {
+            let rect = e.currentTarget.getBoundingClientRect();
+            let x = e.clientX - rect.left;
+            let pct = Math.round((x / rect.width) * 100);
+            pct = Math.max(5, Math.min(100, pct)); // clamp
+
+            // Update fill width
+            document.getElementById('brightness-fill').style.width = pct + '%';
+            // Update labels
+            document.getElementById('brightness-text-val').innerText = pct + '%';
+            document.getElementById('screen-brightness-val').innerText = pct + '%';
+
+            // Update our square and capsule pill widget fills
+            document.getElementById('bright-square-fill').style.height = pct + '%';
+            document.getElementById('bright-pill-fill').style.height = pct + '%';
+        }
+
+        function toggleWidgetThemeMode() {
+            isWidgetLightTheme = !isWidgetLightTheme;
+            
+            let btn = document.getElementById('widget-mode-toggle-btn');
+            let square = document.getElementById('bright-square-widget');
+            let squareFill = document.getElementById('bright-square-fill');
+            let pill = document.getElementById('bright-pill-widget');
+            let pillFill = document.getElementById('bright-pill-fill');
+            let squareSun = document.getElementById('bright-square-sun');
+            let pillSun = document.getElementById('bright-pill-sun');
+
+            if (isWidgetLightTheme) {
+                btn.innerText = "SELECT: DARK MODE";
+                
+                // Light mode widget styling
+                square.style.backgroundColor = "#e0e0e0";
+                squareFill.style.backgroundColor = "#ffffff";
+                pill.style.backgroundColor = "#e0e0e0";
+                pillFill.style.backgroundColor = "#ffffff";
+                
+                squareSun.style.color = "#111111";
+                pillSun.style.color = "#111111";
+            } else {
+                btn.innerText = "SELECT: LIGHT MODE";
+                
+                // Dark mode widget styling
+                square.style.backgroundColor = "#202020";
+                squareFill.style.backgroundColor = "#121212";
+                pill.style.backgroundColor = "#202020";
+                pillFill.style.backgroundColor = "#121212";
+                
+                squareSun.style.color = "#ffffff";
+                pillSun.style.color = "#ffffff";
+            }
+        }
+    </script>
