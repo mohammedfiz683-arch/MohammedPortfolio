@@ -41,47 +41,87 @@
           </div>
 
           <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 40px; width: 100%">
-            <video
-              autoplay
-              loop
-              muted
-              playsinline
-              class="project-hero-img"
+            <div
+              id="mazebot-embed"
               style="
+                position: relative;
                 width: 100%;
-                max-width: 600px;
-                height: auto;
+                max-width: 700px;
+                aspect-ratio: 700 / 750;
                 background-color: var(--neutral-black);
                 border: 3px solid var(--neutral-black);
-                margin-bottom: 32px;
-                display: block;
+                margin-bottom: 16px;
+                overflow: hidden;
               "
             >
-              <source src="mazebot-gameplay.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+              <iframe
+                src="https://editor.p5js.org/mohammedsheikh/full/giIvj2hw2"
+                title="MazeBot playable prototype"
+                style="width: 700px; height: 750px; border: 0; position: absolute; top: 0; left: 0; transform-origin: top left"
+                loading="lazy"
+                allow="fullscreen"
+              ></iframe>
+            </div>
+            <script>
+              (function () {
+                var wrap = document.getElementById("mazebot-embed");
+                var frame = wrap.querySelector("iframe");
+                var baseSrc = frame.src;
+                function scaleEmbed() {
+                  frame.style.transform = "scale(" + wrap.clientWidth / 700 + ")";
+                }
+                scaleEmbed();
+                window.addEventListener("resize", scaleEmbed);
+                window.restartMazebot = function () {
+                  frame.src = baseSrc + (baseSrc.includes("?") ? "&" : "?") + "t=" + Date.now();
+                };
+              })();
+            </script>
 
-            <a
-              href="https://editor.p5js.org/mohammedsheikh/full/giIvj2hw2"
-              target="_blank"
-              style="
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                background-color: var(--primary-red);
-                color: white;
-                padding: 16px 32px;
-                font-family: var(--font-heading);
-                font-size: 18px;
-                font-weight: 700;
-                text-decoration: none;
-                border: 3px solid var(--neutral-black);
-                text-transform: uppercase;
-                transition: transform 0.1s ease-in-out;
-              "
-            >
-              PLAY THE PROTOTYPE FULLSCREEN
-            </a>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center">
+              <button
+                onclick="restartMazebot()"
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  background-color: var(--neutral-black);
+                  color: white;
+                  padding: 16px 32px;
+                  font-family: var(--font-heading);
+                  font-size: 18px;
+                  font-weight: 700;
+                  border: 3px solid var(--neutral-black);
+                  text-transform: uppercase;
+                  cursor: pointer;
+                  transition: transform 0.1s ease-in-out;
+                "
+              >
+                RESTART GAME
+              </button>
+
+              <a
+                href="https://editor.p5js.org/mohammedsheikh/full/giIvj2hw2"
+                target="_blank"
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  background-color: var(--primary-red);
+                  color: white;
+                  padding: 16px 32px;
+                  font-family: var(--font-heading);
+                  font-size: 18px;
+                  font-weight: 700;
+                  text-decoration: none;
+                  border: 3px solid var(--neutral-black);
+                  text-transform: uppercase;
+                  transition: transform 0.1s ease-in-out;
+                "
+              >
+                OPEN FULLSCREEN
+              </a>
+            </div>
           </div>
 
           <div class="card" style="margin-bottom: 40px; padding: 32px; background-color: var(--bg-white)">
