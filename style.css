@@ -70,8 +70,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 { font-size: 48px; line-height: 1.1; margin-bottom: 24px; }
-h2 { font-size: 32px; line-height: 1.2; margin-bottom: 16px; }
-h3 { font-size: 24px; line-height: 1.3; margin-bottom: 12px; }
+h2 { font-size: 28px; line-height: 1.2; margin-bottom: 16px; }
+h3 { font-size: 22px; line-height: 1.3; margin-bottom: 12px; }
 p { margin-bottom: 16px; }
 
 /* ── Case Study — Shared Type Scale ───────────────────────────────────────
@@ -80,15 +80,15 @@ p { margin-bottom: 16px; }
    ─────────────────────────────────────────────────────────────────────── */
 .case-study h1 { font-size: 48px; line-height: 1.1; margin-bottom: 16px; font-family: var(--font-heading); }
 .case-study h2 { font-size: 28px; line-height: 1.2; margin-bottom: 16px; font-family: var(--font-heading); border-bottom: var(--border); padding-bottom: 14px; }
-.case-study h3 { font-size: 20px; line-height: 1.3; margin-bottom: 12px; font-family: var(--font-heading); }
+.case-study h3 { font-size: 22px; line-height: 1.3; margin-bottom: 12px; font-family: var(--font-heading); }
 .case-study h4 { font-size: 16px; line-height: 1.4; margin-bottom: 8px;  font-family: var(--font-heading); font-weight: 700; }
-.case-study p  { font-size: 15px; line-height: 1.7; margin-bottom: 16px; font-family: var(--font-body); }
-.case-study li { font-size: 15px; line-height: 1.7; font-family: var(--font-body); }
+.case-study p  { font-size: 16px; line-height: 1.7; margin-bottom: 16px; font-family: var(--font-body); }
+.case-study li { font-size: 16px; line-height: 1.7; font-family: var(--font-body); }
 
 /* Section label — small all-caps eyebrow above a section heading */
 .case-study .cs-label {
     font-family: var(--font-body);
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -99,7 +99,7 @@ p { margin-bottom: 16px; }
 
 /* Shared card body text inside case studies */
 .case-study .card p,
-.case-study .section-card p { font-size: 15px; line-height: 1.7; }
+.case-study .section-card p { font-size: 16px; line-height: 1.7; }
 
 /* Circular icon badge (?, !, a number…) used in callout-card headers — was
    ~10 lines of identical inline style copy-pasted at every occurrence.
@@ -174,7 +174,7 @@ p { margin-bottom: 16px; }
 
 .case-study .persona-header h3 {
     margin: 0 0 2px;
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .case-study .persona-meta {
@@ -185,7 +185,7 @@ p { margin-bottom: 16px; }
 
 .case-study .persona-quote {
     font-family: var(--font-heading);
-    font-size: 15px;
+    font-size: 16px;
     font-style: italic;
     line-height: 1.5;
     padding: 12px 14px;
@@ -195,7 +195,7 @@ p { margin-bottom: 16px; }
 }
 
 .case-study .persona-section h4 {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -209,7 +209,7 @@ p { margin-bottom: 16px; }
 }
 
 .case-study .persona-section li {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.6;
 }
 
@@ -220,7 +220,7 @@ p { margin-bottom: 16px; }
 }
 
 .case-study .persona-traits span {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -400,7 +400,7 @@ section {
 .bento-pill {
     padding: 4px 10px;
     border: 2px solid var(--neutral-black);
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 800;
     text-transform: uppercase;
     border-radius: 20px;
@@ -475,7 +475,7 @@ section {
 
 .logo {
     font-family: var(--font-heading);
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
     text-transform: uppercase;
     border: var(--border);
@@ -525,6 +525,92 @@ section {
     transform: scale(0.96);
 }
 
+.focus-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    border: 2px solid var(--neutral-black);
+    background-color: var(--bg-white);
+    color: var(--primary-red);
+    display: grid;
+    place-items: center;
+    margin-bottom: 16px;
+}
+
+.focus-icon svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.nav-burger {
+    display: none;
+}
+
+.nav-hire-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-wrap: wrap;
+    }
+
+    .btn-hire {
+        display: none;
+    }
+
+    .nav-hire-mobile {
+        display: block;
+        color: var(--primary-red);
+    }
+
+    .nav-burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 32px;
+        height: 32px;
+        padding: 6px;
+        border: var(--border);
+        background-color: var(--bg-white);
+        cursor: pointer;
+    }
+
+    .nav-burger span {
+        display: block;
+        height: 2px;
+        background-color: var(--neutral-black);
+    }
+
+    .nav-links {
+        display: none;
+        order: 4;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 16px;
+    }
+
+    .nav-links a {
+        padding: 14px 8px;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .nav-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+}
+
 /* Footer */
 footer {
     border-top: var(--border);
@@ -570,7 +656,7 @@ footer .container {
     display: inline-block;
     border: var(--border);
     padding: 4px 8px;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 16px;
@@ -614,7 +700,7 @@ footer .container {
 
 label {
     display: block;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 8px;
@@ -784,7 +870,7 @@ input:focus, textarea:focus {
     gap: 6px;
     white-space: nowrap;
     font-family: var(--font-heading);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     padding: 5px 10px;
     border: 1px solid var(--line);
@@ -793,7 +879,7 @@ input:focus, textarea:focus {
 }
 
 .exp-date-dur {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -833,7 +919,7 @@ input:focus, textarea:focus {
     display: grid;
     place-items: center;
     font-family: var(--font-heading);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     color: white;
     background-color: var(--badge, var(--neutral-black));
@@ -841,11 +927,11 @@ input:focus, textarea:focus {
 
 .exp-role h3 {
     margin: 0 0 2px;
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .exp-role .exp-title {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     opacity: 0.55;
@@ -978,7 +1064,7 @@ input:focus, textarea:focus {
 
 .grid-card-content h3 {
     margin-bottom: 4px;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .grid-card-content p {
@@ -1034,13 +1120,13 @@ input:focus, textarea:focus {
 
 .process-step .num {
     display: block;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--primary-red);
 }
 
 .process-step .label {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
 }
@@ -1084,6 +1170,13 @@ input:focus, textarea:focus {
 
     .process-steps {
         grid-template-columns: 1fr 1fr;
+    }
+
+    footer .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        text-align: center;
     }
 }
 

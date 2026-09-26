@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -41,7 +41,7 @@
         display: flex;
         align-items: center;
         gap: 20px;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.14em;
@@ -106,7 +106,7 @@
 
       .section-head .eyebrow {
         display: block;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 800;
         letter-spacing: 0.14em;
         text-transform: uppercase;
@@ -210,13 +210,13 @@
 
       .skill-logo.mono {
         font-family: var(--font-heading);
-        font-size: 17px;
+        font-size: 16px;
         font-weight: 700;
         color: #ffffff;
       }
 
       .skill-name {
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 0.08em;
@@ -234,6 +234,37 @@
           padding-left: 12px;
         }
       }
+
+      /* Below phone width there just aren't enough pixels for the Game-of-Life
+         grid to read as clean letterforms (a glyph is only a handful of cells
+         tall) — tuning sampling/weight further can't fix a hard resolution
+         ceiling, so swap in real crisp text instead of the canvas effect. */
+      @media (max-width: 560px) {
+        #hero-canvas,
+        .lab-hint {
+          display: none;
+        }
+        .lab-hero {
+          min-height: auto;
+          padding: 56px 24px;
+        }
+        .sr-only {
+          position: static;
+          width: auto;
+          height: auto;
+          margin: 0;
+          padding: 0;
+          overflow: visible;
+          clip: auto;
+          white-space: normal;
+          border: 0;
+          font-family: var(--font-heading);
+          font-size: clamp(26px, 7vw, 36px);
+          line-height: 1.3;
+          text-align: center;
+          max-width: 480px;
+        }
+      }
     </style>
   </head>
 
@@ -241,11 +272,14 @@
     <header class="navbar">
       <div class="container">
         <a href="index.html" class="logo">MOHAMMED.HAFIZ</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
         <nav class="nav-links">
           <a href="index.html" class="active">HOME</a>
           <a href="work.html">WORK</a>
           <a href="about.html">ABOUT</a>
           <a href="contact.html">CONTACT</a>
+          <a href="contact.html" class="nav-hire-mobile">HIRE ME</a>
         </nav>
         <a href="contact.html" class="btn-hire">HIRE ME</a>
       </div>
@@ -570,11 +604,11 @@
     <footer>
       <div class="container">
         <div class="logo-footer" style="font-family: var(--font-heading); font-size: 16px">MOHAMMED.HAFIZ</div>
-        <div>© 2024 MOHAMMED HAFIZ. STAY BRUTAL.</div>
+        <div>© 2026 MOHAMMED HAFIZ. STAY CURIOUS.</div>
         <div class="footer-social">
-          <a href="#">TWITTER</a>
-          <a href="#">LINKEDIN</a>
-          <a href="#">GITHUB</a>
+          <a href="https://www.linkedin.com/in/mohammed-sheikh-hafiz-5246a3340/" target="_blank" rel="noopener">LINKEDIN</a>
+          <a href="https://www.behance.net/mohammedsheikh11" target="_blank" rel="noopener">BEHANCE</a>
+          <a href="https://github.com/mohammedfiz683-arch" target="_blank" rel="noopener">GITHUB</a>
         </div>
       </div>
     </footer>
@@ -583,16 +617,25 @@
       (() => {
         const TEXT = "I design games, systems, and interactive experiences that explore logic, behavior, and play.";
 
-        const CELL = 7;
+        // Cell size and brush radius scale with viewport width (see resize()) so the
+        // grid stays roughly the same cells-per-letter resolution at any screen size.
+        // Fine enough (~26 cells tall at max font size) to read as clean type, while
+        // still visibly a grid up close and during the Game-of-Life erosion.
+        let CELL = 4;
+        let BRUSH = 5; // erosion radius, in cells — recomputed in resize()
         const LETTER_INSET = 0; // 0 = letter cells butt together into solid strokes
         const FREE_INSET = 1; // freed cells keep a gap so debris reads as particles
         const INK_THRESHOLD = 60; // alpha a cell needs to count as part of a glyph
+        const SAMPLE_FRACS = [0.2, 0.5, 0.8]; // 3x3 supersample grid, as fractions of a cell
         const LIFE_MS = 110; // one Conway generation
         const REGROW_MS = 2000; // how long an eroded letter cell stays gone
         const FADE_MS = 320; // letter fade-back-in tail
         const MAX_AGE = 70; // ticks a freed cell survives before ageing out
         const FADE_TICKS = 14; // fade-out tail on a dying freed cell
-        const BRUSH = 3; // erosion radius, in cells
+
+        function fontSizeForWidth(w) {
+          return Math.max(26, Math.min(104, Math.round(w / 12)));
+        }
 
         const canvas = document.getElementById("hero-canvas");
         const ctx = canvas.getContext("2d");
@@ -634,12 +677,17 @@
           off.height = Math.max(1, Math.round(H));
 
           const maxWidth = W * 0.88;
-          let size = Math.max(26, Math.min(104, Math.round(W / 12)));
+          let size = fontSizeForWidth(W);
           let lines, lineHeight;
 
           // Shrink until the block fits the band — short/wide viewports overflow otherwise.
           for (;;) {
-            octx.font = `700 ${size}px 'Space Grotesk', sans-serif`;
+            // Bold strokes at a handful of pixels tall swallow the counters in letters
+            // like a/e/g/s, reading as mushy blobs — dropping weight as size drops
+            // keeps the same pixel budget legible instead of fighting it with more
+            // resolution. Phone-width text (~26-33px here) gets the lightest weight.
+            const weight = size < 40 ? 500 : size < 60 ? 600 : 700;
+            octx.font = `${weight} ${size}px 'Space Grotesk', sans-serif`;
             lines = wrap(TEXT, maxWidth);
             lineHeight = size * 1.12;
             if (lines.length * lineHeight <= H * 0.78 || size <= 22) break;
@@ -655,15 +703,21 @@
 
           const data = octx.getImageData(0, 0, off.width, off.height).data;
           mask = new Uint8Array(cols * rows);
+          // Fixed 3x3 sample grid per cell (fractional, not pixel-stepped) — at small
+          // CELL a pixel-stepped scan can shrink to zero or one sample and misreads
+          // anti-aliased glyph edges as noise. Sampling by fraction-of-cell instead
+          // keeps the same supersampling density at any CELL size.
           for (let y = 0; y < rows; y++) {
             for (let x = 0; x < cols; x++) {
               let sum = 0,
                 count = 0;
-              const x0 = Math.floor(ox + x * CELL),
-                y0 = Math.floor(oy + y * CELL);
-              for (let py = y0 + 1; py < y0 + CELL - 1; py += 2) {
+              const x0 = ox + x * CELL,
+                y0 = oy + y * CELL;
+              for (const fy of SAMPLE_FRACS) {
+                const py = Math.floor(y0 + fy * CELL);
                 if (py < 0 || py >= off.height) continue;
-                for (let px = x0 + 1; px < x0 + CELL - 1; px += 2) {
+                for (const fx of SAMPLE_FRACS) {
+                  const px = Math.floor(x0 + fx * CELL);
                   if (px < 0 || px >= off.width) continue;
                   sum += data[(py * off.width + px) * 4 + 3];
                   count++;
@@ -788,6 +842,12 @@
           ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
           W = rect.width;
           H = rect.height;
+
+          // 3 is a hard floor, not just a size preference — the glyph-sampling loop
+          // below needs at least one point inside each cell, which requires CELL >= 3.
+          CELL = Math.max(3, Math.round(fontSizeForWidth(W) / 26));
+          BRUSH = Math.max(2, Math.round(21 / CELL)); // keep drag/touch erosion radius ~constant in px
+
           cols = Math.max(4, Math.floor(W / CELL));
           rows = Math.max(4, Math.floor(H / CELL));
           // Integer offsets — fractional ones antialias seams between touching letter cells.
@@ -840,6 +900,7 @@
         // Glyph sampling is font-dependent — wait for Space Grotesk or the mask is built
         // from the fallback face and the letterforms come out wrong.
         const start = () => {
+          if (matchMedia("(max-width: 560px)").matches) return; // hidden by CSS — see stylesheet note
           resize();
           requestAnimationFrame(frame);
         };

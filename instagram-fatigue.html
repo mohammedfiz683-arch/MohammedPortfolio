@@ -44,7 +44,7 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        font-size: 13px;
+        font-size: 14px;
         color: var(--neutral-black);
         text-decoration: none;
         opacity: 0.75;
@@ -74,11 +74,14 @@
     <header class="navbar">
       <div class="container">
         <a href="index.html" class="logo">MOHAMMED.HAFIZ</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
         <nav class="nav-links">
           <a href="index.html">HOME</a>
           <a href="work.html" class="active">WORK</a>
           <a href="about.html">ABOUT</a>
           <a href="contact.html">CONTACT</a>
+          <a href="contact.html" class="nav-hire-mobile">HIRE ME</a>
         </nav>
         <a href="contact.html" class="btn-hire">HIRE ME</a>
       </div>
@@ -92,7 +95,7 @@
           <!-- HERO -->
           <div class="grid-2" style="align-items: center; margin-bottom: 40px">
             <div>
-              <h1 style="font-size: 44px; margin-bottom: 16px">Digital Fatigue via Instagram.</h1>
+              <h1 style="font-size: 48px; margin-bottom: 16px">Digital Fatigue via Instagram.</h1>
               <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px">
                 <span class="tag white" style="margin: 0">RESEARCH</span>
                 <span class="tag green" style="margin: 0">UX RESEARCH</span>
@@ -118,12 +121,12 @@
               PROJECT DETAILS
             </h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
-              <p style="font-size: 15px; margin: 0"><strong>Type:</strong> UX Research</p>
-              <p style="font-size: 15px; margin: 0"><strong>Role:</strong> <em>To confirm</em></p>
-              <p style="font-size: 15px; margin: 0"><strong>Team:</strong> <em>To confirm</em></p>
-              <p style="font-size: 15px; margin: 0"><strong>Duration:</strong> <em>To confirm</em></p>
-              <p style="font-size: 15px; margin: 0"><strong>Context:</strong> <em>To confirm</em></p>
-              <p style="font-size: 15px; margin: 0"><strong>Tools:</strong> FigJam, Google Forms, Instagram Story Polls</p>
+              <p style="font-size: 16px; margin: 0"><strong>Type:</strong> UX Research</p>
+              <p style="font-size: 16px; margin: 0"><strong>Role:</strong> <em>To confirm</em></p>
+              <p style="font-size: 16px; margin: 0"><strong>Team:</strong> <em>To confirm</em></p>
+              <p style="font-size: 16px; margin: 0"><strong>Duration:</strong> <em>To confirm</em></p>
+              <p style="font-size: 16px; margin: 0"><strong>Context:</strong> <em>To confirm</em></p>
+              <p style="font-size: 16px; margin: 0"><strong>Tools:</strong> FigJam, Google Forms, Instagram Story Polls</p>
             </div>
           </div>
 
@@ -147,15 +150,15 @@
 
           <!-- Problem / Proposed Direction -->
           <div class="grid-2" style="margin-bottom: 40px">
-            <div class="card bg-red" style="color: white">
-              <h3 class="card-title" style="border-color: white">PROBLEM STATEMENT</h3>
+            <div class="card bg-white">
+              <h3 class="card-title">PROBLEM STATEMENT</h3>
               <p style="font-size: 14px; line-height: 1.6; margin: 0">
                 Young adults aged 18–24 are aware that their doomscrolling habits on Instagram are compulsive and mentally draining, yet they struggle to stop.
                 High-dopamine, low-value content keeps them engaged even as it leaves them guilty and fatigued. They need a constructive substitute that offers
                 the same sense of escape and stimulation, but through purposeful content.
               </p>
             </div>
-            <div class="card bg-green">
+            <div class="card bg-white">
               <h3 class="card-title">PROPOSED DIRECTION</h3>
               <p style="font-size: 14px; line-height: 1.6; margin: 0">
                 A "Focus Feed" mode inside Instagram. When the app detects restless usage, it prompts: "Feeling restless? Try Focus Mode." Users enter a
@@ -194,7 +197,7 @@
             <div class="card bg-white">
               <h4 style="margin-bottom: 4px">Physical Interviews</h4>
               <p style="font-family: var(--font-heading); font-size: 22px; font-weight: 700; color: var(--primary-red); margin-bottom: 8px">15 participants</p>
-              <p style="font-size: 13px; line-height: 1.6; margin: 0; opacity: 0.8">
+              <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.8">
                 Semi-structured in-person interviews using a custom questionnaire, covering Instagram habits, emotional responses, and experiences of digital
                 fatigue.
               </p>
@@ -202,7 +205,7 @@
             <div class="card bg-white">
               <h4 style="margin-bottom: 4px">Online Surveys</h4>
               <p style="font-family: var(--font-heading); font-size: 22px; font-weight: 700; color: var(--primary-red); margin-bottom: 8px">35 responses</p>
-              <p style="font-size: 13px; line-height: 1.6; margin: 0; opacity: 0.8">
+              <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.8">
                 Google Forms, anonymous. Topics: frequency of use, self-reported fatigue, emotional impact, regulation behaviours.
               </p>
             </div>
@@ -211,7 +214,7 @@
               <p style="font-family: var(--font-heading); font-size: 22px; font-weight: 700; color: var(--primary-red); margin-bottom: 8px">
                 ~400 participants
               </p>
-              <p style="font-size: 13px; line-height: 1.6; margin: 0; opacity: 0.8">
+              <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.8">
                 Story polls and question stickers to reach a wider casual audience quickly.
               </p>
             </div>
@@ -279,7 +282,7 @@
             <div class="card bg-white">
               <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">01</span>
               <h4 style="margin: 8px 0">Hours Spent on Instagram</h4>
-              <p style="font-size: 13px; line-height: 1.6; margin: 0; opacity: 0.8">
+              <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.8">
                 Use is highly fragmented across the day but disproportionately concentrated at night, when self-regulation is lowest and no one is holding users
                 accountable.
               </p>
@@ -287,35 +290,35 @@
             <div class="card bg-white">
               <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">02</span>
               <h4 style="margin: 8px 0">Routine and Habit Formation</h4>
-              <p style="font-size: 13px; line-height: 1.6; margin: 0; opacity: 0.8">
+              <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.8">
                 Instagram has shifted from a voluntary check-in to a reflexive bedtime ritual, triggered without conscious intention.
               </p>
             </div>
             <div class="card bg-white">
               <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">03</span>
               <h4 style="margin: 8px 0">Content Type</h4>
-              <p style="font-size: 13px; line-height: 1.6; margin: 0; opacity: 0.8">
+              <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.8">
                 Low-information "brain-rot" content produces high dopamine but leaves guilt and mental fatigue; high-utility content does not.
               </p>
             </div>
             <div class="card bg-white">
               <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">04</span>
               <h4 style="margin: 8px 0">Purpose of Use</h4>
-              <p style="font-size: 13px; line-height: 1.6; margin: 0; opacity: 0.8">
+              <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.8">
                 Instagram has moved from a personal tool to a social obligation — a space users feel they must occupy.
               </p>
             </div>
             <div class="card bg-white">
               <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">05</span>
               <h4 style="margin: 8px 0">Self-Realisation</h4>
-              <p style="font-size: 13px; line-height: 1.6; margin: 0; opacity: 0.8">
+              <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.8">
                 Users have strong self-awareness of overuse but can't convert that awareness into behaviour change.
               </p>
             </div>
             <div class="card bg-white">
               <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">06</span>
               <h4 style="margin: 8px 0">Content Value &amp; Perception</h4>
-              <p style="font-size: 13px; line-height: 1.6; margin: 0; opacity: 0.8">
+              <p style="font-size: 14px; line-height: 1.6; margin: 0; opacity: 0.8">
                 Users justify continued use by pointing to occasional "valuable content" (tech, design, reflective posts), even when most of what they consume
                 is low-value.
               </p>
@@ -340,7 +343,7 @@
               href="https://datastudio.google.com/u/0/reporting/7fcd7a5b-485e-4678-8dd7-ecb36b9d9110/page/M7ueF"
               target="_blank"
               rel="noopener"
-              style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; margin-top: 12px; opacity: 0.7"
+              style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; margin-top: 12px; opacity: 0.7"
             >
               Open dashboard <span class="chevron external" aria-hidden="true"></span>
             </a>
@@ -536,7 +539,7 @@
               href="https://www.figma.com/board/0vwtdK5nf7KGbZkKw3mfQK/Group-8-Design-Workshop?node-id=0-1&t=Ja7PrHUhc70PmJ5G-1"
               target="_blank"
               rel="noopener"
-              style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; margin-top: 12px; opacity: 0.7"
+              style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; margin-top: 12px; opacity: 0.7"
             >
               Open in FigJam <span class="chevron external" aria-hidden="true"></span>
             </a>
@@ -577,12 +580,35 @@
           </div>
 
           <!-- Reflection -->
-          <!-- TODO: reflection copy from Mohammed -->
-          <div class="card bg-white" style="margin-bottom: 40px">
-            <h3 class="card-title">REFLECTION</h3>
-            <p style="font-size: 15px; line-height: 1.7; margin: 0; font-style: italic; opacity: 0.6">
-              [Add 3–4 sentences: what you learned about researching self-aware but conflicted users, what you'd change methodologically next time, and where
-              you'd take Focus Feed if the project continued.]
+          <div
+            class="card"
+            style="
+              background-color: var(--dark-green);
+              color: white;
+              margin-bottom: 40px;
+              padding: 60px 40px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+            "
+          >
+            <h3
+              style="
+                border-bottom: 3px solid white;
+                padding-bottom: 12px;
+                margin-bottom: 24px;
+                font-family: var(--font-heading);
+                color: white;
+                display: inline-block;
+              "
+            >
+              REFLECTION
+            </h3>
+            <p style="font-size: 22px; font-weight: 700; margin-bottom: 0; font-family: var(--font-heading); line-height: 1.4; max-width: 800px">
+              "This project pushed the idea that digital fatigue isn't a willpower problem — awareness alone couldn't stop the scroll. Instead of another
+              blocker, Focus Feed explored what a bounded, self-ending feed could feel like."
             </p>
           </div>
 
@@ -598,11 +624,11 @@
     <footer>
       <div class="container">
         <div class="logo-footer" style="font-family: var(--font-heading); font-size: 16px">MOHAMMED.HAFIZ</div>
-        <div>© 2024 MOHAMMED HAFIZ. STAY BRUTAL.</div>
+        <div>© 2026 MOHAMMED HAFIZ. STAY CURIOUS.</div>
         <div class="footer-social">
-          <a href="#">TWITTER</a>
-          <a href="#">LINKEDIN</a>
-          <a href="#">GITHUB</a>
+          <a href="https://www.linkedin.com/in/mohammed-sheikh-hafiz-5246a3340/" target="_blank" rel="noopener">LINKEDIN</a>
+          <a href="https://www.behance.net/mohammedsheikh11" target="_blank" rel="noopener">BEHANCE</a>
+          <a href="https://github.com/mohammedfiz683-arch" target="_blank" rel="noopener">GITHUB</a>
         </div>
       </div>
     </footer>

@@ -16,11 +16,14 @@
     <header class="navbar">
       <div class="container">
         <a href="index.html" class="logo">MOHAMMED.HAFIZ</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
         <nav class="nav-links">
           <a href="index.html">HOME</a>
           <a href="work.html">WORK</a>
           <a href="about.html">ABOUT</a>
           <a href="contact.html" class="active">CONTACT</a>
+          <a href="contact.html" class="nav-hire-mobile">HIRE ME</a>
         </nav>
         <a href="contact.html" class="btn-hire">HIRE ME</a>
       </div>
@@ -35,13 +38,19 @@
               <div class="card" style="margin-bottom: 24px; padding: 40px 32px">
                 <h1 style="font-size: 48px; margin-bottom: 24px">Let's build something interesting.</h1>
                 <p style="font-size: 16px; margin: 0">
-                  Whether you have a wild idea, need a solid designer, or just want to chat about brutalist design, I'm here for it. Drop a message.
+                  Whether you have a wild idea, need a solid designer, or just want to chat about design,games or experiences, I'm here for it. Drop a message.
                 </p>
               </div>
 
               <div class="card bg-green" style="padding: 24px; margin-bottom: 24px">
-                <p style="font-size: 14px; font-weight: 600; margin-bottom: 8px">hello@example.com</p>
-                <p style="font-size: 14px; font-weight: 600; margin: 0">in linkedin.com/in/mhafiz</p>
+                <p style="font-size: 14px; font-weight: 600; margin-bottom: 8px">
+                  <a href="mailto:mohammedfiz683@gmail.com" style="color: inherit">mohammedfiz683@gmail.com</a>
+                </p>
+                <p style="font-size: 14px; font-weight: 600; margin: 0; display: flex; gap: 16px; flex-wrap: wrap">
+                  <a href="https://www.linkedin.com/in/mohammed-sheikh-hafiz-5246a3340/" target="_blank" rel="noopener" style="color: inherit">LinkedIn</a>
+                  <a href="https://www.behance.net/mohammedsheikh11" target="_blank" rel="noopener" style="color: inherit">Behance</a>
+                  <a href="https://github.com/mohammedfiz683-arch" target="_blank" rel="noopener" style="color: inherit">GitHub</a>
+                </p>
               </div>
 
               <div class="card bg-blue" style="padding: 24px; text-align: center">
@@ -54,7 +63,8 @@
             <!-- Right Column (Form) -->
             <div class="contact-right">
               <div class="card" style="padding: 40px 32px; height: 100%">
-                <form action="#" method="POST" id="contact-form">
+                <form action="https://formspree.io/f/mvkgwvwk" method="POST" id="contact-form">
+                  <input type="hidden" name="_subject" value="New message from your portfolio" />
                   <div class="form-group">
                     <label for="name">NAME</label>
                     <input type="text" id="name" name="name" placeholder="JOHN DOE" required />
@@ -84,11 +94,11 @@
     <footer style="margin-top: 100px">
       <div class="container">
         <div class="logo-footer" style="font-family: var(--font-heading); font-size: 16px">MOHAMMED.HAFIZ</div>
-        <div>© 2024 MOHAMMED HAFIZ. STAY BRUTAL.</div>
+        <div>© 2026 MOHAMMED HAFIZ. STAY CURIOUS.</div>
         <div class="footer-social">
-          <a href="#">TWITTER</a>
-          <a href="#">LINKEDIN</a>
-          <a href="#">GITHUB</a>
+          <a href="https://www.linkedin.com/in/mohammed-sheikh-hafiz-5246a3340/" target="_blank" rel="noopener">LINKEDIN</a>
+          <a href="https://www.behance.net/mohammedsheikh11" target="_blank" rel="noopener">BEHANCE</a>
+          <a href="https://github.com/mohammedfiz683-arch" target="_blank" rel="noopener">GITHUB</a>
         </div>
       </div>
     </footer>

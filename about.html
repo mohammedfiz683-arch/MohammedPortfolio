@@ -16,11 +16,14 @@
     <header class="navbar">
       <div class="container">
         <a href="index.html" class="logo">MOHAMMED.HAFIZ</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
         <nav class="nav-links">
           <a href="index.html">HOME</a>
           <a href="work.html">WORK</a>
           <a href="about.html" class="active">ABOUT</a>
           <a href="contact.html">CONTACT</a>
+          <a href="contact.html" class="nav-hire-mobile">HIRE ME</a>
         </nav>
         <a href="contact.html" class="btn-hire">HIRE ME</a>
       </div>
@@ -31,12 +34,21 @@
         <div class="container grid-2">
           <div class="hero-content">
             <span class="tag green">INTERACTION DESIGNER</span>
-            <h1 style="font-size: 40px">Building systems through games and experiences.</h1>
-            <div class="card" style="background-color: var(--bg-white); padding: 24px; border-width: 2px">
-              <p style="font-style: italic; margin: 0; font-size: 18px">
-                "I'm interested in how people learn, explore, and interact with structured environments."
-              </p>
-            </div>
+            <h1 style="font-size: 48px">Building systems through games and experiences.</h1>
+            <p style="font-size: 16px; line-height: 1.75; margin-top: 20px">
+              Hi, I'm Mohammed. I sense the mood of a room before anyone speaks, and design taught me to turn that instinct into experiences.
+            </p>
+            <p style="font-size: 16px; line-height: 1.75; margin-top: 16px">
+              After studying science and computer science, I chose Interaction Design at Anant National University because I cared more about people than
+              technology. Since then, I've made narrative games, VR installations, zines, board games and UX research.
+            </p>
+            <p style="font-size: 16px; line-height: 1.75; margin-top: 16px">
+              In my version of the world, everything is gamified. Whether it's built from bricks or run on tricks, every piece has rules, rewards and players,
+              and even chaos is a puzzle people can solve together. <strong>That's why I believe design, through storytelling and play, can do good in the world.</strong>
+            </p>
+            <p style="font-size: 16px; line-height: 1.75; margin-top: 16px">
+              If you're a studio, a research lab or a fellow maker, let's talk.
+            </p>
           </div>
           <div class="hero-image">
             <img
@@ -53,22 +65,36 @@
           <h2 style="border-bottom: var(--border); padding-bottom: 8px; margin-bottom: 32px">Focus Areas</h2>
           <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px">
             <div class="card" style="background-color: var(--tertiary-blue); padding: 24px">
-              <div style="width: 32px; height: 32px; background: var(--neutral-black); margin-bottom: 16px"></div>
+              <div class="focus-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2" /><path d="M6 12h4M8 10v4M15 13h.01M18 11h.01" /></svg>
+              </div>
               <h3>Game Design</h3>
               <p style="font-size: 14px">Crafting engaging loops and meaningful play mechanics.</p>
             </div>
             <div class="card" style="background-color: var(--secondary-green); padding: 24px">
-              <div style="width: 32px; height: 32px; background: var(--neutral-black); margin-bottom: 16px"></div>
+              <div class="focus-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M14 4.1 12 6M5.1 8l-2.9-.8M6 12l-1.9 2M7.2 2.2 8 5.1" />
+                  <path d="M9.04 9.69a.5.5 0 0 1 .65-.65l11 4.5a.5.5 0 0 1-.07.95l-4.35 1.04a1 1 0 0 0-.74.74l-1.04 4.35a.5.5 0 0 1-.95.07z" />
+                </svg>
+              </div>
               <h3>Interaction Design</h3>
               <p style="font-size: 14px">Designing intuitive tactile systems everywhere.</p>
             </div>
             <div class="card" style="background-color: var(--primary-red); color: white; padding: 24px">
-              <div style="width: 32px; height: 32px; background: var(--neutral-black); margin-bottom: 16px"></div>
+              <div class="focus-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="9" y="2" width="6" height="6" rx="1" /><rect x="2" y="16" width="6" height="6" rx="1" /><rect x="16" y="16" width="6" height="6" rx="1" />
+                  <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3M12 12V8" />
+                </svg>
+              </div>
               <h3 style="color: white">Systems Thinking</h3>
               <p style="font-size: 14px">Mapping complex relationships into understandable models.</p>
             </div>
             <div class="card" style="background-color: var(--bg-white); padding: 24px">
-              <div style="width: 32px; height: 32px; background: var(--neutral-black); margin-bottom: 16px"></div>
+              <div class="focus-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg>
+              </div>
               <h3>UX/UI</h3>
               <p style="font-size: 14px">Building clean, brutalist, and highly functional interfaces.</p>
             </div>
@@ -203,11 +229,11 @@
     <footer>
       <div class="container">
         <div class="logo-footer" style="font-family: var(--font-heading); font-size: 16px">MOHAMMED.HAFIZ</div>
-        <div>© 2024 MOHAMMED HAFIZ. STAY BRUTAL.</div>
+        <div>© 2026 MOHAMMED HAFIZ. STAY CURIOUS.</div>
         <div class="footer-social">
-          <a href="#">TWITTER</a>
-          <a href="#">LINKEDIN</a>
-          <a href="#">GITHUB</a>
+          <a href="https://www.linkedin.com/in/mohammed-sheikh-hafiz-5246a3340/" target="_blank" rel="noopener">LINKEDIN</a>
+          <a href="https://www.behance.net/mohammedsheikh11" target="_blank" rel="noopener">BEHANCE</a>
+          <a href="https://github.com/mohammedfiz683-arch" target="_blank" rel="noopener">GITHUB</a>
         </div>
       </div>
     </footer>
