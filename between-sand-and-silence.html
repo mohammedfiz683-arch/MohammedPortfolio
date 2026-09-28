@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Between Sand and Silence Case Study - MOHAMMED.HAFIZ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Storyboard timeline — same component as VR Mohenjo Daro's Experience Flow */
+      .timeline-container {
+        position: relative;
+        padding-left: 48px;
+        margin: 40px 0 60px 12px;
+      }
+
+      .timeline-line {
+        position: absolute;
+        left: 7px;
+        top: 10px;
+        bottom: 10px;
+        width: 4px;
+        background-color: var(--neutral-black);
+        z-index: 1;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 48px;
+      }
+
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: -48px;
+        top: 6px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 3px solid var(--neutral-black);
+        z-index: 2;
+      }
+
+      .timeline-dot.day {
+        background-color: var(--primary-red);
+      }
+
+      .timeline-dot.shift {
+        background: linear-gradient(135deg, var(--primary-red) 50%, var(--dark-green) 50%);
+      }
+
+      .timeline-dot.night {
+        background-color: var(--dark-green);
+      }
+
+      .timeline-content-card {
+        border: 1px solid var(--line);
+        background-color: var(--surface-well);
+        border-radius: 10px;
+        padding: 24px;
+      }
+
+      .timeline-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        border-bottom: 2px solid var(--neutral-gray);
+        padding-bottom: 10px;
+        margin-bottom: 14px;
+      }
+
+      .timeline-title {
+        font-family: var(--font-heading);
+        font-size: 22px;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .era-badge {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 3px 8px;
+        border: 2px solid var(--neutral-black);
+        border-radius: 2px;
+      }
+
+      .era-badge.day-badge {
+        background-color: var(--primary-red);
+        color: white;
+      }
+
+      .era-badge.shift-badge {
+        background-color: var(--tertiary-blue);
+        color: var(--neutral-black);
+      }
+
+      .era-badge.night-badge {
+        background-color: var(--dark-green);
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        .timeline-container {
+          padding-left: 32px;
+        }
+
+        .timeline-line {
+          left: 5px;
+        }
+
+        .timeline-dot {
+          left: -32px;
+          width: 14px;
+          height: 14px;
+          top: 8px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="container">
+        <a href="index.html" class="logo">MOHAMMED.HAFIZ</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+        <nav class="nav-links">
+          <a href="index.html">HOME</a>
+          <a href="work.html" class="active">WORK</a>
+          <a href="about.html">ABOUT</a>
+          <a href="contact.html">CONTACT</a>
+          <a href="contact.html" class="nav-hire-mobile">HIRE ME</a>
+        </nav>
+        <a href="contact.html" class="btn-hire">HIRE ME</a>
+      </div>
+    </header>
+
+    <main class="case-study">
+      <section style="padding-top: 40px">
+        <div class="container">
+          <!-- HERO -->
+          <div class="project-header">
+            <a href="work.html" class="back-link"><span class="chevron left" aria-hidden="true"></span> BACK TO WORK</a>
+            <h1 style="font-size: 48px; margin-bottom: 16px">Between Sand and Silence</h1>
+            <p style="font-size: 18px; font-weight: 500; margin-bottom: 24px; max-width: 800px; font-family: var(--font-heading)">
+              A multisensory VR installation exploring the disappearance of Mohenjo-Daro.
+            </p>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap">
+              <span class="tag white" style="margin: 0">6DOF VR</span>
+              <span class="tag green" style="margin: 0">INSTALLATION DESIGN</span>
+              <span class="tag blue" style="margin: 0">NARRATIVE DESIGN</span>
+              <span class="tag dark" style="margin: 0">PROJECT IN PROGRESS</span>
+            </div>
+          </div>
+
+          <!-- Hero video — drop between-sand-and-silence-hero.mp4 (and a matching poster
+               image between-sand-and-silence-hero.jpg) into this folder and it loads
+               automatically, no further edits needed. -->
+          <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; width: 100%; margin-top: 32px">
+            <video
+              autoplay
+              loop
+              muted
+              playsinline
+              poster="between-sand-and-silence-hero.jpg"
+              class="project-hero-img"
+              style="width: 100%; max-width: 800px; height: auto; background-color: var(--neutral-black); margin-bottom: 16px; display: block"
+            >
+              <source src="between-sand-and-silence-hero.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p style="font-size: 13px; opacity: 0.6; text-align: center; margin: 0">A player pushes the trolley through the buried corridor.</p>
+          </div>
+
+          <!-- PROJECT DETAILS -->
+          <div class="card bg-red" style="color: white; margin-bottom: 40px">
+            <h3 class="card-header" style="color: white">
+              <span class="card-icon" style="background-color: white; color: var(--primary-red)">?</span>
+              PROJECT DETAILS
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
+              <p style="font-size: 15px; margin: 0"><strong>Type:</strong> Multisensory VR Installation</p>
+              <p style="font-size: 15px; margin: 0"><strong>Role:</strong> Interaction Designer, VR Prototyper</p>
+              <p style="font-size: 15px; margin: 0"><strong>Duration:</strong> <em>To confirm</em></p>
+              <p style="font-size: 15px; margin: 0"><strong>Platform:</strong> VR (6DoF) + physical installation</p>
+              <p style="font-size: 15px; margin: 0"><strong>Tools:</strong> Unity, TouchDesigner, rotary encoder, Blender</p>
+              <p style="font-size: 15px; margin: 0"><strong>Mode:</strong> Single Player</p>
+            </div>
+          </div>
+
+          <!-- What We Found / Why It Interests Us -->
+          <div class="grid-2" style="margin-bottom: 40px">
+            <div class="card bg-white">
+              <h3 class="card-title">WHAT WE FOUND</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                Mohenjo-Daro was one of the world's first urban civilizations, built around 2500 BCE in the Indus Valley: 40,000 people, grid-planned
+                streets, a water and drainage system more advanced than anything Europe built for another 3,000 years. Around 1900 BCE it was abandoned. No
+                war, no fire, no conquest. Skeletons were found scattered mid-stride in the streets, not buried, just stopped. Their writing has never been
+                decoded. What stayed was the architecture. What disappeared was everything that gave it meaning.
+              </p>
+            </div>
+            <div class="card bg-white">
+              <h3 class="card-title">WHY IT INTERESTS US</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                When British-era construction workers laid railway tracks through the Indus Valley in the 1850s, they found an unusual abundance of
+                ready-made bricks in the ground (fired, uniform, ancient) and used them as ballast for the tracks. Those bricks were Harappan civilization.
+                An entire layer of a 4,000-year-old city was pulled from the earth, loaded onto trolleys, and used for railway construction. The workers
+                carried it without knowing what they were carrying. The city was dismantled a second time, quietly, practically, without ceremony.
+              </p>
+            </div>
+          </div>
+
+          <!-- PROCESS -->
+          <h2 style="margin-bottom: 32px">The Design Process</h2>
+          <div class="card bg-white" style="margin-bottom: 40px">
+            <div class="process-steps">
+              <div class="process-step">
+                <span class="num" style="color: var(--primary-red)">01</span>
+                <span class="label">Historical Research</span>
+              </div>
+              <div class="process-step">
+                <span class="num" style="color: var(--primary-red)">02</span>
+                <span class="label">Concept Development</span>
+              </div>
+              <div class="process-step">
+                <span class="num" style="color: var(--primary-red)">03</span>
+                <span class="label">VR + Hardware Prototyping</span>
+              </div>
+              <div class="process-step">
+                <span class="num" style="color: var(--primary-red)">04</span>
+                <span class="label">Installation Build</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Two Concepts -->
+          <h2 style="margin-bottom: 32px">Two Separate Ideas. One Experience.</h2>
+          <p style="font-size: 16px; font-style: italic; opacity: 0.75; margin-bottom: 24px; max-width: 800px">
+            This project is built from two concepts that were prototyped independently and then brought together.
+          </p>
+          <div class="grid-2" style="margin-bottom: 40px">
+            <div class="card bg-white" style="padding: 0; overflow: hidden">
+              <img
+                src="between-sand-and-silence-corridor.jpg"
+                alt="The mapped VR corridor, aligned to the real physical space"
+                style="width: 100%; display: block; border-bottom: var(--border)"
+              />
+              <div style="padding: 24px">
+                <h3 class="card-title">CONCEPT ONE — THE MAPPED WORLD</h3>
+                <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                  A VR environment built in Unity where the virtual space is aligned precisely to the real physical space. The sunlight and shadow of the
+                  real corridor are mapped to the day and night scenes of the VR world. A cooler unit positioned outside the mapped area pushes cold air into
+                  the shadow zone, becoming the physical sensation of the scene's transition from day to night.
+                </p>
+              </div>
+            </div>
+            <div class="card bg-white" style="padding: 0; overflow: hidden">
+              <img
+                src="between-sand-and-silence-trolley.jpg"
+                alt="The physical trolley with an embedded rotary encoder"
+                style="width: 100%; display: block; border-bottom: var(--border)"
+              />
+              <div style="padding: 24px">
+                <h3 class="card-title">CONCEPT TWO — THE TROLLEY</h3>
+                <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                  A physical trolley with a rotary encoder embedded inside. As the player pushes it forward, the encoder sends positional input to
+                  TouchDesigner, which controls a video narrative: the story of the labourer, the bricks, the city. The speed of the push controls the pace
+                  of the story. Stop, and time stops. Push back, and the narrative offers a different answer.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Three Acts -->
+          <h2 style="margin-bottom: 32px">One Corridor. One Pot. One Well. Three Moments of Time.</h2>
+          <p style="font-size: 16px; margin-bottom: 24px; max-width: 800px">
+            The player enters the experience as three different people in one continuous journey.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-bottom: 40px">
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">ACT 01</span>
+              <h3 style="margin: 8px 0">The Labour</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                They push a trolley through a buried corridor. Sand lifts. Walls rebuild. The city resurrects around them with every step forward.
+              </p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">ACT 02</span>
+              <h3 style="margin: 8px 0">The Last Person</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                The trolley stops. They find a clay pot (the only object in the space, with handprints already on it) and carry it toward a well.
+                Footprints appear ahead, stopping mid-stride, two steps before the water's edge. The player walks those last two steps and places the pot.
+              </p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">ACT 03</span>
+              <h3 style="margin: 8px 0">The Witness</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                Night. The well is dry. The waterline stain shows where the water once was. Sand returns slowly. Only the pot remains.
+              </p>
+            </div>
+          </div>
+
+          <!-- Player Flow & Sensorial Mapping -->
+          <h2 style="margin-bottom: 32px">Player Flow &amp; Sensorial Mapping</h2>
+          <div class="card bg-white" style="margin-bottom: 40px">
+            <h3 class="card-header">ACT 01 — THE LABOUR</h3>
+            <div>
+              <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+                <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">Enters a buried corridor</strong>
+                Sand covers the floor, walls are broken, the space feels asleep.
+              </p>
+              <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+                <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">Pushes the trolley</strong>
+                Sand lifts, walls rebuild, the city resurrects. <em>Body feels: resistance of the trolley, warmth arriving as real sun on skin.</em>
+              </p>
+              <p style="margin-bottom: 0; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+                <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">Trolley stops</strong>
+                Corridor fully revealed: sunlight, warm, intact. The player is now standing inside Mohenjo-Daro as it was.
+              </p>
+            </div>
+          </div>
+
+          <div class="card bg-white" style="margin-bottom: 40px">
+            <h3 class="card-header">ACT 02 — THE LAST PERSON</h3>
+            <div>
+              <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+                <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">Picks up the pot</strong>
+                The only object in the space, with handprints already pressed into the clay. <em>Body feels: real clay, real weight.</em>
+              </p>
+              <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+                <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">Follows the footprints</strong>
+                Someone already walked this path. <em>Body feels: eyes follow the trail, body walks the path.</em> The footprints stop mid-stride, two steps
+                before the well's edge. The person who made them never reached the water.
+              </p>
+              <p style="margin-bottom: 0; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+                <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">Walks the last two steps, places the pot</strong>
+                The well is full of water. A worn impression at the rim is the exact shape of the pot's base. <em>Body feels: cold wind hits, sudden and full body.</em>
+              </p>
+            </div>
+          </div>
+
+          <div class="card bg-white" style="margin-bottom: 40px">
+            <h3 class="card-header">ACT 03 — THE WITNESS</h3>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main)">
+              Cold wind. The scene shifts to night, 4,000 years in one breath. Same corridor, same well, water gone, sand returning, footprints gone. Only
+              the pot remains, the one thing that survived because they completed it. <em>Body feels: eyes see nothing, the well completely dry.</em>
+            </p>
+          </div>
+
+          <!-- The Installation Space -->
+          <h2 style="margin-bottom: 32px">The Installation Space</h2>
+          <div class="grid-2" style="margin-bottom: 24px">
+            <div class="card bg-white" style="padding: 0; overflow: hidden">
+              <img src="between-sand-and-silence-space-plan.png" alt="Plan of the installation space" style="width: 100%; display: block" />
+              <p style="font-size: 12px; text-align: center; opacity: 0.7; margin: 12px 0">PLAN OF THE SPACE</p>
+            </div>
+            <div class="card bg-white" style="padding: 0; overflow: hidden">
+              <video autoplay loop muted playsinline style="width: 100%; display: block; background-color: var(--neutral-black)">
+                <source src="between-sand-and-silence-space-video.mp4" type="video/mp4" />
+              </video>
+              <p style="font-size: 12px; text-align: center; opacity: 0.7; margin: 12px 0">VIDEO OF THE SPACE</p>
+            </div>
+          </div>
+          <div class="grid-2" style="margin-bottom: 40px">
+            <div class="card bg-white" style="padding: 0; overflow: hidden">
+              <img src="between-sand-and-silence-sketch.png" alt="Sketch of the installation space" style="width: 100%; display: block" />
+              <p style="font-size: 12px; text-align: center; opacity: 0.7; margin: 12px 0">SKETCH OF SPACE</p>
+            </div>
+            <div class="card bg-white" style="padding: 0; overflow: hidden">
+              <img src="between-sand-and-silence-perspective.png" alt="Perspective view of the installation" style="width: 100%; display: block" />
+              <p style="font-size: 12px; text-align: center; opacity: 0.7; margin: 12px 0">PERSPECTIVE VIEW</p>
+            </div>
+          </div>
+
+          <!-- Experience Storyboard -->
+          <h2 style="font-size: 28px; border-bottom: var(--border); padding-bottom: 16px; margin-bottom: 32px">Experience Storyboard</h2>
+          <div class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <!-- Beat 01 -->
+            <div class="timeline-item">
+              <div class="timeline-dot day"></div>
+              <div class="timeline-content-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-title">01 — Buried Corridor</h3>
+                  <span class="era-badge day-badge">Day</span>
+                </div>
+                <p style="font-size: 16px; line-height: 1.6; margin-bottom: 16px">
+                  Player enters. Sand everywhere, walls broken, a trolley in front of them.
+                </p>
+                <p style="font-size: 13px; line-height: 1.5; opacity: 0.75; margin-bottom: 16px">
+                  <strong>Audio:</strong> silence and wind reflect the stillness of a once-inhabited civilization. Pushing forward controls time itself.
+                </p>
+                <div style="display: flex; justify-content: center">
+                  <img
+                    src="between-sand-and-silence-storyboard-01.jpg"
+                    alt="Buried corridor"
+                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Beat 02 -->
+            <div class="timeline-item">
+              <div class="timeline-dot day"></div>
+              <div class="timeline-content-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-title">02 — Pushing Forward</h3>
+                  <span class="era-badge day-badge">Day</span>
+                </div>
+                <p style="font-size: 16px; line-height: 1.6; margin-bottom: 16px">
+                  As the trolley moves, sand goes down and walls rebuild around them. The civilization comes back.
+                </p>
+                <p style="font-size: 13px; line-height: 1.5; opacity: 0.75; margin-bottom: 16px">
+                  <strong>Audio:</strong> the silence fades, gradually replaced by the sounds of people and daily life.
+                </p>
+                <div style="display: flex; justify-content: center">
+                  <img
+                    src="between-sand-and-silence-storyboard-02.jpg"
+                    alt="Pushing forward"
+                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Beat 03 -->
+            <div class="timeline-item">
+              <div class="timeline-dot day"></div>
+              <div class="timeline-content-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-title">03 — The Pot</h3>
+                  <span class="era-badge day-badge">Day</span>
+                </div>
+                <p style="font-size: 16px; line-height: 1.6; margin-bottom: 16px">
+                  A clay pot near a broken wall. Sunlight falls on it, the only object in the space. Player approaches.
+                </p>
+                <p style="font-size: 13px; line-height: 1.5; opacity: 0.75; margin-bottom: 16px">
+                  <strong>Audio:</strong> the sounds of people and daily activity make the space feel active and inhabited.
+                </p>
+                <div style="display: flex; justify-content: center">
+                  <img
+                    src="between-sand-and-silence-storyboard-03.jpg"
+                    alt="The pot"
+                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Beat 04 -->
+            <div class="timeline-item">
+              <div class="timeline-dot day"></div>
+              <div class="timeline-content-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-title">04 — Handprints</h3>
+                  <span class="era-badge day-badge">Day</span>
+                </div>
+                <p style="font-size: 16px; line-height: 1.6; margin-bottom: 16px">
+                  Player reaches out. Handprints are already pressed into the clay: someone held this before.
+                </p>
+                <p style="font-size: 13px; line-height: 1.5; opacity: 0.75; margin-bottom: 16px">
+                  <strong>Audio:</strong> silence gives way to the sounds of daily life, bringing the civilization back.
+                </p>
+                <div style="display: flex; justify-content: center">
+                  <img
+                    src="between-sand-and-silence-storyboard-04.jpg"
+                    alt="Handprints"
+                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Beat 05 -->
+            <div class="timeline-item">
+              <div class="timeline-dot day"></div>
+              <div class="timeline-content-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-title">05 — Footprints Appear</h3>
+                  <span class="era-badge day-badge">Day</span>
+                </div>
+                <p style="font-size: 16px; line-height: 1.6; margin-bottom: 16px">
+                  As the pot is lifted, footprints appear ahead, leading toward the well: a trail already walked.
+                </p>
+                <p style="font-size: 13px; line-height: 1.5; opacity: 0.75; margin-bottom: 16px">
+                  <strong>Audio:</strong> city sounds fade into silence, leaving only footsteps to guide the way.
+                </p>
+                <div style="display: flex; justify-content: center">
+                  <img
+                    src="between-sand-and-silence-storyboard-05.jpg"
+                    alt="Footprints appear"
+                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Beat 06 -->
+            <div class="timeline-item">
+              <div class="timeline-dot day"></div>
+              <div class="timeline-content-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-title">06 — Following the Trail</h3>
+                  <span class="era-badge day-badge">Day</span>
+                </div>
+                <p style="font-size: 16px; line-height: 1.6; margin-bottom: 16px">
+                  Player follows. The trail is long. The well comes into view, full of water and reflecting light.
+                </p>
+                <p style="font-size: 13px; line-height: 1.5; opacity: 0.75; margin-bottom: 16px">
+                  <strong>Audio:</strong> footsteps suggest the presence of someone who once walked this path.
+                </p>
+                <div style="display: flex; justify-content: center">
+                  <img
+                    src="between-sand-and-silence-storyboard-06.jpg"
+                    alt="Following the trail"
+                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Beat 07 -->
+            <div class="timeline-item">
+              <div class="timeline-dot day"></div>
+              <div class="timeline-content-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-title">07 — Footprints Stop</h3>
+                  <span class="era-badge day-badge">Day</span>
+                </div>
+                <p style="font-size: 16px; line-height: 1.6; margin-bottom: 16px">
+                  Two steps before the well's edge, mid-stride. The person who made them never arrived.
+                </p>
+                <p style="font-size: 13px; line-height: 1.5; opacity: 0.75; margin-bottom: 16px">
+                  <strong>Audio:</strong> the footsteps abruptly stop into silence, an unfinished journey.
+                </p>
+                <div style="display: flex; justify-content: center">
+                  <img
+                    src="between-sand-and-silence-storyboard-07.jpg"
+                    alt="Footprints stop"
+                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Beat 08 -->
+            <div class="timeline-item">
+              <div class="timeline-dot day"></div>
+              <div class="timeline-content-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-title">08 — The Last Two Steps</h3>
+                  <span class="era-badge day-badge">Day</span>
+                </div>
+                <p style="font-size: 16px; line-height: 1.6; margin-bottom: 16px">
+                  A UI prompt highlights the pot the player carries. It must now be used to continue the act.
+                </p>
+                <p style="font-size: 13px; line-height: 1.5; opacity: 0.75; margin-bottom: 16px">
+                  <strong>Audio:</strong> only wind, creating emptiness and tension as the well approaches.
+                </p>
+                <div style="display: flex; justify-content: center">
+                  <img
+                    src="between-sand-and-silence-storyboard-08.jpg"
+                    alt="The last two steps"
+                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Beat 09 -->
+            <div class="timeline-item">
+              <div class="timeline-dot shift"></div>
+              <div class="timeline-content-card" style="border-color: var(--primary-red)">
+                <div class="timeline-header">
+                  <h3 class="timeline-title" style="color: var(--primary-red)">09 — The Shift</h3>
+                  <span class="era-badge shift-badge">Transition</span>
+                </div>
+                <p style="font-size: 16px; line-height: 1.6; margin-bottom: 16px">
+                  Cold wind. The scene turns to night. The well is completely dry, with only a waterline stain remaining.
+                </p>
+                <p style="font-size: 13px; line-height: 1.5; opacity: 0.75; margin-bottom: 16px">
+                  <strong>Audio:</strong> the sound of the pot placing fades into silence and heavy wind.
+                </p>
+                <div style="display: flex; justify-content: center">
+                  <img
+                    src="between-sand-and-silence-storyboard-09.jpg"
+                    alt="The shift"
+                    style="width: 100%; max-width: 600px; height: auto; border: var(--border-thick) solid var(--primary-red); display: block"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Beat 10 -->
+            <div class="timeline-item">
+              <div class="timeline-dot night"></div>
+              <div class="timeline-content-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-title">10 — The Witness</h3>
+                  <span class="era-badge night-badge">Night</span>
+                </div>
+                <p style="font-size: 16px; line-height: 1.6; margin-bottom: 16px">
+                  Sand slowly returns, footprints gone. Only the pot remains where it was placed: the bricks are no longer just objects.
+                </p>
+                <p style="font-size: 13px; line-height: 1.5; opacity: 0.75; margin-bottom: 16px">
+                  <strong>Audio:</strong> heavy wind and flowing sand restore the emptiness of the ruins.
+                </p>
+                <div style="display: flex; justify-content: center">
+                  <img
+                    src="between-sand-and-silence-storyboard-10.jpg"
+                    alt="The witness"
+                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reflection -->
+          <div
+            class="card"
+            style="
+              background-color: var(--dark-green);
+              color: white;
+              margin-bottom: 40px;
+              padding: 60px 40px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+            "
+          >
+            <h3
+              style="
+                border-bottom: 3px solid white;
+                padding-bottom: 12px;
+                margin-bottom: 24px;
+                font-family: var(--font-heading);
+                color: white;
+                display: inline-block;
+              "
+            >
+              REFLECTION
+            </h3>
+            <p style="font-size: 22px; font-weight: 700; margin-bottom: 0; font-family: var(--font-heading); line-height: 1.4; max-width: 800px">
+              "This project pushed the idea that history is felt through the body, not read off a wall label. Pairing a real trolley and real cold air with
+              the VR meant the weight of what was lost didn't stay abstract. It arrived as resistance in your hands and cold on your skin."
+            </p>
+          </div>
+
+          <!-- Next / back -->
+          <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 40px">
+            <a href="work.html" class="btn"><span class="chevron left" aria-hidden="true"></span> BACK TO ALL WORK</a>
+            <a href="rani-no-hajiro.html" class="btn primary">NEXT PROJECT <span class="chevron" aria-hidden="true"></span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="logo-footer" style="font-family: var(--font-heading); font-size: 16px">MOHAMMED.HAFIZ</div>
+        <div>© 2026 MOHAMMED HAFIZ. STAY CURIOUS.</div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/mohammed-sheikh-hafiz-5246a3340/" target="_blank" rel="noopener">LINKEDIN</a>
+          <a href="https://www.behance.net/mohammedsheikh11" target="_blank" rel="noopener">BEHANCE</a>
+          <a href="https://github.com/mohammedfiz683-arch" target="_blank" rel="noopener">GITHUB</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
