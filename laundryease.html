@@ -35,10 +35,13 @@
         <div class="container">
           <div class="project-header">
             <a href="work.html" class="back-link"><span class="chevron left" aria-hidden="true"></span> BACK TO WORK</a>
-            <h1 style="font-size: 48px; margin-bottom: 16px">Laundry Ease UI/UX</h1>
+            <h1 style="font-size: 48px; margin-bottom: 16px">Laundry Ease</h1>
+            <p style="font-size: 18px; font-weight: 500; margin-bottom: 24px; max-width: 800px; font-family: var(--font-heading)">
+              A service and system design project for university hostel laundry.
+            </p>
             <div style="display: flex; gap: 8px; flex-wrap: wrap">
-              <span class="tag white" style="margin: 0">UX/UI DESIGN</span>
-              <span class="tag blue" style="margin: 0">CASE STUDY</span>
+              <span class="tag white" style="margin: 0">SERVICE DESIGN</span>
+              <span class="tag blue" style="margin: 0">SYSTEM DESIGN</span>
               <span class="tag dark" style="margin: 0">SOLO PROJECT</span>
             </div>
           </div>
@@ -50,10 +53,25 @@
             style="border-radius: 4px; width: 100%; border: var(--border); margin-bottom: 40px"
           />
 
+          <!-- PROJECT DETAILS -->
+          <div class="card bg-red" style="color: white; margin-bottom: 40px">
+            <h3 class="card-header" style="color: white">
+              <span class="card-icon" style="background-color: white; color: var(--primary-red)">?</span>
+              PROJECT DETAILS
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
+              <p style="font-size: 15px; margin: 0"><strong>Type:</strong> Service &amp; System Design (Mobile App)</p>
+              <p style="font-size: 15px; margin: 0"><strong>Role:</strong> UX Research, Service Design, Visual Design, Prototyping &amp; Testing</p>
+              <p style="font-size: 15px; margin: 0"><strong>Team:</strong> Solo</p>
+              <p style="font-size: 15px; margin: 0"><strong>Duration:</strong> 3 Weeks</p>
+            </div>
+          </div>
+
           <div class="card" style="margin-bottom: 40px; padding: 24px">
             <p style="font-size: 18px; margin: 0; font-weight: 500">
-              Laundry Ease is a mobile application designed to simplify the campus laundry experience. This case study details the end-to-end UX/UI process,
-              from user research and journey mapping to final high-fidelity screen designs.
+              Laundry Ease isn't really an app problem, it's a trust problem. Students hand their clothes to a service they can't see or control for days at
+              a time. This project designs the system around that handoff, mandatory submission records, order tracking, notifications, and a feedback
+              loop, with the mobile app as the one visible touchpoint into all of it.
             </p>
           </div>
 
@@ -61,11 +79,15 @@
             <div class="card bg-red" style="color: white">
               <h3 class="card-header" style="color: white">
                 <span class="card-icon" style="background-color: white; color: var(--primary-red)">?</span>
-                PROBLEM STATEMENT
+                PROBLEM
               </h3>
-              <p style="font-size: 14px">
+              <p style="font-size: 14px; line-height: 1.6; margin-bottom: 12px">
                 Students living in university hostels struggle to manage their laundry due to busy schedules, limited access to laundry facilities, and
                 inconsistent service quality. This leads to lost or damaged clothes, delays, and extra stress.
+              </p>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                The issue lives in the hostel environment itself: limited time and resources mean laundry logistics compete directly with academic focus,
+                creating a need for a more reliable and efficient system, not just a nicer screen.
               </p>
             </div>
             <div class="card bg-white">
@@ -73,76 +95,190 @@
                 <span class="card-icon" style="background-color: var(--neutral-black); color: white">!</span>
                 SOLUTION
               </h3>
-              <p style="font-size: 14px">
-                A centralized mobile application that allows students to check machine availability in real-time, reserve washers/dryers, receive push
-                notifications when cycles end, and process digital payments seamlessly.
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                A managed laundry service system, not just a booking app. Every order starts with a mandatory clothing submission form and a photo
+                inventory, so both sides have a record of what went in. From there, real-time order tracking, push notifications, and a feedback rating
+                after every cycle hold the service accountable from drop-off to return.
+              </p>
+            </div>
+          </div>
+
+          <!-- Challenges & Solutions: the system's reliability mechanisms -->
+          <div class="card bg-white" style="margin-bottom: 40px">
+            <h3 class="card-title">CHALLENGES &amp; THE SYSTEM BUILT TO SOLVE THEM</h3>
+            <div>
+              <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+                <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">Timely returns</strong>
+                Order tracking and notifications keep every order visible instead of a black box.
+              </p>
+              <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+                <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">Lost or damaged items</strong>
+                A mandatory clothing submission form with an itemized, photographed inventory gives both sides a record before anything changes hands.
+              </p>
+              <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+                <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">Cleaning quality &amp; wrinkling</strong>
+                Feedback and rating after every cycle, plus clear order instructions, turns quality into something measured instead of assumed.
+              </p>
+              <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+                <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">Reliability</strong>
+                Reminders, order history, and transparent tracking replace "I hope this gets done" with a system that shows its work.
+              </p>
+              <p style="margin-bottom: 0; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+                <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">Ease of use</strong>
+                All of the above stays invisible until it's needed: a simple mobile app is the one front door into the whole system.
               </p>
             </div>
           </div>
 
           <!-- Process / Timeline -->
           <div class="card bg-white" style="margin-bottom: 40px">
-            <h3 class="card-title">DESIGN PROCESS</h3>
+            <h3 class="card-title">DESIGN PROCESS — 3 WEEKS</h3>
             <div class="process-steps">
               <div class="process-step">
                 <span class="num" style="color: var(--tertiary-blue-dark)">01</span>
-                <span class="label">DISCOVER</span>
+                <span class="label">RESEARCH &amp; ANALYSIS</span>
               </div>
               <div class="process-step">
                 <span class="num" style="color: var(--tertiary-blue-dark)">02</span>
-                <span class="label">DEFINE</span>
+                <span class="label">CONCEPT DEVELOPMENT</span>
               </div>
               <div class="process-step">
                 <span class="num" style="color: var(--tertiary-blue-dark)">03</span>
-                <span class="label">IDEATE</span>
+                <span class="label">WIREFRAMING &amp; PROTOTYPING</span>
               </div>
               <div class="process-step">
                 <span class="num" style="color: var(--tertiary-blue-dark)">04</span>
-                <span class="label">DESIGN</span>
+                <span class="label">USER TESTING</span>
+              </div>
+              <div class="process-step">
+                <span class="num" style="color: var(--tertiary-blue-dark)">05</span>
+                <span class="label">DESIGN ITERATION</span>
+              </div>
+              <div class="process-step">
+                <span class="num" style="color: var(--tertiary-blue-dark)">06</span>
+                <span class="label">VISUAL DESIGN</span>
               </div>
             </div>
           </div>
 
           <h2 style="font-size: 28px; border-bottom: var(--border); padding-bottom: 16px; margin-top: 60px; margin-bottom: 32px">User Research</h2>
 
-          <!-- Research Cards -->
-          <div class="grid-2" style="margin-bottom: 40px">
+          <!-- User Persona -->
+          <div class="persona-card" style="margin-bottom: 40px">
+            <div class="persona-header">
+              <span class="persona-avatar" style="background-color: var(--primary-red)">PS</span>
+              <div>
+                <h3>Priya Shah, 21</h3>
+                <div class="persona-meta">Undergraduate Engineering &middot; Single &middot; University Hostel Resident &middot; Organized, Practical</div>
+              </div>
+            </div>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0">
+              Juggles busy class schedules, social activities, and academic responsibilities. With no personal laundry facility, she relies on the hostel's
+              laundry service to save time and stay focused on studying.
+            </p>
+            <p class="persona-quote">
+              "I wish laundry was one less thing to worry about. Getting my clothes back on time and in good condition would make my hostel life so much
+              easier!"
+            </p>
+            <div class="persona-section">
+              <h4>Needs</h4>
+              <ul>
+                <li>Get laundry done without sacrificing study time</li>
+                <li>Clothes returned clean, undamaged, and on schedule</li>
+              </ul>
+            </div>
+            <div class="persona-section">
+              <h4>Frustrations</h4>
+              <ul>
+                <li>Delays in getting clothes back</li>
+                <li>Clothes lost or damaged during service</li>
+                <li>Anxiety about missing items, on top of academic stress</li>
+              </ul>
+            </div>
+            <div class="persona-traits">
+              <span>Organized</span>
+              <span>Responsible</span>
+              <span>Adaptable</span>
+              <span>Practical</span>
+            </div>
+          </div>
+
+          <!-- Empathy Map -->
+          <h3 class="card-title" style="margin-bottom: 16px">Empathy Map</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 40px">
             <div class="card bg-white">
-              <h3 class="card-title">USER PERSONA</h3>
-              <img src="persona.png" class="zoom-img" alt="User Persona" style="width: 100%; border: var(--border); margin-bottom: 16px" />
-              <p style="font-size: 14px">
-                Identified key pain points for typical college students, focusing on time constraints and budget management regarding laundry facilities.
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">SAYS</span>
+              <p style="font-size: 13px; line-height: 1.6; margin: 8px 0 0; opacity: 0.85">
+                "I never get my clothes back on time." "Some of my clothes came back damaged or missing."
               </p>
             </div>
             <div class="card bg-white">
-              <h3 class="card-title">USER JOURNEY MAP</h3>
-              <img src="journey.png" alt="Journey Map" class="zoom-img" style="width: 100%; border: var(--border); margin-bottom: 16px" />
-              <p style="font-size: 14px">
-                Mapped the emotional highs and lows of the laundry process to locate the exact moments where an app intervention is most valuable.
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">THINKS</span>
+              <p style="font-size: 13px; line-height: 1.6; margin: 8px 0 0; opacity: 0.85">
+                "Will my clothes get lost this time?" "This whole process should be easier and more reliable."
+              </p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">FEELS</span>
+              <p style="font-size: 13px; line-height: 1.6; margin: 8px 0 0; opacity: 0.85">
+                Frustrated by delays and mixed reliability. Worried about losing clothes or getting them back in poor condition.
+              </p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">DOES</span>
+              <p style="font-size: 13px; line-height: 1.6; margin: 8px 0 0; opacity: 0.85">
+                Frequently checks laundry status or asks for updates. Tries to keep track of items sent in every order.
               </p>
             </div>
           </div>
 
-          <h2 style="font-size: 28px; border-bottom: var(--border); padding-bottom: 16px; margin-top: 60px; margin-bottom: 32px">User Flow & Wireframes</h2>
+          <!-- Competitive Analysis -->
+          <div class="card bg-white" style="margin-bottom: 40px">
+            <h3 class="card-title">COMPETITIVE ANALYSIS</h3>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0">
+              Benchmarked LaundryEase against three comparable hostel/campus laundry services, SpeedyWash, UClean, and Fabrico, across the four features most
+              directly tied to the trust problem this project set out to solve: order tracking, order submission, push notifications, and user feedback
+              &amp; rating.
+            </p>
+          </div>
+
+          <!-- User Journey Map -->
+          <div class="card bg-white" style="margin-bottom: 40px">
+            <h3 class="card-title">USER JOURNEY MAP</h3>
+            <img src="journey.png" alt="Journey Map" class="zoom-img" style="width: 100%; border: var(--border); margin-bottom: 16px" />
+            <div class="grid-2" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px">
+              <div>
+                <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">STEP 1</span>
+                <p style="font-size: 13px; line-height: 1.6; margin: 6px 0 0">
+                  Registers and submits laundry order. <em>"I hope this system makes it easier to track my laundry."</em> (Hopeful, relieved)
+                </p>
+              </div>
+              <div>
+                <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">STEP 2</span>
+                <p style="font-size: 13px; line-height: 1.6; margin: 6px 0 0">
+                  Tracks order status and responds to notifications. <em>"Did my laundry get picked up? Will I get it back on time?"</em> (Hopeful, slightly
+                  anxious)
+                </p>
+              </div>
+              <div>
+                <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">STEP 3</span>
+                <p style="font-size: 13px; line-height: 1.6; margin: 6px 0 0">
+                  Receives clean clothes, leaves feedback. <em>"Were all my clothes cleaned properly?"</em> (Frustrated if issues, satisfied if smooth)
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h2 style="font-size: 28px; border-bottom: var(--border); padding-bottom: 16px; margin-top: 60px; margin-bottom: 32px">User Flow &amp; Wireframes</h2>
 
           <div class="card bg-white" style="margin-bottom: 40px">
-            <h3 class="card-title">User Flow</h3>
+            <h3 class="card-title">Information Architecture &amp; User Flow</h3>
             <img src="flow.png" alt="User Flow" style="width: 100%; border: var(--border)" />
           </div>
 
-          <div class="grid-2" style="margin-bottom: 40px">
-            <div class="card bg-white">
-              <h3 class="card-title">LO-FI WIREFRAMES</h3>
-              <img
-                src="https://placehold.co/600x400/e5e5e5/111111?text=Low+Fidelity+Sketches"
-                alt="Lo-Fi Wireframes"
-                style="width: 100%; border: var(--border)"
-              />
-            </div>
-            <div class="card bg-white">
-              <h3 class="card-title">HI-FI WIREFRAMES</h3>
-              <img src="hi-fi.png" class="zoom-img" alt="Hi-Fi Wireframes" style="width: 100%; border: var(--border)" />
-            </div>
+          <div class="card bg-white" style="margin-bottom: 40px">
+            <h3 class="card-title">HI-FI WIREFRAMES</h3>
+            <img src="hi-fi.png" class="zoom-img" alt="Hi-Fi Wireframes" style="width: 100%; border: var(--border)" />
           </div>
 
           <h2 style="font-size: 28px; border-bottom: var(--border); padding-bottom: 16px; margin-top: 60px; margin-bottom: 32px">Style Guide</h2>
@@ -374,8 +510,8 @@
               REFLECTION
             </h3>
             <p style="font-size: 22px; font-weight: 700; margin-bottom: 0; font-family: var(--font-heading); line-height: 1.4; max-width: 800px">
-              "This project pushed the idea that the best UX for a chore is the one you barely notice. Instead of adding features, most of the work was
-              removing steps between opening the app and getting the laundry done."
+              "This project pushed the idea that trust in a laundry service isn't a UI problem, it's a systems problem. Tracking, accountability, and
+              feedback loops do more work than any screen. The app is just where those systems become visible."
             </p>
           </div>
 

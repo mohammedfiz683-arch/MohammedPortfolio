@@ -164,23 +164,12 @@
             </div>
           </div>
 
-          <!-- Hero video — drop between-sand-and-silence-hero.mp4 (and a matching poster
-               image between-sand-and-silence-hero.jpg) into this folder and it loads
-               automatically, no further edits needed. -->
           <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; width: 100%; margin-top: 32px">
-            <video
-              autoplay
-              loop
-              muted
-              playsinline
-              poster="between-sand-and-silence-hero.jpg"
-              class="project-hero-img"
-              style="width: 100%; max-width: 800px; height: auto; background-color: var(--neutral-black); margin-bottom: 16px; display: block"
-            >
-              <source src="between-sand-and-silence-hero.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p style="font-size: 13px; opacity: 0.6; text-align: center; margin: 0">A player pushes the trolley through the buried corridor.</p>
+            <img
+              src="between-sand-and-silence-hero.jpg"
+              alt="Between Sand and Silence"
+              style="width: 100%; max-width: 800px; height: auto; display: block"
+            />
           </div>
 
           <!-- PROJECT DETAILS -->
@@ -190,10 +179,10 @@
               PROJECT DETAILS
             </h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
-              <p style="font-size: 15px; margin: 0"><strong>Type:</strong> Multisensory VR Installation</p>
+              <p style="font-size: 15px; margin: 0"><strong>Type:</strong> Multisensory VR Installation (Proof of Concept)</p>
               <p style="font-size: 15px; margin: 0"><strong>Role:</strong> Interaction Designer, VR Prototyper</p>
               <p style="font-size: 15px; margin: 0"><strong>Team:</strong> 2 people</p>
-              <p style="font-size: 15px; margin: 0"><strong>Duration:</strong> <em>To confirm</em></p>
+              <p style="font-size: 15px; margin: 0"><strong>Duration:</strong> 3 weeks, ongoing</p>
               <p style="font-size: 15px; margin: 0"><strong>Platform:</strong> VR (6DoF) + physical installation</p>
               <p style="font-size: 15px; margin: 0"><strong>Tools:</strong> Unity, TouchDesigner, rotary encoder, Blender</p>
               <p style="font-size: 15px; margin: 0"><strong>Mode:</strong> Single Player</p>
@@ -252,11 +241,11 @@
           </p>
           <div class="grid-2" style="margin-bottom: 40px">
             <div class="card bg-white" style="padding: 0; overflow: hidden">
-              <img
-                src="between-sand-and-silence-corridor.jpg"
-                alt="The mapped VR corridor, aligned to the real physical space"
-                style="width: 100%; display: block; border-bottom: var(--border)"
-              />
+              <div style="aspect-ratio: 4 / 3; background-color: var(--neutral-black)">
+                <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; display: block">
+                  <source src="between-sand-and-silence-corridor.mp4" type="video/mp4" />
+                </video>
+              </div>
               <div style="padding: 24px">
                 <h3 class="card-title">CONCEPT ONE — THE MAPPED WORLD</h3>
                 <p style="font-size: 14px; line-height: 1.6; margin: 0">
@@ -267,11 +256,11 @@
               </div>
             </div>
             <div class="card bg-white" style="padding: 0; overflow: hidden">
-              <img
-                src="between-sand-and-silence-trolley.jpg"
-                alt="The physical trolley with an embedded rotary encoder"
-                style="width: 100%; display: block; border-bottom: var(--border)"
-              />
+              <div style="aspect-ratio: 4 / 3; background-color: var(--neutral-black)">
+                <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; display: block">
+                  <source src="between-sand-and-silence-trolley.mp4" type="video/mp4" />
+                </video>
+              </div>
               <div style="padding: 24px">
                 <h3 class="card-title">CONCEPT TWO — THE TROLLEY</h3>
                 <p style="font-size: 14px; line-height: 1.6; margin: 0">
@@ -364,23 +353,25 @@
           <h2 style="margin-bottom: 32px">The Installation Space</h2>
           <div class="grid-2" style="margin-bottom: 24px">
             <div class="card bg-white" style="padding: 0; overflow: hidden">
-              <img src="between-sand-and-silence-space-plan.png" alt="Plan of the installation space" style="width: 100%; display: block" />
+              <img src="between-sand-and-silence-space-plan.jpg" alt="Plan of the installation space" style="width: 100%; display: block" />
               <p style="font-size: 12px; text-align: center; opacity: 0.7; margin: 12px 0">PLAN OF THE SPACE</p>
             </div>
             <div class="card bg-white" style="padding: 0; overflow: hidden">
-              <video autoplay loop muted playsinline style="width: 100%; display: block; background-color: var(--neutral-black)">
-                <source src="between-sand-and-silence-space-video.mp4" type="video/mp4" />
-              </video>
+              <div style="aspect-ratio: 4 / 3; background-color: var(--neutral-black); display: flex; align-items: center; justify-content: center">
+                <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; display: block">
+                  <source src="between-sand-and-silence-space-video.mp4" type="video/mp4" />
+                </video>
+              </div>
               <p style="font-size: 12px; text-align: center; opacity: 0.7; margin: 12px 0">VIDEO OF THE SPACE</p>
             </div>
           </div>
           <div class="grid-2" style="margin-bottom: 40px">
             <div class="card bg-white" style="padding: 0; overflow: hidden">
-              <img src="between-sand-and-silence-sketch.png" alt="Sketch of the installation space" style="width: 100%; display: block" />
+              <img src="between-sand-and-silence-sketch.jpg" alt="Sketch of the installation space" style="width: 100%; display: block" />
               <p style="font-size: 12px; text-align: center; opacity: 0.7; margin: 12px 0">SKETCH OF SPACE</p>
             </div>
             <div class="card bg-white" style="padding: 0; overflow: hidden">
-              <img src="between-sand-and-silence-perspective.png" alt="Perspective view of the installation" style="width: 100%; display: block" />
+              <img src="between-sand-and-silence-perspective.jpg" alt="Perspective view of the installation" style="width: 100%; display: block" />
               <p style="font-size: 12px; text-align: center; opacity: 0.7; margin: 12px 0">PERSPECTIVE VIEW</p>
             </div>
           </div>
@@ -408,7 +399,7 @@
                   <img
                     src="between-sand-and-silence-storyboard-01.jpg"
                     alt="Buried corridor"
-                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                    style="width: 100%; max-width: 600px; height: auto; display: block; clip-path: inset(3% round 10px)"
                   />
                 </div>
               </div>
@@ -428,12 +419,11 @@
                 <p style="font-size: 13px; line-height: 1.5; opacity: 0.75; margin-bottom: 16px">
                   <strong>Audio:</strong> the silence fades, gradually replaced by the sounds of people and daily life.
                 </p>
-                <div style="display: flex; justify-content: center">
-                  <img
-                    src="between-sand-and-silence-storyboard-02.jpg"
-                    alt="Pushing forward"
-                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
-                  />
+                <div style="display: flex; flex-direction: column; align-items: center">
+                  <video autoplay loop muted playsinline style="width: 100%; max-width: 600px; height: auto; display: block; background-color: var(--neutral-black); clip-path: inset(3% round 10px)">
+                    <source src="between-sand-and-silence-storyboard-02.mp4" type="video/mp4" />
+                  </video>
+                  <p style="font-size: 12px; opacity: 0.6; text-align: center; margin-top: 8px">Visualized with Google Gemini (Veo) — no in-engine capture of this transition yet.</p>
                 </div>
               </div>
             </div>
@@ -456,7 +446,7 @@
                   <img
                     src="between-sand-and-silence-storyboard-03.jpg"
                     alt="The pot"
-                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                    style="width: 100%; max-width: 600px; height: auto; display: block; clip-path: inset(3% round 10px)"
                   />
                 </div>
               </div>
@@ -480,7 +470,7 @@
                   <img
                     src="between-sand-and-silence-storyboard-04.jpg"
                     alt="Handprints"
-                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                    style="width: 100%; max-width: 600px; height: auto; display: block; clip-path: inset(3% round 10px)"
                   />
                 </div>
               </div>
@@ -504,7 +494,7 @@
                   <img
                     src="between-sand-and-silence-storyboard-05.jpg"
                     alt="Footprints appear"
-                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                    style="width: 100%; max-width: 600px; height: auto; display: block; clip-path: inset(3% round 10px)"
                   />
                 </div>
               </div>
@@ -528,7 +518,7 @@
                   <img
                     src="between-sand-and-silence-storyboard-06.jpg"
                     alt="Following the trail"
-                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                    style="width: 100%; max-width: 600px; height: auto; display: block; clip-path: inset(3% round 10px)"
                   />
                 </div>
               </div>
@@ -552,7 +542,7 @@
                   <img
                     src="between-sand-and-silence-storyboard-07.jpg"
                     alt="Footprints stop"
-                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                    style="width: 100%; max-width: 600px; height: auto; display: block; clip-path: inset(3% round 10px)"
                   />
                 </div>
               </div>
@@ -576,7 +566,7 @@
                   <img
                     src="between-sand-and-silence-storyboard-08.jpg"
                     alt="The last two steps"
-                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                    style="width: 100%; max-width: 600px; height: auto; display: block; clip-path: inset(3% round 10px)"
                   />
                 </div>
               </div>
@@ -600,7 +590,7 @@
                   <img
                     src="between-sand-and-silence-storyboard-09.jpg"
                     alt="The shift"
-                    style="width: 100%; max-width: 600px; height: auto; border: var(--border-thick) solid var(--primary-red); display: block"
+                    style="width: 100%; max-width: 600px; height: auto; display: block; clip-path: inset(3% round 10px)"
                   />
                 </div>
               </div>
@@ -624,7 +614,7 @@
                   <img
                     src="between-sand-and-silence-storyboard-10.jpg"
                     alt="The witness"
-                    style="width: 100%; max-width: 600px; height: auto; border: var(--border); display: block"
+                    style="width: 100%; max-width: 600px; height: auto; display: block; clip-path: inset(3% round 10px)"
                   />
                 </div>
               </div>
