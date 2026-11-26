@@ -384,6 +384,11 @@ section {
     text-transform: uppercase;
 }
 
+/* Headings are black sitewide, so without this a dark card's title is black on its black footer. */
+.bento-card.dark .bento-title-group h3 {
+    color: var(--bg-white);
+}
+
 .bento-desc {
     font-size: 14px;
     margin: 0;
