@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kaha-ni Case Study - MOHAMMED.HAFIZ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="container">
+        <a href="index.html" class="logo">MOHAMMED.HAFIZ</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+        <nav class="nav-links">
+          <a href="index.html">HOME</a>
+          <a href="work.html" class="active">WORK</a>
+          <a href="about.html">ABOUT</a>
+          <a href="contact.html">CONTACT</a>
+          <a href="contact.html" class="nav-hire-mobile">HIRE ME</a>
+        </nav>
+        <a href="contact.html" class="btn-hire">HIRE ME</a>
+      </div>
+    </header>
+
+    <main class="case-study">
+      <section style="padding-top: 40px">
+        <div class="container">
+          <!-- HERO -->
+          <div class="project-header">
+            <a href="work.html" class="back-link"><span class="chevron left" aria-hidden="true"></span> BACK TO WORK</a>
+            <h1 style="font-size: 48px; margin-bottom: 16px">Kaha-ni</h1>
+            <p style="font-size: 18px; font-weight: 500; margin-bottom: 24px; max-width: 800px; font-family: var(--font-heading)">
+              A machine that looks at an everyday object and prints a short story about what it might mean.
+            </p>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap">
+              <span class="tag white" style="margin: 0">INTERACTIVE INSTALLATION</span>
+              <span class="tag green" style="margin: 0">HUMAN-AI INTERACTION</span>
+              <span class="tag blue" style="margin: 0">GENERATIVE STORY</span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; width: 100%; margin-top: 32px">
+            <img src="kaha-ni-hero.jpg" alt="Visitors interacting with the Kaha-ni installation" style="width: 100%; max-width: 640px; height: auto; display: block; border-radius: 10px" />
+          </div>
+
+          <!-- PROJECT DETAILS -->
+          <div class="card bg-red" style="color: white; margin-bottom: 40px">
+            <h3 class="card-header" style="color: white">
+              <span class="card-icon" style="background-color: white; color: var(--primary-red)">?</span>
+              PROJECT DETAILS
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
+              <p style="font-size: 16px; margin: 0"><strong>Type:</strong> Interactive Installation</p>
+              <p style="font-size: 16px; margin: 0"><strong>Role:</strong> <em>To confirm</em></p>
+              <p style="font-size: 16px; margin: 0"><strong>Team:</strong> 4 people</p>
+              <p style="font-size: 16px; margin: 0"><strong>Duration:</strong> <em>To confirm</em></p>
+              <p style="font-size: 16px; margin: 0"><strong>Context:</strong> Designing for Smart Living, Semester 07</p>
+              <p style="font-size: 16px; margin: 0"><strong>Tools:</strong> Gemini (LLM), Arduino, camera, thermal printer, LED matrix</p>
+            </div>
+          </div>
+
+          <!-- Overview -->
+          <div class="card" style="margin-bottom: 40px; padding: 32px">
+            <p style="font-size: 22px; line-height: 1.4; margin: 0; font-weight: 700; font-family: var(--font-heading)">
+              A visitor holds an object up to a camera and presses a button. About thirty seconds later,
+              <span style="background-color: var(--secondary-green); padding: 0 4px">a four-line story prints on a slip of paper.</span>
+              The machine keeps nothing. The slip remembers for it.
+            </p>
+          </div>
+
+          <!-- Demo video -->
+          <h2 style="margin-bottom: 32px">See It in Action</h2>
+          <div style="margin-bottom: 40px; width: 100%; display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start">
+            <video
+              autoplay
+              loop
+              muted
+              playsinline
+              controls
+              style="flex: 1 1 480px; min-width: 0; max-width: 800px; aspect-ratio: 16 / 9; border-radius: 10px; display: block; background-color: var(--neutral-black)"
+            >
+              <source src="kaha-ni-demo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <figure style="margin: 0; flex: 0 0 280px; max-width: 100%">
+              <img
+                src="kaha-ni-working.png"
+                alt="People gathered around the Kaha-ni machine"
+                style="width: 100%; height: auto; display: block; border-radius: 10px"
+              />
+              <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">People gathered around the machine.</figcaption>
+            </figure>
+          </div>
+
+          <!-- The Brief -->
+          <div class="grid-2" style="margin-bottom: 40px">
+            <div class="card bg-white">
+              <h3 class="card-title">WHAT WE WERE GIVEN</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin-bottom: 12px">
+                The brief was G5, "The Network That Only Prints": sensor nodes with a printer as their only output.
+              </p>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                Left unattended, nothing is printed. In use, a person takes a slip away. Where the chain stops, the record becomes a physical object with a
+                location.
+              </p>
+            </div>
+            <div class="card bg-white">
+              <h3 class="card-title">OUR INTERPRETATION</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin-bottom: 12px">
+                A camera observes a personal object. A printer produces a story. The person decides whether to keep it or share it.
+              </p>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                We kept the premise of sensing, printing and human action, and changed the mechanism to explore how an ordinary object could become the
+                starting point for a narrative.
+              </p>
+            </div>
+          </div>
+
+          <!-- Process -->
+          <h2 style="margin-bottom: 32px">The Design Process</h2>
+          <div class="card bg-white" style="margin-bottom: 40px">
+            <div class="process-steps">
+              <div class="process-step">
+                <span class="num" style="color: var(--primary-red)">01</span>
+                <span class="label">Observe Objects</span>
+              </div>
+              <div class="process-step">
+                <span class="num" style="color: var(--primary-red)">02</span>
+                <span class="label">Explore Associations</span>
+              </div>
+              <div class="process-step">
+                <span class="num" style="color: var(--primary-red)">03</span>
+                <span class="label">Experiment With Narrative</span>
+              </div>
+              <div class="process-step">
+                <span class="num" style="color: var(--primary-red)">04</span>
+                <span class="label">Refine</span>
+              </div>
+              <div class="process-step">
+                <span class="num" style="color: var(--primary-red)">05</span>
+                <span class="label">Materialise Through Printing</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Three ideations -->
+          <h2 style="margin-bottom: 32px">Three Ideations</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-bottom: 40px">
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">IDEA 01</span>
+              <h3 style="margin: 8px 0">Self-Service Check-Up</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                An installation for clinic waiting areas. A quick sensor scan captures basic health indicators and prints a small receipt, the only record of
+                the interaction.
+              </p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">IDEA 02</span>
+              <h3 style="margin: 8px 0">Game-Selection Station</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                A machine preloaded with role-playing games. A visitor picks one, and the printed slip assigns a role they carry into another space as the
+                starting point for play.
+              </p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">IDEA 03</span>
+              <h3 style="margin: 8px 0">Kaha-ni</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin-bottom: 12px">
+                A story machine for an art cafe. An object goes in, a short unexpected story comes out.
+              </p>
+              <span class="tag dark" style="margin: 0">SELECTED</span>
+            </div>
+          </div>
+
+          <!-- Observation / Motivation -->
+          <div class="grid-2" style="margin-bottom: 40px">
+            <div class="card bg-white">
+              <h3 class="card-title">THE OBSERVATION</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                We keep using objects long after they have lost their original condition: a worn toothbrush, a tangled charger, a bent key. They may no
+                longer look new or work perfectly, but they can still carry personal significance.
+              </p>
+            </div>
+            <div class="card bg-white">
+              <h3 class="card-title">THE MOTIVATION</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                We wanted to explore what happens when an object is interpreted beyond its functional identity, and what stories might emerge from its
+                associations.
+              </p>
+            </div>
+          </div>
+
+          <div class="card bg-white" style="margin-bottom: 40px; padding: 32px">
+            <p style="font-size: 22px; line-height: 1.4; margin: 0; font-weight: 700; font-family: var(--font-heading)">
+              We interact with everyday objects without thinking. We recognise what they are, understand what they do, and move on.
+              <span style="background-color: var(--secondary-green); padding: 0 4px">We wanted people to look again.</span>
+            </p>
+          </div>
+
+          <!-- Scaffold to Kaha-ni -->
+          <h2 style="margin-bottom: 32px">From the Scaffold to Kaha-ni</h2>
+          <div class="card bg-white" style="margin-bottom: 40px">
+            <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+              <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">Sensor input</strong>
+              Became a camera and the visitor's own object.
+            </p>
+            <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+              <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">Printed output</strong>
+              Became a generated narrative.
+            </p>
+            <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+              <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">Person carries the slip</strong>
+              Became a person who takes the slip or pins it to a board.
+            </p>
+            <p style="margin-bottom: 0; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+              <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">No screen</strong>
+              Became an LED matrix that shows the machine is processing.
+            </p>
+          </div>
+
+          <!-- How it works -->
+          <h2 style="margin-bottom: 32px">How Kaha-ni Works</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-bottom: 40px">
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">01</span>
+              <h3 style="margin: 8px 0">Capture and Identify</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">The visitor presses a button and the machine photographs and identifies the object.</p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">02</span>
+              <h3 style="margin: 8px 0">Explore Associations</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">It looks up related ideas and follows unexpected associations.</p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">03</span>
+              <h3 style="margin: 8px 0">Create the Story</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">It connects those associations into a short, four-line story.</p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">04</span>
+              <h3 style="margin: 8px 0">Print the Story</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">The slip prints for the visitor to take or leave behind.</p>
+            </div>
+          </div>
+
+          <!-- How the machine sees -->
+          <div class="card bg-white" style="margin-bottom: 40px">
+            <h3 class="card-title">HOW THE MACHINE SEES</h3>
+            <p style="font-size: 16px; line-height: 1.6; margin-bottom: 20px; max-width: 800px">
+              The machine does not just name the object. It describes it through eight physical and abstract qualities, which makes this object
+              interpretation, not object recognition.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 16px">
+              <div>
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 12px; display: block; margin-bottom: 8px">PHYSICAL</span>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                  <span class="tag white" style="margin: 0">MATERIAL</span>
+                  <span class="tag white" style="margin: 0">COLOUR</span>
+                  <span class="tag white" style="margin: 0">SHAPE</span>
+                </div>
+              </div>
+              <div>
+                <span style="font-family: var(--font-heading); font-weight: 700; font-size: 12px; display: block; margin-bottom: 8px">ABSTRACT</span>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                  <span class="tag green" style="margin: 0">MOOD</span>
+                  <span class="tag green" style="margin: 0">PLACE</span>
+                  <span class="tag green" style="margin: 0">ACTION</span>
+                  <span class="tag green" style="margin: 0">TIME</span>
+                  <span class="tag green" style="margin: 0">ODDITY</span>
+                </div>
+              </div>
+            </div>
+            <div class="grid-2" style="margin-top: 32px; align-items: start">
+              <figure style="margin: 0">
+                <img
+                  src="kaha-ni-capture.jpg"
+                  alt="A visitor holding a sandal up to the camera in the story machine window"
+                  style="width: 100%; height: auto; display: block; border-radius: 10px"
+                />
+                <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">A test run: the camera sees a sandal.</figcaption>
+              </figure>
+              <figure style="margin: 0">
+                <img
+                  src="kaha-ni-terminal.png"
+                  alt="Terminal log showing the attributes the machine picked and the searches that followed"
+                  style="width: 100%; height: auto; display: block; border-radius: 10px"
+                />
+                <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">The log shows the attributes it picked and the searches that follow.</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <!-- Drift -->
+          <h2 style="margin-bottom: 32px">Five Seeds. Multiple Paths.</h2>
+          <p style="font-size: 16px; margin-bottom: 24px; max-width: 800px">
+            The machine picks five of those attributes and uses them as starting points for a lateral search across nine online knowledge sources,
+            queried through APIs for an object's origin, composition, history and behaviour.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-bottom: 40px">
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">SEED</span>
+              <p style="font-size: 14px; line-height: 1.6; margin: 8px 0 0">Five selected attributes become the search starting points.</p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">SEARCH</span>
+              <p style="font-size: 14px; line-height: 1.6; margin: 8px 0 0">The system gathers related information from the nine sources.</p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">DRIFT</span>
+              <p style="font-size: 14px; line-height: 1.6; margin: 8px 0 0">
+                What it finds creates further associations, pulling the search away from the object's literal meaning.
+              </p>
+            </div>
+          </div>
+
+          <div class="card bg-white" style="margin-bottom: 40px; padding: 0; overflow-x: auto; overflow-y: hidden">
+            <img
+              src="kaha-ni-sources.svg"
+              alt="The nine knowledge sources and what each contributes: Wikipedia, Wiktionary, Wikidata, ConceptNet, DBpedia, Etymonline, Made How, Wikiquote and Idioms"
+              style="width: 100%; min-width: 720px; height: auto; display: block"
+            />
+          </div>
+
+          <!-- Story generation -->
+          <div class="grid-2" style="margin-bottom: 40px; align-items: start">
+          <div class="card bg-white">
+            <h3 class="card-title">HOW THE STORY IS WRITTEN</h3>
+            <p style="font-size: 16px; line-height: 1.6; margin-bottom: 20px; max-width: 800px">
+              The drifted connections and five pre-written rhyming example stories feed the model, which writes an original four-line story in that style.
+            </p>
+            <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+              <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">01. Input</strong>
+              Drifted phrases and connections are gathered.
+            </p>
+            <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+              <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">02. Reference</strong>
+              Five example rhyming stories guide the writing style and rhyme pattern.
+            </p>
+            <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+              <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">03. Generate</strong>
+              The machine combines the connections into a new four-line story.
+            </p>
+            <p style="margin-bottom: 0; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+              <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">04. Output</strong>
+              The finished story prints through the thermal printer.
+            </p>
+          </div>
+          <figure style="margin: 0">
+            <img
+              src="kaha-ni-slip.jpg"
+              alt="A printed Kaha-ni slip with a four-line story and the attributes that fed it"
+              style="width: 100%; max-width: 420px; height: auto; display: block; margin: 0 auto; border-radius: 10px"
+            />
+            <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px; text-align: center">
+              A printed slip: the story on top, the attributes that fed it below.
+            </figcaption>
+          </figure>
+          </div>
+
+          <!-- The Final Prototype -->
+          <h2 style="margin-bottom: 32px">The Final Prototype</h2>
+          <div class="grid-2" style="margin-bottom: 40px; align-items: start">
+            <figure style="margin: 0">
+              <img
+                src="kaha-ni-body-sketch.png"
+                alt="Notebook sketches of the Kaha-ni machine's body and its memory box"
+                style="width: 100%; height: auto; display: block; border-radius: 10px"
+              />
+              <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">Early sketches of the machine's body.</figcaption>
+            </figure>
+            <figure style="margin: 0">
+              <img
+                src="kaha-ni-machine.jpg"
+                alt="The Kaha-ni prototype: an LED matrix, a button and the printer slot"
+                style="width: 100%; height: auto; display: block; border-radius: 10px"
+              />
+              <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">The built prototype: the LED matrix, the button and the printer slot.</figcaption>
+            </figure>
+          </div>
+
+          <!-- The Memory Board -->
+          <h2 style="margin-bottom: 32px">The Memory Board</h2>
+          <div class="grid-2" style="margin-bottom: 40px; align-items: center">
+            <div>
+              <img
+                src="kaha-ni-tagboard.jpg"
+                alt="The tag board covered in printed Kaha-ni story slips"
+                style="width: 100%; max-width: 420px; height: auto; display: block; margin: 0 auto; border-radius: 10px"
+              />
+            </div>
+            <div class="card bg-white">
+              <p style="font-size: 14px; line-height: 1.6; margin-bottom: 12px">
+                The machine stores nothing: no object, story or moment is saved. The only memory is a wall board where visitors can pin their slips, or
+                take them home instead.
+              </p>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                No database, no cloud, just paper accumulating by hand. Because the story depends on what the internet says at that moment, the same object
+                photographed on another day gives a different story. Nothing repeats, and the board is the record.
+              </p>
+            </div>
+          </div>
+
+          <!-- Where it belongs -->
+          <div class="grid-2" style="margin-bottom: 40px; align-items: center">
+            <div class="card bg-white">
+              <h3 class="card-title">WHERE KAHA-NI BELONGS</h3>
+              <p style="font-size: 16px; line-height: 1.6; margin: 0">
+                An art cafe or workshop is already a place where people bring their creations and make things, so Kaha-ni becomes an extension of that. A
+                visitor can bring an object they just made and get a story built from its qualities and associations. You make the object, Kaha-ni gives
+                it a story.
+              </p>
+            </div>
+            <figure style="margin: 0">
+              <img
+                src="kaha-ni-where-it-belongs.png"
+                alt="Two people looking at a crowded pinboard in a shared space"
+                style="width: 100%; height: auto; display: block; border-radius: 10px"
+              />
+              <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">Reference: a shared space where people look at each other's work.</figcaption>
+            </figure>
+          </div>
+
+          <!-- Outcome -->
+          <div class="card" style="background-color: var(--dark-green); color: white; margin-bottom: 40px">
+            <h3 class="card-header" style="color: white">OUTCOME</h3>
+            <p style="font-size: 22px; font-weight: 700; margin-bottom: 0; font-family: var(--font-heading); line-height: 1.4">
+              A working prototype that turns an ordinary object into a printed four-line story, with a paper memory board as the installation's only record.
+            </p>
+          </div>
+
+          <!-- Reflection -->
+          <div
+            class="card"
+            style="
+              background-color: var(--dark-green);
+              color: white;
+              margin-bottom: 40px;
+              padding: 60px 40px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+            "
+          >
+            <h3
+              style="
+                border-bottom: 3px solid white;
+                padding-bottom: 12px;
+                margin-bottom: 24px;
+                font-family: var(--font-heading);
+                color: white;
+                display: inline-block;
+              "
+            >
+              REFLECTION
+            </h3>
+            <p style="font-size: 22px; font-weight: 700; margin-bottom: 0; font-family: var(--font-heading); line-height: 1.4; max-width: 800px">
+              "This project pushed the idea that a machine can make people look at ordinary things again by misreading them on purpose. Instead of storing
+              anything, it leaves the memory to a slip of paper and a wall of pins."
+            </p>
+          </div>
+
+          <!-- Next / back -->
+          <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 40px">
+            <a href="work.html" class="btn"><span class="chevron left" aria-hidden="true"></span> BACK TO ALL WORK</a>
+            <a href="rani-no-hajiro.html" class="btn primary">NEXT PROJECT <span class="chevron" aria-hidden="true"></span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="logo-footer" style="font-family: var(--font-heading); font-size: 16px">MOHAMMED.HAFIZ</div>
+        <div>© 2026 MOHAMMED HAFIZ. STAY CURIOUS.</div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/mohammed-sheikh-hafiz-5246a3340/" target="_blank" rel="noopener">LINKEDIN</a>
+          <a href="https://www.behance.net/mohammedsheikh11" target="_blank" rel="noopener">BEHANCE</a>
+          <a href="https://github.com/mohammedfiz683-arch" target="_blank" rel="noopener">GITHUB</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
