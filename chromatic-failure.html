@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chromatic Failure Case Study - MOHAMMED.HAFIZ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="container">
+        <a href="index.html" class="logo">MOHAMMED.HAFIZ</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+        <nav class="nav-links">
+          <a href="index.html">HOME</a>
+          <a href="work.html" class="active">WORK</a>
+          <a href="about.html">ABOUT</a>
+          <a href="contact.html">CONTACT</a>
+          <a href="contact.html" class="nav-hire-mobile">HIRE ME</a>
+        </nav>
+        <a href="contact.html" class="btn-hire">HIRE ME</a>
+      </div>
+    </header>
+
+    <main class="case-study">
+      <section style="padding-top: 40px">
+        <div class="container">
+          <!-- HERO -->
+          <div class="project-header">
+            <a href="work.html" class="back-link"><span class="chevron left" aria-hidden="true"></span> BACK TO WORK</a>
+            <h1 style="font-size: 48px; margin-bottom: 16px">Chromatic Failure</h1>
+            <p style="font-size: 18px; font-weight: 500; margin-bottom: 24px; max-width: 800px; font-family: var(--font-heading)">
+              A VR experience about designing for colour blindness.
+            </p>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap">
+              <span class="tag white" style="margin: 0">VR EXPERIENCE</span>
+              <span class="tag green" style="margin: 0">ACCESSIBILITY</span>
+              <span class="tag blue" style="margin: 0">RESEARCH-LED</span>
+              <span class="tag dark" style="margin: 0">SOLO PROJECT</span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; margin: 32px 0 40px; max-width: 1000px">
+            <figure style="margin: 0; flex: 1 1 210px">
+              <img
+                src="chromatic-failure-poster-main.jpg"
+                alt="The main Chromatic Failure poster: One instruction. Twenty seconds. No labels."
+                style="width: 100%; height: auto; display: block; border-radius: 10px"
+              />
+              <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">The main poster.</figcaption>
+            </figure>
+            <figure style="margin: 0; flex: 2 1 420px">
+              <img
+                src="chromatic-failure-poster-dark-red.jpg"
+                alt="Exhibit poster: Which one is dark red? Seven unlabelled test tubes in a rack"
+                style="width: 100%; height: auto; display: block; border-radius: 10px"
+              />
+              <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">Poster 1 of 2: seven vials, no labels, one instruction.</figcaption>
+            </figure>
+          </div>
+
+          <!-- PROJECT DETAILS -->
+          <div class="card bg-red" style="color: white; margin-bottom: 40px">
+            <h3 class="card-header" style="color: white">
+              <span class="card-icon" style="background-color: white; color: var(--primary-red)">?</span>
+              PROJECT DETAILS
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
+              <p style="font-size: 16px; margin: 0"><strong>Type:</strong> VR Experience (first-person simulation)</p>
+              <p style="font-size: 16px; margin: 0"><strong>Role:</strong> Researcher, Interaction Designer, VR Prototyper</p>
+              <p style="font-size: 16px; margin: 0"><strong>Team:</strong> Solo</p>
+              <p style="font-size: 16px; margin: 0"><strong>Duration:</strong> 2 weeks</p>
+              <p style="font-size: 16px; margin: 0"><strong>Context:</strong> MSD-II Extended Realities, Anant National University</p>
+              <p style="font-size: 16px; margin: 0"><strong>Platform:</strong> VR (Meta Quest)</p>
+              <p style="font-size: 16px; margin: 0"><strong>Simulation:</strong> Machado dichromacy matrices (deuteranopia)</p>
+            </div>
+          </div>
+
+          <!-- Overview -->
+          <div class="card" style="margin-bottom: 40px; padding: 32px">
+            <p style="font-size: 22px; line-height: 1.4; margin: 0; font-weight: 700; font-family: var(--font-heading)">
+              A colour-normal user steps into a high-pressure lab where every critical task depends on colour alone.
+              <span style="background-color: var(--secondary-green); padding: 0 4px">They will fail, and that failure is the experience.</span>
+              The colourblind person is not the problem. The design is.
+            </p>
+          </div>
+
+          <!-- Demo video -->
+          <h2 style="margin-bottom: 32px">See It in Action</h2>
+          <figure style="margin: 0 0 40px; max-width: 900px">
+            <video
+              autoplay
+              loop
+              muted
+              playsinline
+              controls
+              poster="chromatic-failure-bench.jpg"
+              style="width: 100%; aspect-ratio: 1280 / 644; border-radius: 10px; display: block; background-color: var(--neutral-black)"
+            >
+              <source src="chromatic-failure-gameplay.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">
+              Headset capture of the Operation Lab, seen through the deuteranopia filter: the room, the bench, and the reveal.
+            </figcaption>
+          </figure>
+
+          <!-- Argument / Why -->
+          <div class="grid-2" style="margin-bottom: 40px">
+            <div class="card bg-white">
+              <h3 class="card-title">THE CENTRAL ARGUMENT</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                Colour blindness is not an individual limitation. It is a systemic design failure. Every environment that relies on colour alone to
+                communicate critical information has already excluded some of its users before they enter the room.
+              </p>
+            </div>
+            <div class="card bg-white">
+              <h3 class="card-title">WHY I MADE IT</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin-bottom: 12px">
+                I am mildly red-green colourblind (deuteranomaly). I found out while preparing for the NID entrance exams, and it gave a pattern to years of
+                struggling with colour palettes and needing help with graphics. It was never a personal failure. The systems I worked in were not designed
+                with me in mind.
+              </p>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                I wanted someone else to reach that realisation, not through sympathy for the colourblind, but through anger at the system that forgot them.
+              </p>
+            </div>
+          </div>
+
+          <!-- Concept evolution -->
+          <h2 style="margin-bottom: 32px">How the Concept Changed</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-bottom: 24px">
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">01</span>
+              <h3 style="margin: 8px 0">The First Idea</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                A narrative mixed-reality piece. The user would follow characters through a story about daily life with colour blindness, aiming for
+                empathy. It was more of a direction than a concept.
+              </p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">02</span>
+              <h3 style="margin: 8px 0">Why It Failed</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                Faculty feedback named two problems. Watching characters from the outside creates sympathy, not understanding. And I was designing about
+                colourblind people without having spoken to any beyond myself.
+              </p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">03</span>
+              <h3 style="margin: 8px 0">The New Direction</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                A first-person simulation. Put the user inside a workplace with their colour perception shifted toward deuteranopia, and give them tasks
+                only colour can solve. They fail, and the blame should land on the system.
+              </p>
+            </div>
+          </div>
+          <div class="card bg-white" style="margin-bottom: 40px; padding: 32px">
+            <p style="font-size: 22px; line-height: 1.4; margin: 0; font-weight: 700; font-family: var(--font-heading)">
+              Watching someone struggle creates sympathy.
+              <span style="background-color: var(--secondary-green); padding: 0 4px">Being inside the situation creates understanding.</span>
+            </p>
+          </div>
+
+          <!-- Primary research -->
+          <h2 style="margin-bottom: 16px">Primary Research</h2>
+          <p style="font-size: 16px; line-height: 1.6; margin-bottom: 24px; max-width: 800px">
+            Three semi-structured online interviews with people diagnosed with deuteranomaly, the most common red-green deficiency. One was my roommate; I
+            reached the other two by DM after finding their posts on r/ColorBlind. The conversations ran in Hinglish, were guided by five core questions, and
+            are translated here. I was not looking for general awareness. I was looking for the moments where colour-only systems stop being an
+            inconvenience and become a barrier.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 40px">
+            <div class="card bg-white persona-card">
+              <div class="persona-header">
+                <span class="persona-avatar" style="background-color: var(--primary-red)">K</span>
+                <div>
+                  <h3>Kunal, 23</h3>
+                  <div class="persona-meta">3D Design Senior · Mild to moderate deuteranomaly · Found through direct contact</div>
+                </div>
+              </div>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                Strong at form and space, but his colour work reads as off to peers and faculty. He has never disclosed his colour blindness at college,
+                because saying it in a design school feels like admitting he doesn't belong.
+              </p>
+              <p class="persona-quote">"I have to manually check hex codes for something that should've just had a name written on it."</p>
+              <div class="persona-section">
+                <h4>Workaround</h4>
+                <ul>
+                  <li>Hex codes</li>
+                  <li>Asking friends to check before submissions</li>
+                </ul>
+              </div>
+              <div class="persona-section">
+                <h4>Would redesign</h4>
+                <ul>
+                  <li>The grading rubric: add an icon or pattern beside its red, yellow and green</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card bg-white persona-card">
+              <div class="persona-header">
+                <span class="persona-avatar" style="background-color: var(--dark-green)">N</span>
+                <div>
+                  <h3>Nikhil, 24</h3>
+                  <div class="persona-meta">Aspiring police officer · Mild deuteranomaly · Found on Reddit</div>
+                </div>
+              </div>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                Cleared the physical, written and aptitude rounds, then failed the Ishihara plates at his police medical. He had never noticed a problem
+                before. One test ended a career he had wanted since childhood.
+              </p>
+              <p class="persona-quote">"That's not testing my ability to do the job. That's testing my ability to pass a colour test."</p>
+              <div class="persona-section">
+                <h4>Workaround</h4>
+                <ul>
+                  <li>Reading position, not colour (the top light on a signal is red)</li>
+                  <li>Colour-blind lenses were not practical for uniform or training</li>
+                </ul>
+              </div>
+              <div class="persona-section">
+                <h4>Would redesign</h4>
+                <ul>
+                  <li>The medical test: make it practical, and grade by severity</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card bg-white persona-card">
+              <div class="persona-header">
+                <span class="persona-avatar" style="background-color: var(--tertiary-blue-dark)">A</span>
+                <div>
+                  <h3>Aditya, 21</h3>
+                  <div class="persona-meta">Aspiring helicopter pilot · Moderate green deficiency · Found on Reddit</div>
+                </div>
+              </div>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                Found out at his aviation medical that he can't tell roughly half of all greens apart, and was borderline disqualified. His daily life runs
+                normally. One professional requirement stopped everything.
+              </p>
+              <p class="persona-quote">"Add a shape, add a label, add a pattern. I'm colourblind, not blind."</p>
+              <div class="persona-section">
+                <h4>Workaround</h4>
+                <ul>
+                  <li>None needed day to day</li>
+                </ul>
+              </div>
+              <div class="persona-section">
+                <h4>Would redesign</h4>
+                <ul>
+                  <li>Cockpit instruments: pair every colour indicator with text or a symbol</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Insights -->
+          <h2 style="margin-bottom: 32px">Insights</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-bottom: 24px">
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">KUNAL</span>
+              <p style="font-size: 14px; line-height: 1.6; margin: 8px 0 12px">
+                When a system fails to accommodate, the individual absorbs the blame silently, and over time begins to believe it belongs to them.
+              </p>
+              <p style="font-size: 12px; line-height: 1.5; opacity: 0.7; margin: 0"><strong>It reveals:</strong> exclusion operates through silence, not confrontation.</p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">NIKHIL</span>
+              <p style="font-size: 14px; line-height: 1.6; margin: 8px 0 12px">
+                Gatekeeping tools are designed once, inherited without question, and applied indefinitely, never mapped back to the work they claim to
+                assess.
+              </p>
+              <p style="font-size: 12px; line-height: 1.5; opacity: 0.7; margin: 0"><strong>It reveals:</strong> systemic exclusion is held in place by unquestioned convention.</p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">ADITYA</span>
+              <p style="font-size: 14px; line-height: 1.6; margin: 8px 0 12px">
+                Colour-only systems are the anomaly in safety-critical design. The problem is not the colourblind person. It is a single channel of
+                information with no redundancy.
+              </p>
+              <p style="font-size: 12px; line-height: 1.5; opacity: 0.7; margin: 0"><strong>It reveals:</strong> the exclusion is a choice. Alternatives exist but were never pursued.</p>
+            </div>
+          </div>
+          <div class="card bg-white" style="margin-bottom: 40px">
+            <h3 class="card-title">WHAT ALL THREE SHARE</h3>
+            <p style="font-size: 16px; line-height: 1.6; max-width: 800px; margin: 0">
+              None of them is severely colourblind and all function normally day to day. They were excluded not by inability to do the work, but by systems
+              designed without them and never revisited.
+            </p>
+          </div>
+
+          <!-- Insights to decisions -->
+          <h2 style="margin-bottom: 32px">How Insights Became Design Decisions</h2>
+          <div class="card bg-white" style="margin-bottom: 24px">
+            <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+              <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">1. Let the user fail before the reveal (from Kunal)</strong>
+              Blame is internalised before the system is ever questioned, so the simulation cannot explain itself on entry. The user fails first, feels it
+              personally, and only then sees why. The shame has to come before the realisation.
+            </p>
+            <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+              <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">2. Zero redundancy, no labels (from Aditya)</strong>
+              Aviation builds redundancy into every safety system except its colour-coding. So the lab has no labels, no symbols and no patterns. When the
+              user looks for another way to read the information, there is nothing there. That absence is the argument.
+            </p>
+            <p style="margin-bottom: 0; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+              <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">3. The failure must feel unfair, not personal (from Nikhil)</strong>
+              A twenty-second countdown removes the workarounds colourblind people rely on every day. The task feels completable, so the user does not feel stupid. They
+              feel set up.
+            </p>
+          </div>
+          <p style="font-size: 16px; line-height: 1.6; margin-bottom: 40px; max-width: 800px">
+            Together they work as a sequence: no explanation on entry, zero redundancy in the room, and a failure that feels like the system's fault. Kunal
+            gave the psychological mechanism, Aditya the environmental logic, Nikhil the emotional target.
+          </p>
+
+          <!-- Secondary research -->
+          <h2 style="margin-bottom: 16px">Secondary Research</h2>
+          <p style="font-size: 16px; line-height: 1.6; margin-bottom: 24px; max-width: 800px">
+            This is not an edge case. The EnChroma workforce survey, the largest of its kind, found that nine in ten people with colour vision deficiency say
+            identifying colours plays a role in their job, and over 20% cannot do certain work that needs accurate colour identification.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px">
+            <div class="card bg-white" style="text-align: center">
+              <div style="font-family: var(--font-heading); font-size: 36px; font-weight: 700; color: var(--primary-red)">350M</div>
+              <div style="font-size: 12px; opacity: 0.7">people worldwide, about 1 in 12 men and 1 in 200 women</div>
+            </div>
+            <div class="card bg-white" style="text-align: center">
+              <div style="font-family: var(--font-heading); font-size: 36px; font-weight: 700; color: var(--primary-red)">11M+</div>
+              <div style="font-size: 12px; opacity: 0.7">US jobs that may exclude colourblind people</div>
+            </div>
+            <div class="card bg-white" style="text-align: center">
+              <div style="font-family: var(--font-heading); font-size: 36px; font-weight: 700; color: var(--primary-red)">75%</div>
+              <div style="font-size: 12px; opacity: 0.7">say being colourblind slows them down at work</div>
+            </div>
+            <div class="card bg-white" style="text-align: center">
+              <div style="font-family: var(--font-heading); font-size: 36px; font-weight: 700; color: var(--primary-red)">65%</div>
+              <div style="font-size: 12px; opacity: 0.7">have trouble interpreting colour-coded materials</div>
+            </div>
+          </div>
+          <div class="grid-2" style="margin-bottom: 24px">
+            <div class="card bg-white">
+              <h3 class="card-title">THE SIMULATION MODEL</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                Machado, Oliveira and Fernandes (2009) built a physiologically based model that handles both dichromacy and anomalous trichromacy. Most
+                colour-deficient people are anomalous trichromats, so a fixed dichromacy simulation overstates what they see. All three participants have mild
+                to moderate deuteranomaly, so this model lets the simulation match their severity instead of a worst case, which makes it harder to dismiss.
+              </p>
+            </div>
+            <div class="card bg-white">
+              <h3 class="card-title">VR AS AN EMPATHY TOOL</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                Existing VR work, including the BlueVR serious game (ACM, 2023), simulates colour vision deficiency to build understanding, and mostly
+                generates sympathy. This project asks a different question. Not "can you understand their experience?" but "why was this designed this way?"
+              </p>
+            </div>
+            <div class="card bg-white">
+              <h3 class="card-title">THE STANDARD THAT ALREADY EXISTS</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                WCAG 1.4.1, a Level A requirement, prohibits using colour as the only means of conveying information. Electrical rooms, labs and cockpits
+                break that principle routinely. The rule exists, the knowledge exists, and the exclusion continues anyway.
+              </p>
+            </div>
+            <div class="card bg-white">
+              <h3 class="card-title">THE LIVED EXPERIENCE</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                A global study on PMC records the same gatekeeping in people's own words: "I wanted to be a pilot, but when I failed the colour vision test,
+                I felt like a door had closed before I even had a chance to try." It mirrors Aditya's story almost exactly.
+              </p>
+            </div>
+          </div>
+          <div class="card bg-white" style="margin-bottom: 40px">
+            <h3 class="card-title">SOURCES</h3>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+              <li>
+                <a href="https://www.inf.ufrgs.br/~oliveira/pubs_files/CVD_Simulation/Machado_Oliveira_Fernandes_CVD_Vis2009_final.pdf" target="_blank" rel="noopener" style="word-break: break-word"
+                  >Machado, Oliveira and Fernandes (2009), A Physiologically-based Model for Simulation of Color Vision Deficiency</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://enchroma.com/pages/seventy-five-percent-of-color-blind-people-experience-challenges-at-work-enchroma-study-finds"
+                  target="_blank"
+                  rel="noopener"
+                  style="word-break: break-word"
+                  >EnChroma Workforce Survey (2021)</a
+                >
+              </li>
+              <li>
+                <a href="https://billfischer.substack.com/p/over-11-million-jobs-in-the-us-may" target="_blank" rel="noopener" style="word-break: break-word"
+                  >Bill Fischer (2023), Over 11 Million Jobs in the U.S. May Exclude Color-Blind Persons</a
+                >
+              </li>
+              <li>
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12385717/" target="_blank" rel="noopener" style="word-break: break-word"
+                  >A Global Perspective of Color Vision Deficiency: Awareness, Diagnosis, and Lived Experiences (PMC)</a
+                >
+              </li>
+              <li>
+                <a href="https://dl.acm.org/doi/abs/10.1145/3611031" target="_blank" rel="noopener" style="word-break: break-word"
+                  >BlueVR: A Virtual Reality Serious Game for Promoting Understanding towards People with Color Vision Deficiency (ACM, 2023)</a
+                >
+              </li>
+              <li>
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-47658-7_15" target="_blank" rel="noopener" style="word-break: break-word"
+                  >Empathic Experiences of Visual Conditions with Virtual Reality (Springer, 2023)</a
+                >
+              </li>
+              <li>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html" target="_blank" rel="noopener" style="word-break: break-word"
+                  >W3C, Understanding Success Criterion 1.4.1: Use of Color</a
+                >
+              </li>
+              <li>
+                <a href="https://webaim.org/articles/contrast/" target="_blank" rel="noopener" style="word-break: break-word">WebAIM, Contrast and Color Accessibility</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- The experience -->
+          <h2 style="margin-bottom: 16px">Environment 1: The Operation Lab</h2>
+          <p style="font-size: 16px; line-height: 1.6; margin-bottom: 24px; max-width: 800px">
+            The player walks into a lab. A doctor speaks over an intercom: a patient has chemical poisoning, and the fix is to combine the dark red and the
+            olive green vials in the flask. Simple enough. Then they look at the bench.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-bottom: 24px">
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">01</span>
+              <h3 style="margin: 8px 0">The Instruction</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">A doctor's voice gives one clear instruction. The task is understood in seconds.</p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">02</span>
+              <h3 style="margin: 8px 0">The Bench</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                Seven vials in near-identical reds and greens. No labels, no text, no symbols. The twenty-second countdown is already running.
+              </p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">03</span>
+              <h3 style="margin: 8px 0">The Failure</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                The wrong vials get mixed. Smoke, an alarm, and the doctor: "That's the wrong compound. The patient is getting worse." The monitor
+                flatlines. Silence.
+              </p>
+            </div>
+            <div class="card bg-white">
+              <span style="font-family: var(--font-heading); font-weight: 700; color: var(--primary-red)">04</span>
+              <h3 style="margin: 8px 0">The Reveal</h3>
+              <p style="font-size: 14px; line-height: 1.6; margin: 0">
+                The screen goes dark. One line appears: "You had the right instruction. The vials had no labels. Why?"
+              </p>
+            </div>
+          </div>
+          <div class="grid-2" style="margin-bottom: 24px; align-items: start">
+            <figure style="margin: 0">
+              <img
+                src="chromatic-failure-bench.jpg"
+                alt="The lab bench in VR: a rack of seven vials, a flask and a microscope, seen through the deuteranopia filter"
+                style="width: 100%; height: auto; display: block; border-radius: 10px"
+              />
+              <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">The bench through the deuteranopia filter: seven vials, a flask, a microscope.</figcaption>
+            </figure>
+            <figure style="margin: 0">
+              <img
+                src="chromatic-failure-reveal.jpg"
+                alt="The reveal text in the headset: You had the right instruction. The vials had no labels. Why?"
+                style="width: 100%; height: auto; display: block; border-radius: 10px"
+              />
+              <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">The reveal, shown only after the failure.</figcaption>
+            </figure>
+          </div>
+          <p style="font-size: 16px; line-height: 1.6; margin-bottom: 40px; max-width: 800px">
+            The lab is the first environment, and the one built so far. The same logic extends to an electrical room, with wires and indicator panels
+            separated by colour alone, and to any other workplace that signals with colour only.
+          </p>
+
+          <!-- The exhibit -->
+          <h2 style="margin-bottom: 16px">The Exhibit</h2>
+          <p style="font-size: 16px; line-height: 1.6; margin-bottom: 24px; max-width: 800px">
+            The experience was shown as a small installation. Visitors put on a headset and headphones, play the lab, then meet the argument on the wall.
+          </p>
+          <figure style="margin: 0 0 24px; max-width: 800px">
+            <img
+              src="chromatic-failure-headset-station.jpg"
+              alt="The exhibit station: a headset, headphones and controllers on a table, with a sign reading Put on the headset and headphones, then stay on the spot"
+              style="width: 100%; height: auto; display: block; border-radius: 10px"
+            />
+            <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">
+              The station, with its one instruction: "Put on the headset and headphones, then stay on the spot."
+            </figcaption>
+          </figure>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-bottom: 24px">
+            <figure style="margin: 0">
+              <img
+                src="chromatic-failure-player-seated.jpg"
+                alt="A visitor seated on a stool wearing the headset, with the poster wall behind"
+                style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; border-radius: 10px"
+              />
+              <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">A visitor playing the lab.</figcaption>
+            </figure>
+            <figure style="margin: 0">
+              <img
+                src="chromatic-failure-player-standing.jpg"
+                alt="A visitor standing at the station wearing the headset and headphones"
+                style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; border-radius: 10px"
+              />
+              <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">Standing at the station, in the wider exhibit space.</figcaption>
+            </figure>
+            <figure style="margin: 0">
+              <img
+                src="chromatic-failure-posters-board.jpg"
+                alt="The poster wall: Which one is dark red, A strip of tape fixes it, and the sticky-note prompt"
+                style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; border-radius: 10px"
+              />
+              <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">The poster wall next to the station.</figcaption>
+            </figure>
+            <figure style="margin: 0">
+              <img
+                src="chromatic-failure-pass-fail-board.jpg"
+                alt="A board reading Pin your PASS or FAIL card here, with three red FAIL cards and one blue PASS card"
+                style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; border-radius: 10px"
+              />
+              <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">The PASS or FAIL board: three FAIL cards and one PASS in this photo.</figcaption>
+            </figure>
+          </div>
+          <p style="font-size: 16px; line-height: 1.6; margin-bottom: 40px; max-width: 800px">
+            After playing, visitors pin a PASS or FAIL card to the board. A third poster asks what they would change to make the lab colour-blind friendly,
+            and invites the answer on a sticky note stuck anywhere on the wall.
+          </p>
+
+          <!-- Posters -->
+          <h2 style="margin-bottom: 16px">The Posters</h2>
+          <p style="font-size: 16px; line-height: 1.6; margin-bottom: 24px; max-width: 800px">
+            Two posters tell the whole argument as a question and its fix. A third turns the lab over to the audience.
+          </p>
+          <div class="grid-2" style="margin-bottom: 40px; align-items: stretch">
+            <figure style="margin: 0">
+              <img
+                src="chromatic-failure-poster-dark-red.jpg"
+                alt="Poster 1 of 2: Which one is dark red? Seven unlabelled test tubes"
+                style="width: 100%; height: auto; display: block; border-radius: 10px"
+              />
+              <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">1 of 2: the question, with no labels.</figcaption>
+            </figure>
+            <figure style="margin: 0">
+              <img
+                src="chromatic-failure-poster-tape.jpg"
+                alt="Poster 2 of 2: A strip of tape fixes it. The same seven test tubes, each with its name written on tape"
+                style="width: 100%; height: auto; display: block; border-radius: 10px"
+              />
+              <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">2 of 2: the same vials with a strip of tape on each.</figcaption>
+            </figure>
+            <figure style="margin: 0">
+              <img
+                src="chromatic-failure-poster-sticky-note.jpg"
+                alt="Poster: What would you change to make this lab color-blind friendly? Write it on a sticky note and stick it anywhere here"
+                style="width: 100%; height: auto; display: block; border-radius: 10px"
+              />
+              <figcaption style="font-size: 12px; opacity: 0.6; margin-top: 8px">The prompt for visitors' sticky notes.</figcaption>
+            </figure>
+            <div class="card bg-white" style="display: flex; align-items: center; justify-content: center; padding: 32px">
+              <p style="font-size: 22px; line-height: 1.4; margin: 0; font-weight: 700; font-family: var(--font-heading)">
+                About one in twelve men, and one in two hundred women, see colour differently. Designing for them can be as small as writing a word down.
+              </p>
+            </div>
+          </div>
+
+          <!-- Outcome -->
+          <div class="card" style="background-color: var(--dark-green); color: white; margin-bottom: 40px">
+            <h3 class="card-header" style="color: white">OUTCOME</h3>
+            <p style="font-size: 22px; font-weight: 700; margin-bottom: 0; font-family: var(--font-heading); line-height: 1.4">
+              A working VR prototype and exhibit that turn a colour-coded lab into an argument. Visitors fail a task that was never designed for everyone, then
+              see that a strip of tape would have fixed it.
+            </p>
+          </div>
+
+          <!-- Open questions -->
+          <div class="card bg-white" style="margin-bottom: 40px">
+            <h3 class="card-title">WHAT IS STILL OPEN</h3>
+            <p style="margin-bottom: 16px; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+              <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">Does the redirect land?</strong>
+              The core success criterion, that players blame the design and not themselves, has not been formally tested. The next step is a small round of
+              prototype testing that asks every player straight after: who or what do you blame for the failure?
+            </p>
+            <p style="margin-bottom: 0; padding: 12px 16px; border-left: 4px solid var(--primary-red); background-color: var(--bg-main); font-size: 14px; line-height: 1.5">
+              <strong style="font-family: var(--font-heading); font-size: 16px; display: block; margin-bottom: 4px">Why was it designed this way?</strong>
+              I have not yet researched why labs, electrical rooms and cockpits were colour-coded in the first place, who decided, and whether that reasoning
+              still holds. Understanding it would make the critique specific instead of general.
+            </p>
+          </div>
+
+          <!-- Reflection -->
+          <div
+            class="card"
+            style="
+              background-color: var(--dark-green);
+              color: white;
+              margin-bottom: 40px;
+              padding: 60px 40px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+            "
+          >
+            <h3
+              style="
+                border-bottom: 3px solid white;
+                padding-bottom: 12px;
+                margin-bottom: 24px;
+                font-family: var(--font-heading);
+                color: white;
+                display: inline-block;
+              "
+            >
+              REFLECTION
+            </h3>
+            <p style="font-size: 22px; font-weight: 700; margin-bottom: 0; font-family: var(--font-heading); line-height: 1.4; max-width: 800px">
+              "This project pushed the idea that colour blindness is a design failure, not a personal one. Instead of asking users to sympathise, it let them
+              fail first, then showed them that a strip of tape would have fixed it."
+            </p>
+          </div>
+
+          <!-- Next / back -->
+          <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 40px">
+            <a href="work.html" class="btn"><span class="chevron left" aria-hidden="true"></span> BACK TO ALL WORK</a>
+            <a href="rani-no-hajiro.html" class="btn primary">NEXT PROJECT <span class="chevron" aria-hidden="true"></span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="logo-footer" style="font-family: var(--font-heading); font-size: 16px">MOHAMMED.HAFIZ</div>
+        <div>© 2026 MOHAMMED HAFIZ. STAY CURIOUS.</div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/mohammed-sheikh-hafiz-5246a3340/" target="_blank" rel="noopener">LINKEDIN</a>
+          <a href="https://www.behance.net/mohammedsheikh11" target="_blank" rel="noopener">BEHANCE</a>
+          <a href="https://github.com/mohammedfiz683-arch" target="_blank" rel="noopener">GITHUB</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
